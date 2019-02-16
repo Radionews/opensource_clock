@@ -161,7 +161,10 @@ int main(void)
 		time_from_rds = old_time;
 		
 		if(hard_time != time_from_rds) //калибровка времени, если часы не совпадают
+		{	
 			hard_time = time_from_rds;
+			time_100ms = 0; //обнуление тиков таймера
+		}
 	}
 }
 
