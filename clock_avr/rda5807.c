@@ -83,9 +83,9 @@ uint16_t FM_setTime(uint16_t old_time) {
 				mins += 30 * (offset & 0x1F);
 			}
 
-			if(!(mins>=480 && mins<=1920))
+			if(!(mins>480) & (mins<=1440))
 			{
-				mins -= 480;
+				mins -= 1440;
 			}
 			if(old_time!=mins)
 			{
@@ -104,10 +104,13 @@ uint16_t FM_setTime(uint16_t old_time) {
 				}
 				else
 				{
-					time_rds[0]=0;
-					time_rds[1]=0;
-					time_rds[2]=0;
-					h=0;
+					if(h==2)
+					{
+						time_rds[0]=0;
+						time_rds[1]=0;
+						time_rds[2]=0;
+						h=0;
+					}
 				}
 			}
 			else
