@@ -5,3 +5,11 @@
 Схему можно посмотреть [здесь](https://easyeda.com/naym1993/RDS_Clock_lamp)
 
 Подписывайтесь на группу [Radionews](https://vk.com/bestradionews)
+
+## Используемые материалы при написании прошивки
+
+Проект STM для модулей RDA5807 <https://github.com/papadkostas/RDA5807M> 
+
+Библиотека I2C <http://cxem.net/mc/mc420.php>
+
+Подробное описание модуля RDA5807 <http://cxem.net/tuner/tuner87.php>

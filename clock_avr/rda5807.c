@@ -38,6 +38,7 @@ uint16_t FM_setTime(uint16_t old_time) {
 	unsigned int RDS[6];
 	char grp, ver;
 	uint16_t offset = 0, mins = 0;
+	uint16_t bad_paket = 0;
 	
 	for(int h=0;h<3;h++)
 	{
@@ -110,6 +111,9 @@ uint16_t FM_setTime(uint16_t old_time) {
 						time_rds[1]=0;
 						time_rds[2]=0;
 						h=0;
+						bad_paket++;
+						if(bad_paket == 15)
+							return 3333;
 					}
 				}
 			}

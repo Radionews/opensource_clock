@@ -158,13 +158,23 @@ int main(void)
 	while(1)
 	{
 		old_time = FM_setTime(old_time); //получение времени с RDS
-		time_from_rds = old_time;
-		
-		if(hard_time != time_from_rds) //калибровка времени, если часы не совпадают
-		{	
-			hard_time = time_from_rds;
-			time_100ms = 0; //обнуление тиков таймера
+		if(old_time == 3333)
+		{
+			temp = SEEK_FOR_RDS();
+			FM_setFrequency(temp);
 		}
+		
+		else
+		{
+			time_from_rds = old_time;
+					
+			if(hard_time != time_from_rds) //калибровка времени, если часы не совпадают
+			{
+				hard_time = time_from_rds;
+				time_100ms = 0; //обнуление тиков таймера
+			}
+		}
+
 	}
 }
 
