@@ -99,9 +99,10 @@ uint16_t FM_setTime(uint16_t old_time) {
 				UART_Send_Char(13);
 				time_rds[h] = mins;
 				old_time=mins;
+				
 				if((h == 2)&((((int)(time_rds[1] - time_rds[0]) == 1)&((int)(time_rds[2] - time_rds[1]) == 1))))
 				{
-					return old_time;
+					return mins;
 				}
 				else
 				{

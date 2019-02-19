@@ -114,9 +114,12 @@ ISR (TIMER1_COMPA_vect)
 	{
 		hard_time++;
 		time_100ms = 0;
+		if(hard_time>=1440)
+			hard_time = 0;
 		display = hard_time;
 		if((display%60) == 30)
 			anti_catod();//каждые пол часа антиотравление катодов
+
 	}
 }
 
