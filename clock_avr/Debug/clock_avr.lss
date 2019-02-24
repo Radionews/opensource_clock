@@ -3,31 +3,31 @@ clock_avr.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000012a6  00000000  00000000  00000094  2**1
+  0 .text         00001298  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000054  00800060  000012a6  0000133a  2**0
+  1 .data         00000054  00800060  00001298  0000132c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000036  008000b4  008000b4  0000138e  2**0
+  2 .bss          00000036  008000b4  008000b4  00001380  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  0000138e  2**0
+  3 .comment      00000030  00000000  00000000  00001380  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000013c0  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000013b0  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000148  00000000  00000000  000013fc  2**0
+  5 .debug_aranges 00000148  00000000  00000000  000013ec  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000179b  00000000  00000000  00001544  2**0
+  6 .debug_info   0000179b  00000000  00000000  00001534  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000ad5  00000000  00000000  00002cdf  2**0
+  7 .debug_abbrev 00000ad5  00000000  00000000  00002ccf  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000db9  00000000  00000000  000037b4  2**0
+  8 .debug_line   00000dba  00000000  00000000  000037a4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000408  00000000  00000000  00004570  2**2
+  9 .debug_frame  00000404  00000000  00000000  00004560  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000736  00000000  00000000  00004978  2**0
+ 10 .debug_str    00000736  00000000  00000000  00004964  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000130c  00000000  00000000  000050ae  2**0
+ 11 .debug_loc    000012e1  00000000  00000000  0000509a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000148  00000000  00000000  000063ba  2**0
+ 12 .debug_ranges 00000148  00000000  00000000  0000637b  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -173,7 +173,7 @@ Disassembly of section .text:
      114:	10 e0       	ldi	r17, 0x00	; 0
      116:	a0 e6       	ldi	r26, 0x60	; 96
      118:	b0 e0       	ldi	r27, 0x00	; 0
-     11a:	e6 ea       	ldi	r30, 0xA6	; 166
+     11a:	e8 e9       	ldi	r30, 0x98	; 152
      11c:	f2 e1       	ldi	r31, 0x12	; 18
      11e:	02 c0       	rjmp	.+4      	; 0x124 <__do_copy_data+0x10>
      120:	05 90       	lpm	r0, Z+
@@ -196,7 +196,7 @@ Disassembly of section .text:
      136:	b2 07       	cpc	r27, r18
      138:	e1 f7       	brne	.-8      	; 0x132 <.do_clear_bss_loop>
      13a:	f7 d2       	rcall	.+1518   	; 0x72a <main>
-     13c:	b2 c8       	rjmp	.-3740   	; 0xfffff2a2 <__eeprom_end+0xff7ef2a2>
+     13c:	ab c8       	rjmp	.-3754   	; 0xfffff294 <__eeprom_end+0xff7ef294>
 
 0000013e <__bad_interrupt>:
      13e:	60 cf       	rjmp	.-320    	; 0x0 <__vectors>
@@ -234,7 +234,7 @@ bitrate.HL=bitrate.HL/(2*k);										//	*
      15a:	73 e0       	ldi	r23, 0x03	; 3
      15c:	80 e0       	ldi	r24, 0x00	; 0
      15e:	90 e0       	ldi	r25, 0x00	; 0
-     160:	56 d8       	rcall	.-3924   	; 0xfffff20e <__eeprom_end+0xff7ef20e>
+     160:	4f d8       	rcall	.-3938   	; 0xfffff200 <__eeprom_end+0xff7ef200>
      162:	20 51       	subi	r18, 0x10	; 16
      164:	31 09       	sbc	r19, r1
      166:	c9 01       	movw	r24, r18
@@ -265,7 +265,7 @@ bitrate.HL=bitrate.HL/(2*k);										//	*
      184:	ba 01       	movw	r22, r20
      186:	66 0f       	add	r22, r22
      188:	77 1f       	adc	r23, r23
-     18a:	2d d8       	rcall	.-4006   	; 0xfffff1e6 <__eeprom_end+0xff7ef1e6>
+     18a:	26 d8       	rcall	.-4020   	; 0xfffff1d8 <__eeprom_end+0xff7ef1d8>
      18c:	cb 01       	movw	r24, r22
 } while (bitrate.HL>=0x0100);										//	*
      18e:	6f 3f       	cpi	r22, 0xFF	; 255
@@ -1052,7 +1052,7 @@ ISR (TIMER1_COMPA_vect)
      54a:	9a 01       	movw	r18, r20
      54c:	a9 e8       	ldi	r26, 0x89	; 137
      54e:	b8 e8       	ldi	r27, 0x88	; 136
-     550:	7a d6       	rcall	.+3316   	; 0x1246 <__umulhisi3>
+     550:	73 d6       	rcall	.+3302   	; 0x1238 <__umulhisi3>
      552:	96 95       	lsr	r25
      554:	87 95       	ror	r24
      556:	92 95       	swap	r25
@@ -1141,7 +1141,7 @@ ISR (TIMER2_COMP_vect)
      5e6:	9a 01       	movw	r18, r20
      5e8:	a9 e8       	ldi	r26, 0x89	; 137
      5ea:	b8 e8       	ldi	r27, 0x88	; 136
-     5ec:	2c d6       	rcall	.+3160   	; 0x1246 <__umulhisi3>
+     5ec:	25 d6       	rcall	.+3146   	; 0x1238 <__umulhisi3>
      5ee:	96 95       	lsr	r25
      5f0:	87 95       	ror	r24
      5f2:	92 95       	swap	r25
@@ -1161,7 +1161,7 @@ ISR (TIMER2_COMP_vect)
      60e:	9a 01       	movw	r18, r20
      610:	ad ec       	ldi	r26, 0xCD	; 205
      612:	bc ec       	ldi	r27, 0xCC	; 204
-     614:	18 d6       	rcall	.+3120   	; 0x1246 <__umulhisi3>
+     614:	11 d6       	rcall	.+3106   	; 0x1238 <__umulhisi3>
      616:	96 95       	lsr	r25
      618:	87 95       	ror	r24
      61a:	96 95       	lsr	r25
@@ -1192,7 +1192,7 @@ ISR (TIMER2_COMP_vect)
      64a:	9a 01       	movw	r18, r20
      64c:	a9 e8       	ldi	r26, 0x89	; 137
      64e:	b8 e8       	ldi	r27, 0x88	; 136
-     650:	fa d5       	rcall	.+3060   	; 0x1246 <__umulhisi3>
+     650:	f3 d5       	rcall	.+3046   	; 0x1238 <__umulhisi3>
      652:	96 95       	lsr	r25
      654:	87 95       	ror	r24
      656:	92 95       	swap	r25
@@ -1213,7 +1213,7 @@ ISR (TIMER2_COMP_vect)
      674:	9c 01       	movw	r18, r24
      676:	ad ec       	ldi	r26, 0xCD	; 205
      678:	bc ec       	ldi	r27, 0xCC	; 204
-     67a:	e5 d5       	rcall	.+3018   	; 0x1246 <__umulhisi3>
+     67a:	de d5       	rcall	.+3004   	; 0x1238 <__umulhisi3>
      67c:	96 95       	lsr	r25
      67e:	87 95       	ror	r24
      680:	96 95       	lsr	r25
@@ -1229,7 +1229,7 @@ ISR (TIMER2_COMP_vect)
      690:	30 91 d2 00 	lds	r19, 0x00D2	; 0x8000d2 <display+0x1>
      694:	a9 e8       	ldi	r26, 0x89	; 137
      696:	b8 e8       	ldi	r27, 0x88	; 136
-     698:	d6 d5       	rcall	.+2988   	; 0x1246 <__umulhisi3>
+     698:	cf d5       	rcall	.+2974   	; 0x1238 <__umulhisi3>
      69a:	ac 01       	movw	r20, r24
      69c:	56 95       	lsr	r21
      69e:	47 95       	ror	r20
@@ -1242,7 +1242,7 @@ ISR (TIMER2_COMP_vect)
      6ac:	9a 01       	movw	r18, r20
      6ae:	ad ec       	ldi	r26, 0xCD	; 205
      6b0:	bc ec       	ldi	r27, 0xCC	; 204
-     6b2:	c9 d5       	rcall	.+2962   	; 0x1246 <__umulhisi3>
+     6b2:	c2 d5       	rcall	.+2948   	; 0x1238 <__umulhisi3>
      6b4:	96 95       	lsr	r25
      6b6:	87 95       	ror	r24
      6b8:	96 95       	lsr	r25
@@ -1278,7 +1278,7 @@ ISR (TIMER2_COMP_vect)
      6f2:	27 95       	ror	r18
      6f4:	af e4       	ldi	r26, 0x4F	; 79
      6f6:	bb e1       	ldi	r27, 0x1B	; 27
-     6f8:	a6 d5       	rcall	.+2892   	; 0x1246 <__umulhisi3>
+     6f8:	9f d5       	rcall	.+2878   	; 0x1238 <__umulhisi3>
      6fa:	96 95       	lsr	r25
      6fc:	87 95       	ror	r24
      6fe:	96 95       	lsr	r25
@@ -1313,7 +1313,7 @@ ISR (TIMER2_COMP_vect)
 int main(void)
 {
 	UART_Init();
-     72a:	42 d5       	rcall	.+2692   	; 0x11b0 <UART_Init>
+     72a:	3b d5       	rcall	.+2678   	; 0x11a2 <UART_Init>
 	i2cInit();
      72c:	3a dd       	rcall	.-1420   	; 0x1a2 <i2cInit>
 	FM__init();
@@ -1325,15 +1325,15 @@ int main(void)
 	UART_Send_Str("Initialization complete!\n\r");
      734:	81 e6       	ldi	r24, 0x61	; 97
      736:	90 e0       	ldi	r25, 0x00	; 0
-     738:	48 d5       	rcall	.+2704   	; 0x11ca <UART_Send_Str>
+     738:	41 d5       	rcall	.+2690   	; 0x11bc <UART_Send_Str>
 	sei();
      73a:	78 94       	sei
 	//FM_setFrequency(9110);
     
 	uint16_t temp = SEEK_FOR_RDS();//ÒÍ‡ÌËÓ‚‡ÌËÂ FM ‰Ë‡Ô‡ÁÓÌ‡ Ë ÔÓÒËÍ Ò‡ÏÓÈ ÒËÎ¸ÌÓÈ ÒÚ‡ÌˆËË Ò RDS
-     73c:	94 d2       	rcall	.+1320   	; 0xc66 <SEEK_FOR_RDS>
+     73c:	8d d2       	rcall	.+1306   	; 0xc58 <SEEK_FOR_RDS>
 	FM_setFrequency(temp);//Ì‡ÒÚÓÈÍ‡ ÏÓ‰ÛÎˇ Ì‡ Ì‡È‰ÂÌÌÛ˛ ÒÚ‡ÌˆË˛
-     73e:	10 d2       	rcall	.+1056   	; 0xb60 <FM_setFrequency>
+     73e:	09 d2       	rcall	.+1042   	; 0xb52 <FM_setFrequency>
 	
 	while(1)
 	{
@@ -1350,9 +1350,9 @@ int main(void)
      758:	19 f4       	brne	.+6      	; 0x760 <main+0x36>
 		{
 			temp = SEEK_FOR_RDS();
-     75a:	85 d2       	rcall	.+1290   	; 0xc66 <SEEK_FOR_RDS>
+     75a:	7e d2       	rcall	.+1276   	; 0xc58 <SEEK_FOR_RDS>
 			FM_setFrequency(temp);
-     75c:	01 d2       	rcall	.+1026   	; 0xb60 <FM_setFrequency>
+     75c:	fa d1       	rcall	.+1012   	; 0xb52 <FM_setFrequency>
      75e:	f0 cf       	rjmp	.-32     	; 0x740 <main+0x16>
 		}
 		
@@ -1484,1749 +1484,1751 @@ void FM__init (void) {
 
 
 uint16_t FM_setTime(uint16_t old_time) {
-     808:	2f 92       	push	r2
-     80a:	3f 92       	push	r3
-     80c:	4f 92       	push	r4
-     80e:	5f 92       	push	r5
-     810:	6f 92       	push	r6
-     812:	7f 92       	push	r7
-     814:	8f 92       	push	r8
-     816:	9f 92       	push	r9
-     818:	af 92       	push	r10
-     81a:	bf 92       	push	r11
-     81c:	cf 92       	push	r12
-     81e:	df 92       	push	r13
-     820:	ef 92       	push	r14
-     822:	ff 92       	push	r15
-     824:	0f 93       	push	r16
-     826:	1f 93       	push	r17
-     828:	cf 93       	push	r28
-     82a:	df 93       	push	r29
-     82c:	cd b7       	in	r28, 0x3d	; 61
-     82e:	de b7       	in	r29, 0x3e	; 62
-     830:	62 97       	sbiw	r28, 0x12	; 18
-     832:	0f b6       	in	r0, 0x3f	; 63
-     834:	f8 94       	cli
-     836:	de bf       	out	0x3e, r29	; 62
-     838:	0f be       	out	0x3f, r0	; 63
-     83a:	cd bf       	out	0x3d, r28	; 61
-     83c:	4c 01       	movw	r8, r24
+     808:	3f 92       	push	r3
+     80a:	4f 92       	push	r4
+     80c:	5f 92       	push	r5
+     80e:	6f 92       	push	r6
+     810:	7f 92       	push	r7
+     812:	8f 92       	push	r8
+     814:	9f 92       	push	r9
+     816:	af 92       	push	r10
+     818:	bf 92       	push	r11
+     81a:	cf 92       	push	r12
+     81c:	df 92       	push	r13
+     81e:	ef 92       	push	r14
+     820:	ff 92       	push	r15
+     822:	0f 93       	push	r16
+     824:	1f 93       	push	r17
+     826:	cf 93       	push	r28
+     828:	df 93       	push	r29
+     82a:	cd b7       	in	r28, 0x3d	; 61
+     82c:	de b7       	in	r29, 0x3e	; 62
+     82e:	62 97       	sbiw	r28, 0x12	; 18
+     830:	0f b6       	in	r0, 0x3f	; 63
+     832:	f8 94       	cli
+     834:	de bf       	out	0x3e, r29	; 62
+     836:	0f be       	out	0x3f, r0	; 63
+     838:	cd bf       	out	0x3d, r28	; 61
+     83a:	4c 01       	movw	r8, r24
 	unsigned int RDS[6];
 	char grp, ver;
 	uint16_t offset = 0, mins = 0;
 	uint16_t bad_paket = 0;
 	
 	for(int h=0;h<3;h++)
-     83e:	c1 2c       	mov	r12, r1
-     840:	d1 2c       	mov	r13, r1
+     83c:	e1 2c       	mov	r14, r1
+     83e:	f1 2c       	mov	r15, r1
 	
 	uint16_t time_rds[3];
 	unsigned int RDS[6];
 	char grp, ver;
 	uint16_t offset = 0, mins = 0;
 	uint16_t bad_paket = 0;
-     842:	41 2c       	mov	r4, r1
-     844:	51 2c       	mov	r5, r1
+     840:	a1 2c       	mov	r10, r1
+     842:	b1 2c       	mov	r11, r1
 uint16_t FM_setTime(uint16_t old_time) {
 	
 	uint16_t time_rds[3];
 	unsigned int RDS[6];
 	char grp, ver;
 	uint16_t offset = 0, mins = 0;
-     846:	e1 2c       	mov	r14, r1
-     848:	f1 2c       	mov	r15, r1
-     84a:	a1 2c       	mov	r10, r1
-     84c:	b1 2c       	mov	r11, r1
+     844:	c1 2c       	mov	r12, r1
+     846:	d1 2c       	mov	r13, r1
 			{
 				UART_Send_Str("QTime: ");
 				UART_Send_Char((mins/60)/10+0x30);
 				UART_Send_Char((mins/60)%10+0x30);
 				UART_Send_Str(":");
 				UART_Send_Char((mins%60)/10+0x30);
-     84e:	0f 2e       	mov	r0, r31
-     850:	fc e3       	ldi	r31, 0x3C	; 60
-     852:	6f 2e       	mov	r6, r31
-     854:	f0 2d       	mov	r31, r0
+     848:	0f 2e       	mov	r0, r31
+     84a:	fc e3       	ldi	r31, 0x3C	; 60
+     84c:	6f 2e       	mov	r6, r31
+     84e:	f0 2d       	mov	r31, r0
 				UART_Send_Char((mins%60)%10+0x30);
 				UART_Send_Char(13);
 				time_rds[h] = mins;
 				old_time=mins;
 				
 				if((h == 2)&((((int)(time_rds[1] - time_rds[0]) == 1)&((int)(time_rds[2] - time_rds[1]) == 1))))
-     856:	33 24       	eor	r3, r3
-     858:	33 94       	inc	r3
-			{
-				mins -= 30 * (offset & 0x1F);
-			}
-			else
-			{
-				mins += 30 * (offset & 0x1F);
-     85a:	0f 2e       	mov	r0, r31
-     85c:	fe e1       	ldi	r31, 0x1E	; 30
-     85e:	7f 2e       	mov	r7, r31
-     860:	f0 2d       	mov	r31, r0
+     850:	77 24       	eor	r7, r7
+     852:	73 94       	inc	r7
+     854:	41 2c       	mov	r4, r1
+				{
+					mins -= 30 * (offset & 0x1F);
+				}
+				else
+				{
+					mins += 30 * (offset & 0x1F);
+     856:	0f 2e       	mov	r0, r31
+     858:	fe e1       	ldi	r31, 0x1E	; 30
+     85a:	5f 2e       	mov	r5, r31
+     85c:	f0 2d       	mov	r31, r0
 	uint16_t offset = 0, mins = 0;
 	uint16_t bad_paket = 0;
 	
 	for(int h=0;h<3;h++)
 	{
 		i2cMasterUploadBuf(0x0A);
-     862:	8a e0       	ldi	r24, 0x0A	; 10
-     864:	ae dc       	rcall	.-1700   	; 0x1c2 <i2cMasterUploadBuf>
+     85e:	8a e0       	ldi	r24, 0x0A	; 10
+     860:	b0 dc       	rcall	.-1696   	; 0x1c2 <i2cMasterUploadBuf>
 		i2cMasterReceive(RDA5807M_I2C_ADDR_R, 12);
-     866:	6c e0       	ldi	r22, 0x0C	; 12
-     868:	80 e1       	ldi	r24, 0x10	; 16
-     86a:	d3 dc       	rcall	.-1626   	; 0x212 <i2cMasterReceive>
-     86c:	0a ed       	ldi	r16, 0xDA	; 218
-     86e:	10 e0       	ldi	r17, 0x00	; 0
+     862:	6c e0       	ldi	r22, 0x0C	; 12
+     864:	80 e1       	ldi	r24, 0x10	; 16
+     866:	d5 dc       	rcall	.-1622   	; 0x212 <i2cMasterReceive>
+     868:	0a ed       	ldi	r16, 0xDA	; 218
+     86a:	10 e0       	ldi	r17, 0x00	; 0
 		for(uint8_t i=0;i<12;i++)
-     870:	21 2c       	mov	r2, r1
+     86c:	31 2c       	mov	r3, r1
 		i2cMasterDownloadBufIndex((uint8_t*)&b[i] , i);
-     872:	62 2d       	mov	r22, r2
-     874:	c8 01       	movw	r24, r16
-     876:	ea dc       	rcall	.-1580   	; 0x24c <i2cMasterDownloadBufIndex>
+     86e:	63 2d       	mov	r22, r3
+     870:	c8 01       	movw	r24, r16
+     872:	ec dc       	rcall	.-1576   	; 0x24c <i2cMasterDownloadBufIndex>
 	
 	for(int h=0;h<3;h++)
 	{
 		i2cMasterUploadBuf(0x0A);
 		i2cMasterReceive(RDA5807M_I2C_ADDR_R, 12);
 		for(uint8_t i=0;i<12;i++)
-     878:	23 94       	inc	r2
-     87a:	0f 5f       	subi	r16, 0xFF	; 255
-     87c:	1f 4f       	sbci	r17, 0xFF	; 255
-     87e:	2c e0       	ldi	r18, 0x0C	; 12
-     880:	22 12       	cpse	r2, r18
-     882:	f7 cf       	rjmp	.-18     	; 0x872 <FM_setTime+0x6a>
-     884:	fe 01       	movw	r30, r28
-     886:	37 96       	adiw	r30, 0x07	; 7
-     888:	20 e0       	ldi	r18, 0x00	; 0
-     88a:	30 e0       	ldi	r19, 0x00	; 0
+     874:	33 94       	inc	r3
+     876:	0f 5f       	subi	r16, 0xFF	; 255
+     878:	1f 4f       	sbci	r17, 0xFF	; 255
+     87a:	2c e0       	ldi	r18, 0x0C	; 12
+     87c:	32 12       	cpse	r3, r18
+     87e:	f7 cf       	rjmp	.-18     	; 0x86e <FM_setTime+0x66>
+     880:	fe 01       	movw	r30, r28
+     882:	37 96       	adiw	r30, 0x07	; 7
+     884:	20 e0       	ldi	r18, 0x00	; 0
+     886:	30 e0       	ldi	r19, 0x00	; 0
 		i2cMasterDownloadBufIndex((uint8_t*)&b[i] , i);
 		
 		for (uint8_t i = 0; i < 6; i++)
 		{
 			RDS[i] = 256 * b[i*2] + b[i*2+1];
-     88c:	d9 01       	movw	r26, r18
-     88e:	a6 52       	subi	r26, 0x26	; 38
-     890:	bf 4f       	sbci	r27, 0xFF	; 255
-     892:	8c 91       	ld	r24, X
-     894:	d9 01       	movw	r26, r18
-     896:	a5 52       	subi	r26, 0x25	; 37
-     898:	bf 4f       	sbci	r27, 0xFF	; 255
-     89a:	4c 91       	ld	r20, X
-     89c:	90 e0       	ldi	r25, 0x00	; 0
-     89e:	98 2f       	mov	r25, r24
-     8a0:	88 27       	eor	r24, r24
-     8a2:	84 0f       	add	r24, r20
-     8a4:	91 1d       	adc	r25, r1
-     8a6:	81 93       	st	Z+, r24
-     8a8:	91 93       	st	Z+, r25
-     8aa:	2e 5f       	subi	r18, 0xFE	; 254
-     8ac:	3f 4f       	sbci	r19, 0xFF	; 255
+     888:	d9 01       	movw	r26, r18
+     88a:	a6 52       	subi	r26, 0x26	; 38
+     88c:	bf 4f       	sbci	r27, 0xFF	; 255
+     88e:	8c 91       	ld	r24, X
+     890:	d9 01       	movw	r26, r18
+     892:	a5 52       	subi	r26, 0x25	; 37
+     894:	bf 4f       	sbci	r27, 0xFF	; 255
+     896:	4c 91       	ld	r20, X
+     898:	90 e0       	ldi	r25, 0x00	; 0
+     89a:	98 2f       	mov	r25, r24
+     89c:	88 27       	eor	r24, r24
+     89e:	84 0f       	add	r24, r20
+     8a0:	91 1d       	adc	r25, r1
+     8a2:	81 93       	st	Z+, r24
+     8a4:	91 93       	st	Z+, r25
+     8a6:	2e 5f       	subi	r18, 0xFE	; 254
+     8a8:	3f 4f       	sbci	r19, 0xFF	; 255
 		i2cMasterUploadBuf(0x0A);
 		i2cMasterReceive(RDA5807M_I2C_ADDR_R, 12);
 		for(uint8_t i=0;i<12;i++)
 		i2cMasterDownloadBufIndex((uint8_t*)&b[i] , i);
 		
 		for (uint8_t i = 0; i < 6; i++)
-     8ae:	2c 30       	cpi	r18, 0x0C	; 12
-     8b0:	31 05       	cpc	r19, r1
-     8b2:	61 f7       	brne	.-40     	; 0x88c <FM_setTime+0x84>
+     8aa:	2c 30       	cpi	r18, 0x0C	; 12
+     8ac:	31 05       	cpc	r19, r1
+     8ae:	61 f7       	brne	.-40     	; 0x888 <FM_setTime+0x80>
+		uint16_t rdssynchro = RDS[0] & 0x1000;
+		uint16_t rdsblockerror = RDS[1] & 0x000C;
+		
+		uint16_t rdsGroupType = 0x0A | ((block2 & 0xF000) >> 8) | ((block2 & 0x0800) >> 11);
+		
+		if (rdssynchro != 0x1000){  // RDS not synchronised or tuning changed, reset all the RDS info.
+     8b0:	8f 81       	ldd	r24, Y+7	; 0x07
+     8b2:	98 85       	ldd	r25, Y+8	; 0x08
+     8b4:	94 ff       	sbrs	r25, 4
+     8b6:	12 c1       	rjmp	.+548    	; 0xadc <FM_setTime+0x2d4>
+		for (uint8_t i = 0; i < 6; i++)
 		{
 			RDS[i] = 256 * b[i*2] + b[i*2+1];
 		}
 		uint16_t block1 = RDS[2];
 		uint16_t block2 = RDS[3];
-     8b4:	8d 85       	ldd	r24, Y+13	; 0x0d
-     8b6:	9e 85       	ldd	r25, Y+14	; 0x0e
-		uint16_t block4 = RDS[5];	
-		uint16_t rdsready = RDS[0] & 0x8000;
-		uint16_t rdssynchro = RDS[0] & 0x1000;
-		uint16_t rdsblockerror = RDS[1] & 0x000C;
-		
-		if (rdssynchro != 0x1000){  // RDS not synchronised or tuning changed, reset all the RDS info.
-     8b8:	2f 81       	ldd	r18, Y+7	; 0x07
-     8ba:	38 85       	ldd	r19, Y+8	; 0x08
-     8bc:	34 fd       	sbrc	r19, 4
-     8be:	02 c0       	rjmp	.+4      	; 0x8c4 <FM_setTime+0xbc>
+     8b8:	8d 85       	ldd	r24, Y+13	; 0x0d
+     8ba:	9e 85       	ldd	r25, Y+14	; 0x0e
+			
+			rdsGroupType = 0;
 			mins = 0;
-     8c0:	e1 2c       	mov	r14, r1
-     8c2:	f1 2c       	mov	r15, r1
 		}
 		
-		uint16_t rdsGroupType = 0x0A | ((block2 & 0xF000) >> 8) | ((block2 & 0x0800) >> 11);
-		
 		switch (rdsGroupType) {
-     8c4:	9c 01       	movw	r18, r24
-     8c6:	22 27       	eor	r18, r18
-     8c8:	30 7f       	andi	r19, 0xF0	; 240
-     8ca:	23 2f       	mov	r18, r19
-     8cc:	33 27       	eor	r19, r19
-     8ce:	88 27       	eor	r24, r24
-     8d0:	98 70       	andi	r25, 0x08	; 8
-     8d2:	89 2f       	mov	r24, r25
-     8d4:	99 27       	eor	r25, r25
-     8d6:	86 95       	lsr	r24
-     8d8:	86 95       	lsr	r24
-     8da:	86 95       	lsr	r24
-     8dc:	82 2b       	or	r24, r18
-     8de:	93 2b       	or	r25, r19
-     8e0:	8a 60       	ori	r24, 0x0A	; 10
-     8e2:	8a 34       	cpi	r24, 0x4A	; 74
-     8e4:	91 05       	cpc	r25, r1
-     8e6:	09 f0       	breq	.+2      	; 0x8ea <FM_setTime+0xe2>
-     8e8:	01 c1       	rjmp	.+514    	; 0xaec <FM_setTime+0x2e4>
+     8bc:	9c 01       	movw	r18, r24
+     8be:	22 27       	eor	r18, r18
+     8c0:	30 7f       	andi	r19, 0xF0	; 240
+     8c2:	23 2f       	mov	r18, r19
+     8c4:	33 27       	eor	r19, r19
+     8c6:	88 27       	eor	r24, r24
+     8c8:	98 70       	andi	r25, 0x08	; 8
+     8ca:	89 2f       	mov	r24, r25
+     8cc:	99 27       	eor	r25, r25
+     8ce:	86 95       	lsr	r24
+     8d0:	86 95       	lsr	r24
+     8d2:	86 95       	lsr	r24
+     8d4:	82 2b       	or	r24, r18
+     8d6:	93 2b       	or	r25, r19
+     8d8:	8a 60       	ori	r24, 0x0A	; 10
+     8da:	8a 34       	cpi	r24, 0x4A	; 74
+     8dc:	91 05       	cpc	r25, r1
+     8de:	09 f0       	breq	.+2      	; 0x8e2 <FM_setTime+0xda>
+     8e0:	ff c0       	rjmp	.+510    	; 0xae0 <FM_setTime+0x2d8>
 		{
 			RDS[i] = 256 * b[i*2] + b[i*2+1];
 		}
 		uint16_t block1 = RDS[2];
 		uint16_t block2 = RDS[3];
 		uint16_t block3 = RDS[4];
-     8ea:	4f 85       	ldd	r20, Y+15	; 0x0f
-     8ec:	58 89       	ldd	r21, Y+16	; 0x10
+     8e2:	4f 85       	ldd	r20, Y+15	; 0x0f
+     8e4:	58 89       	ldd	r21, Y+16	; 0x10
 		uint16_t block4 = RDS[5];	
-     8ee:	89 89       	ldd	r24, Y+17	; 0x11
-     8f0:	9a 89       	ldd	r25, Y+18	; 0x12
-		uint16_t rdsGroupType = 0x0A | ((block2 & 0xF000) >> 8) | ((block2 & 0x0800) >> 11);
+     8e6:	29 89       	ldd	r18, Y+17	; 0x11
+     8e8:	3a 89       	ldd	r19, Y+18	; 0x12
+		}
 		
 		switch (rdsGroupType) {
 			case 0x4A:
 			// –≤—Ä–µ–º—è –∏ –¥–∞—Ç–∞
 			if(rdsblockerror<3)
-     8f2:	29 85       	ldd	r18, Y+9	; 0x09
-     8f4:	3a 85       	ldd	r19, Y+10	; 0x0a
-     8f6:	2c 70       	andi	r18, 0x0C	; 12
-     8f8:	33 27       	eor	r19, r19
-     8fa:	23 30       	cpi	r18, 0x03	; 3
-     8fc:	31 05       	cpc	r19, r1
-     8fe:	28 f5       	brcc	.+74     	; 0x94a <FM_setTime+0x142>
+     8ea:	89 85       	ldd	r24, Y+9	; 0x09
+     8ec:	9a 85       	ldd	r25, Y+10	; 0x0a
+     8ee:	8c 70       	andi	r24, 0x0C	; 12
+     8f0:	99 27       	eor	r25, r25
+     8f2:	03 97       	sbiw	r24, 0x03	; 3
+     8f4:	08 f0       	brcs	.+2      	; 0x8f8 <FM_setTime+0xf0>
+     8f6:	41 c0       	rjmp	.+130    	; 0x97a <FM_setTime+0x172>
 			{ // limit RDS data errors as we have no correction code
 				offset = (block4) & 0x003F; // 6 bits
-     900:	5c 01       	movw	r10, r24
-     902:	3f e3       	ldi	r19, 0x3F	; 63
-     904:	a3 22       	and	r10, r19
-     906:	bb 24       	eor	r11, r11
 				mins = (block4 >> 6) & 0x003F; // 6 bits
+     8f8:	c9 01       	movw	r24, r18
+     8fa:	00 24       	eor	r0, r0
+     8fc:	88 0f       	add	r24, r24
+     8fe:	99 1f       	adc	r25, r25
+     900:	00 1c       	adc	r0, r0
+     902:	88 0f       	add	r24, r24
+     904:	99 1f       	adc	r25, r25
+     906:	00 1c       	adc	r0, r0
+     908:	89 2f       	mov	r24, r25
+     90a:	90 2d       	mov	r25, r0
+     90c:	8f 73       	andi	r24, 0x3F	; 63
+     90e:	99 27       	eor	r25, r25
 				mins += 60 * (((block3 & 0x0001) << 4) | ((block4 >> 12) & 0x000F));
-     908:	41 70       	andi	r20, 0x01	; 1
-     90a:	55 27       	eor	r21, r21
-     90c:	42 95       	swap	r20
-     90e:	52 95       	swap	r21
-     910:	50 7f       	andi	r21, 0xF0	; 240
-     912:	54 27       	eor	r21, r20
-     914:	40 7f       	andi	r20, 0xF0	; 240
-     916:	54 27       	eor	r21, r20
-     918:	9c 01       	movw	r18, r24
-     91a:	23 2f       	mov	r18, r19
-     91c:	33 27       	eor	r19, r19
-     91e:	22 95       	swap	r18
-     920:	2f 70       	andi	r18, 0x0F	; 15
-     922:	42 2b       	or	r20, r18
-     924:	53 2b       	or	r21, r19
-     926:	64 9e       	mul	r6, r20
-     928:	70 01       	movw	r14, r0
-     92a:	65 9e       	mul	r6, r21
-     92c:	f0 0c       	add	r15, r0
-     92e:	11 24       	eor	r1, r1
-     930:	00 24       	eor	r0, r0
-     932:	88 0f       	add	r24, r24
-     934:	99 1f       	adc	r25, r25
-     936:	00 1c       	adc	r0, r0
-     938:	88 0f       	add	r24, r24
-     93a:	99 1f       	adc	r25, r25
-     93c:	00 1c       	adc	r0, r0
-     93e:	89 2f       	mov	r24, r25
-     940:	90 2d       	mov	r25, r0
-     942:	8f 73       	andi	r24, 0x3F	; 63
-     944:	99 27       	eor	r25, r25
-     946:	e8 0e       	add	r14, r24
-     948:	f9 1e       	adc	r15, r25
+     910:	41 70       	andi	r20, 0x01	; 1
+     912:	55 27       	eor	r21, r21
+     914:	42 95       	swap	r20
+     916:	52 95       	swap	r21
+     918:	50 7f       	andi	r21, 0xF0	; 240
+     91a:	54 27       	eor	r21, r20
+     91c:	40 7f       	andi	r20, 0xF0	; 240
+     91e:	54 27       	eor	r21, r20
+     920:	b9 01       	movw	r22, r18
+     922:	67 2f       	mov	r22, r23
+     924:	77 27       	eor	r23, r23
+     926:	62 95       	swap	r22
+     928:	6f 70       	andi	r22, 0x0F	; 15
+     92a:	46 2b       	or	r20, r22
+     92c:	57 2b       	or	r21, r23
+     92e:	64 9e       	mul	r6, r20
+     930:	60 01       	movw	r12, r0
+     932:	65 9e       	mul	r6, r21
+     934:	d0 0c       	add	r13, r0
+     936:	11 24       	eor	r1, r1
+     938:	c8 0e       	add	r12, r24
+     93a:	d9 1e       	adc	r13, r25
+				
+				if (offset & 0x20)//–∑–Ω–∞–∫ —Å–¥–≤–∏–≥–∞ —á–∞—Å–æ–≤–æ–≥–æ –ø–æ—è—Å–∞, —Å–≤–∏–≥ –∑–∞–¥–∞–µ—Ç—Å—è –ø–æ–ª—É—á–∞—Å–∞–º–∏
+     93c:	25 ff       	sbrs	r18, 5
+     93e:	0a c0       	rjmp	.+20     	; 0x954 <FM_setTime+0x14c>
+				{
+					mins -= 30 * (offset & 0x1F);
+     940:	2f 71       	andi	r18, 0x1F	; 31
+     942:	33 27       	eor	r19, r19
+     944:	52 9e       	mul	r5, r18
+     946:	c0 01       	movw	r24, r0
+     948:	53 9e       	mul	r5, r19
+     94a:	90 0d       	add	r25, r0
+     94c:	11 24       	eor	r1, r1
+     94e:	c8 1a       	sub	r12, r24
+     950:	d9 0a       	sbc	r13, r25
+     952:	09 c0       	rjmp	.+18     	; 0x966 <FM_setTime+0x15e>
+				}
+				else
+				{
+					mins += 30 * (offset & 0x1F);
+     954:	2f 71       	andi	r18, 0x1F	; 31
+     956:	33 27       	eor	r19, r19
+     958:	52 9e       	mul	r5, r18
+     95a:	c0 01       	movw	r24, r0
+     95c:	53 9e       	mul	r5, r19
+     95e:	90 0d       	add	r25, r0
+     960:	11 24       	eor	r1, r1
+     962:	c8 0e       	add	r12, r24
+     964:	d9 1e       	adc	r13, r25
+				}
+				
+				if(!((mins>480) & (mins<=1440)))
+     966:	c6 01       	movw	r24, r12
+     968:	81 5e       	subi	r24, 0xE1	; 225
+     96a:	91 40       	sbci	r25, 0x01	; 1
+     96c:	80 3c       	cpi	r24, 0xC0	; 192
+     96e:	93 40       	sbci	r25, 0x03	; 3
+     970:	20 f0       	brcs	.+8      	; 0x97a <FM_setTime+0x172>
+				{
+					mins -= 1440;
+     972:	80 ea       	ldi	r24, 0xA0	; 160
+     974:	c8 1a       	sub	r12, r24
+     976:	85 e0       	ldi	r24, 0x05	; 5
+     978:	d8 0a       	sbc	r13, r24
+				}
 			}
 
-			if (offset & 0x20)//–∑–Ω–∞–∫ —Å–¥–≤–∏–≥–∞ —á–∞—Å–æ–≤–æ–≥–æ –ø–æ—è—Å–∞, —Å–≤–∏–≥ –∑–∞–¥–∞–µ—Ç—Å—è –ø–æ–ª—É—á–∞—Å–∞–º–∏
-     94a:	a5 fe       	sbrs	r10, 5
-     94c:	0b c0       	rjmp	.+22     	; 0x964 <FM_setTime+0x15c>
-			{
-				mins -= 30 * (offset & 0x1F);
-     94e:	95 01       	movw	r18, r10
-     950:	2f 71       	andi	r18, 0x1F	; 31
-     952:	33 27       	eor	r19, r19
-     954:	72 9e       	mul	r7, r18
-     956:	c0 01       	movw	r24, r0
-     958:	73 9e       	mul	r7, r19
-     95a:	90 0d       	add	r25, r0
-     95c:	11 24       	eor	r1, r1
-     95e:	e8 1a       	sub	r14, r24
-     960:	f9 0a       	sbc	r15, r25
-     962:	0a c0       	rjmp	.+20     	; 0x978 <FM_setTime+0x170>
-			}
-			else
-			{
-				mins += 30 * (offset & 0x1F);
-     964:	95 01       	movw	r18, r10
-     966:	2f 71       	andi	r18, 0x1F	; 31
-     968:	33 27       	eor	r19, r19
-     96a:	72 9e       	mul	r7, r18
-     96c:	c0 01       	movw	r24, r0
-     96e:	73 9e       	mul	r7, r19
-     970:	90 0d       	add	r25, r0
-     972:	11 24       	eor	r1, r1
-     974:	e8 0e       	add	r14, r24
-     976:	f9 1e       	adc	r15, r25
-			}
-
-			if(!(mins>480) & (mins<=1440))
-     978:	81 ee       	ldi	r24, 0xE1	; 225
-     97a:	e8 16       	cp	r14, r24
-     97c:	81 e0       	ldi	r24, 0x01	; 1
-     97e:	f8 06       	cpc	r15, r24
-     980:	20 f4       	brcc	.+8      	; 0x98a <FM_setTime+0x182>
-			{
-				mins -= 1440;
-     982:	90 ea       	ldi	r25, 0xA0	; 160
-     984:	e9 1a       	sub	r14, r25
-     986:	95 e0       	ldi	r25, 0x05	; 5
-     988:	f9 0a       	sbc	r15, r25
-			}
 			if(old_time!=mins)
-     98a:	e8 14       	cp	r14, r8
-     98c:	f9 04       	cpc	r15, r9
-     98e:	09 f4       	brne	.+2      	; 0x992 <FM_setTime+0x18a>
-     990:	a8 c0       	rjmp	.+336    	; 0xae2 <FM_setTime+0x2da>
+     97a:	c8 14       	cp	r12, r8
+     97c:	d9 04       	cpc	r13, r9
+     97e:	09 f4       	brne	.+2      	; 0x982 <FM_setTime+0x17a>
+     980:	a8 c0       	rjmp	.+336    	; 0xad2 <FM_setTime+0x2ca>
 			{
 				UART_Send_Str("QTime: ");
-     992:	8c e7       	ldi	r24, 0x7C	; 124
-     994:	90 e0       	ldi	r25, 0x00	; 0
-     996:	19 d4       	rcall	.+2098   	; 0x11ca <UART_Send_Str>
+     982:	8c e7       	ldi	r24, 0x7C	; 124
+     984:	90 e0       	ldi	r25, 0x00	; 0
+     986:	1a d4       	rcall	.+2100   	; 0x11bc <UART_Send_Str>
 				UART_Send_Char((mins/60)/10+0x30);
-     998:	97 01       	movw	r18, r14
-     99a:	36 95       	lsr	r19
-     99c:	27 95       	ror	r18
-     99e:	36 95       	lsr	r19
-     9a0:	27 95       	ror	r18
-     9a2:	36 95       	lsr	r19
-     9a4:	27 95       	ror	r18
-     9a6:	af e4       	ldi	r26, 0x4F	; 79
-     9a8:	bb e1       	ldi	r27, 0x1B	; 27
-     9aa:	4d d4       	rcall	.+2202   	; 0x1246 <__umulhisi3>
-     9ac:	96 95       	lsr	r25
-     9ae:	87 95       	ror	r24
-     9b0:	96 95       	lsr	r25
-     9b2:	87 95       	ror	r24
-     9b4:	96 95       	lsr	r25
-     9b6:	87 95       	ror	r24
-     9b8:	80 5d       	subi	r24, 0xD0	; 208
-     9ba:	03 d4       	rcall	.+2054   	; 0x11c2 <UART_Send_Char>
+     988:	96 01       	movw	r18, r12
+     98a:	36 95       	lsr	r19
+     98c:	27 95       	ror	r18
+     98e:	36 95       	lsr	r19
+     990:	27 95       	ror	r18
+     992:	36 95       	lsr	r19
+     994:	27 95       	ror	r18
+     996:	af e4       	ldi	r26, 0x4F	; 79
+     998:	bb e1       	ldi	r27, 0x1B	; 27
+     99a:	4e d4       	rcall	.+2204   	; 0x1238 <__umulhisi3>
+     99c:	96 95       	lsr	r25
+     99e:	87 95       	ror	r24
+     9a0:	96 95       	lsr	r25
+     9a2:	87 95       	ror	r24
+     9a4:	96 95       	lsr	r25
+     9a6:	87 95       	ror	r24
+     9a8:	80 5d       	subi	r24, 0xD0	; 208
+     9aa:	04 d4       	rcall	.+2056   	; 0x11b4 <UART_Send_Char>
 				UART_Send_Char((mins/60)%10+0x30);
-     9bc:	97 01       	movw	r18, r14
-     9be:	a9 e8       	ldi	r26, 0x89	; 137
-     9c0:	b8 e8       	ldi	r27, 0x88	; 136
-     9c2:	41 d4       	rcall	.+2178   	; 0x1246 <__umulhisi3>
-     9c4:	8c 01       	movw	r16, r24
-     9c6:	16 95       	lsr	r17
-     9c8:	07 95       	ror	r16
-     9ca:	12 95       	swap	r17
-     9cc:	02 95       	swap	r16
-     9ce:	0f 70       	andi	r16, 0x0F	; 15
-     9d0:	01 27       	eor	r16, r17
-     9d2:	1f 70       	andi	r17, 0x0F	; 15
-     9d4:	01 27       	eor	r16, r17
-     9d6:	98 01       	movw	r18, r16
-     9d8:	ad ec       	ldi	r26, 0xCD	; 205
-     9da:	bc ec       	ldi	r27, 0xCC	; 204
-     9dc:	34 d4       	rcall	.+2152   	; 0x1246 <__umulhisi3>
-     9de:	96 95       	lsr	r25
-     9e0:	87 95       	ror	r24
-     9e2:	96 95       	lsr	r25
-     9e4:	87 95       	ror	r24
-     9e6:	96 95       	lsr	r25
-     9e8:	87 95       	ror	r24
-     9ea:	9c 01       	movw	r18, r24
-     9ec:	22 0f       	add	r18, r18
-     9ee:	33 1f       	adc	r19, r19
-     9f0:	88 0f       	add	r24, r24
-     9f2:	99 1f       	adc	r25, r25
-     9f4:	88 0f       	add	r24, r24
-     9f6:	99 1f       	adc	r25, r25
-     9f8:	88 0f       	add	r24, r24
-     9fa:	99 1f       	adc	r25, r25
-     9fc:	82 0f       	add	r24, r18
-     9fe:	93 1f       	adc	r25, r19
-     a00:	98 01       	movw	r18, r16
-     a02:	28 1b       	sub	r18, r24
-     a04:	39 0b       	sbc	r19, r25
-     a06:	c9 01       	movw	r24, r18
-     a08:	80 5d       	subi	r24, 0xD0	; 208
-     a0a:	db d3       	rcall	.+1974   	; 0x11c2 <UART_Send_Char>
+     9ac:	96 01       	movw	r18, r12
+     9ae:	a9 e8       	ldi	r26, 0x89	; 137
+     9b0:	b8 e8       	ldi	r27, 0x88	; 136
+     9b2:	42 d4       	rcall	.+2180   	; 0x1238 <__umulhisi3>
+     9b4:	8c 01       	movw	r16, r24
+     9b6:	16 95       	lsr	r17
+     9b8:	07 95       	ror	r16
+     9ba:	12 95       	swap	r17
+     9bc:	02 95       	swap	r16
+     9be:	0f 70       	andi	r16, 0x0F	; 15
+     9c0:	01 27       	eor	r16, r17
+     9c2:	1f 70       	andi	r17, 0x0F	; 15
+     9c4:	01 27       	eor	r16, r17
+     9c6:	98 01       	movw	r18, r16
+     9c8:	ad ec       	ldi	r26, 0xCD	; 205
+     9ca:	bc ec       	ldi	r27, 0xCC	; 204
+     9cc:	35 d4       	rcall	.+2154   	; 0x1238 <__umulhisi3>
+     9ce:	96 95       	lsr	r25
+     9d0:	87 95       	ror	r24
+     9d2:	96 95       	lsr	r25
+     9d4:	87 95       	ror	r24
+     9d6:	96 95       	lsr	r25
+     9d8:	87 95       	ror	r24
+     9da:	9c 01       	movw	r18, r24
+     9dc:	22 0f       	add	r18, r18
+     9de:	33 1f       	adc	r19, r19
+     9e0:	88 0f       	add	r24, r24
+     9e2:	99 1f       	adc	r25, r25
+     9e4:	88 0f       	add	r24, r24
+     9e6:	99 1f       	adc	r25, r25
+     9e8:	88 0f       	add	r24, r24
+     9ea:	99 1f       	adc	r25, r25
+     9ec:	82 0f       	add	r24, r18
+     9ee:	93 1f       	adc	r25, r19
+     9f0:	98 01       	movw	r18, r16
+     9f2:	28 1b       	sub	r18, r24
+     9f4:	39 0b       	sbc	r19, r25
+     9f6:	c9 01       	movw	r24, r18
+     9f8:	80 5d       	subi	r24, 0xD0	; 208
+     9fa:	dc d3       	rcall	.+1976   	; 0x11b4 <UART_Send_Char>
 				UART_Send_Str(":");
-     a0c:	84 e8       	ldi	r24, 0x84	; 132
-     a0e:	90 e0       	ldi	r25, 0x00	; 0
-     a10:	dc d3       	rcall	.+1976   	; 0x11ca <UART_Send_Str>
+     9fc:	84 e8       	ldi	r24, 0x84	; 132
+     9fe:	90 e0       	ldi	r25, 0x00	; 0
+     a00:	dd d3       	rcall	.+1978   	; 0x11bc <UART_Send_Str>
 				UART_Send_Char((mins%60)/10+0x30);
-     a12:	60 9e       	mul	r6, r16
-     a14:	c0 01       	movw	r24, r0
-     a16:	61 9e       	mul	r6, r17
-     a18:	90 0d       	add	r25, r0
-     a1a:	11 24       	eor	r1, r1
-     a1c:	47 01       	movw	r8, r14
-     a1e:	88 1a       	sub	r8, r24
-     a20:	99 0a       	sbc	r9, r25
-     a22:	94 01       	movw	r18, r8
-     a24:	ad ec       	ldi	r26, 0xCD	; 205
-     a26:	bc ec       	ldi	r27, 0xCC	; 204
-     a28:	0e d4       	rcall	.+2076   	; 0x1246 <__umulhisi3>
-     a2a:	8c 01       	movw	r16, r24
-     a2c:	16 95       	lsr	r17
-     a2e:	07 95       	ror	r16
-     a30:	16 95       	lsr	r17
-     a32:	07 95       	ror	r16
-     a34:	16 95       	lsr	r17
-     a36:	07 95       	ror	r16
-     a38:	80 e3       	ldi	r24, 0x30	; 48
-     a3a:	80 0f       	add	r24, r16
-     a3c:	c2 d3       	rcall	.+1924   	; 0x11c2 <UART_Send_Char>
+     a02:	60 9e       	mul	r6, r16
+     a04:	c0 01       	movw	r24, r0
+     a06:	61 9e       	mul	r6, r17
+     a08:	90 0d       	add	r25, r0
+     a0a:	11 24       	eor	r1, r1
+     a0c:	46 01       	movw	r8, r12
+     a0e:	88 1a       	sub	r8, r24
+     a10:	99 0a       	sbc	r9, r25
+     a12:	94 01       	movw	r18, r8
+     a14:	ad ec       	ldi	r26, 0xCD	; 205
+     a16:	bc ec       	ldi	r27, 0xCC	; 204
+     a18:	0f d4       	rcall	.+2078   	; 0x1238 <__umulhisi3>
+     a1a:	8c 01       	movw	r16, r24
+     a1c:	16 95       	lsr	r17
+     a1e:	07 95       	ror	r16
+     a20:	16 95       	lsr	r17
+     a22:	07 95       	ror	r16
+     a24:	16 95       	lsr	r17
+     a26:	07 95       	ror	r16
+     a28:	80 e3       	ldi	r24, 0x30	; 48
+     a2a:	80 0f       	add	r24, r16
+     a2c:	c3 d3       	rcall	.+1926   	; 0x11b4 <UART_Send_Char>
 				UART_Send_Char((mins%60)%10+0x30);
-     a3e:	c8 01       	movw	r24, r16
-     a40:	88 0f       	add	r24, r24
-     a42:	99 1f       	adc	r25, r25
-     a44:	00 0f       	add	r16, r16
-     a46:	11 1f       	adc	r17, r17
-     a48:	00 0f       	add	r16, r16
-     a4a:	11 1f       	adc	r17, r17
-     a4c:	00 0f       	add	r16, r16
-     a4e:	11 1f       	adc	r17, r17
-     a50:	08 0f       	add	r16, r24
-     a52:	19 1f       	adc	r17, r25
-     a54:	c4 01       	movw	r24, r8
-     a56:	80 1b       	sub	r24, r16
-     a58:	91 0b       	sbc	r25, r17
-     a5a:	80 5d       	subi	r24, 0xD0	; 208
-     a5c:	b2 d3       	rcall	.+1892   	; 0x11c2 <UART_Send_Char>
+     a2e:	c8 01       	movw	r24, r16
+     a30:	88 0f       	add	r24, r24
+     a32:	99 1f       	adc	r25, r25
+     a34:	00 0f       	add	r16, r16
+     a36:	11 1f       	adc	r17, r17
+     a38:	00 0f       	add	r16, r16
+     a3a:	11 1f       	adc	r17, r17
+     a3c:	00 0f       	add	r16, r16
+     a3e:	11 1f       	adc	r17, r17
+     a40:	08 0f       	add	r16, r24
+     a42:	19 1f       	adc	r17, r25
+     a44:	c4 01       	movw	r24, r8
+     a46:	80 1b       	sub	r24, r16
+     a48:	91 0b       	sbc	r25, r17
+     a4a:	80 5d       	subi	r24, 0xD0	; 208
+     a4c:	b3 d3       	rcall	.+1894   	; 0x11b4 <UART_Send_Char>
 				UART_Send_Char(13);
-     a5e:	8d e0       	ldi	r24, 0x0D	; 13
-     a60:	b0 d3       	rcall	.+1888   	; 0x11c2 <UART_Send_Char>
+     a4e:	8d e0       	ldi	r24, 0x0D	; 13
+     a50:	b1 d3       	rcall	.+1890   	; 0x11b4 <UART_Send_Char>
 				time_rds[h] = mins;
-     a62:	f6 01       	movw	r30, r12
-     a64:	ee 0f       	add	r30, r30
-     a66:	ff 1f       	adc	r31, r31
-     a68:	81 e0       	ldi	r24, 0x01	; 1
-     a6a:	90 e0       	ldi	r25, 0x00	; 0
-     a6c:	8c 0f       	add	r24, r28
-     a6e:	9d 1f       	adc	r25, r29
-     a70:	e8 0f       	add	r30, r24
-     a72:	f9 1f       	adc	r31, r25
-     a74:	f1 82       	std	Z+1, r15	; 0x01
-     a76:	e0 82       	st	Z, r14
+     a52:	f7 01       	movw	r30, r14
+     a54:	ee 0f       	add	r30, r30
+     a56:	ff 1f       	adc	r31, r31
+     a58:	81 e0       	ldi	r24, 0x01	; 1
+     a5a:	90 e0       	ldi	r25, 0x00	; 0
+     a5c:	8c 0f       	add	r24, r28
+     a5e:	9d 1f       	adc	r25, r29
+     a60:	e8 0f       	add	r30, r24
+     a62:	f9 1f       	adc	r31, r25
+     a64:	d1 82       	std	Z+1, r13	; 0x01
+     a66:	c0 82       	st	Z, r12
 				old_time=mins;
 				
 				if((h == 2)&((((int)(time_rds[1] - time_rds[0]) == 1)&((int)(time_rds[2] - time_rds[1]) == 1))))
-     a78:	4b 81       	ldd	r20, Y+3	; 0x03
-     a7a:	5c 81       	ldd	r21, Y+4	; 0x04
-     a7c:	89 81       	ldd	r24, Y+1	; 0x01
-     a7e:	9a 81       	ldd	r25, Y+2	; 0x02
-     a80:	9a 01       	movw	r18, r20
-     a82:	28 1b       	sub	r18, r24
-     a84:	39 0b       	sbc	r19, r25
-     a86:	93 2d       	mov	r25, r3
-     a88:	21 30       	cpi	r18, 0x01	; 1
-     a8a:	31 05       	cpc	r19, r1
-     a8c:	09 f0       	breq	.+2      	; 0xa90 <FM_setTime+0x288>
-     a8e:	90 e0       	ldi	r25, 0x00	; 0
-     a90:	2d 81       	ldd	r18, Y+5	; 0x05
-     a92:	3e 81       	ldd	r19, Y+6	; 0x06
-     a94:	24 1b       	sub	r18, r20
-     a96:	35 0b       	sbc	r19, r21
-     a98:	83 2d       	mov	r24, r3
-     a9a:	21 30       	cpi	r18, 0x01	; 1
-     a9c:	31 05       	cpc	r19, r1
+     a68:	4b 81       	ldd	r20, Y+3	; 0x03
+     a6a:	5c 81       	ldd	r21, Y+4	; 0x04
+     a6c:	89 81       	ldd	r24, Y+1	; 0x01
+     a6e:	9a 81       	ldd	r25, Y+2	; 0x02
+     a70:	9a 01       	movw	r18, r20
+     a72:	28 1b       	sub	r18, r24
+     a74:	39 0b       	sbc	r19, r25
+     a76:	97 2d       	mov	r25, r7
+     a78:	21 30       	cpi	r18, 0x01	; 1
+     a7a:	31 05       	cpc	r19, r1
+     a7c:	09 f0       	breq	.+2      	; 0xa80 <FM_setTime+0x278>
+     a7e:	94 2d       	mov	r25, r4
+     a80:	2d 81       	ldd	r18, Y+5	; 0x05
+     a82:	3e 81       	ldd	r19, Y+6	; 0x06
+     a84:	24 1b       	sub	r18, r20
+     a86:	35 0b       	sbc	r19, r21
+     a88:	87 2d       	mov	r24, r7
+     a8a:	21 30       	cpi	r18, 0x01	; 1
+     a8c:	31 05       	cpc	r19, r1
+     a8e:	09 f0       	breq	.+2      	; 0xa92 <FM_setTime+0x28a>
+     a90:	84 2d       	mov	r24, r4
+     a92:	89 23       	and	r24, r25
+     a94:	41 f0       	breq	.+16     	; 0xaa6 <FM_setTime+0x29e>
+     a96:	87 2d       	mov	r24, r7
+     a98:	92 e0       	ldi	r25, 0x02	; 2
+     a9a:	e9 16       	cp	r14, r25
+     a9c:	f1 04       	cpc	r15, r1
      a9e:	09 f0       	breq	.+2      	; 0xaa2 <FM_setTime+0x29a>
-     aa0:	80 e0       	ldi	r24, 0x00	; 0
-     aa2:	89 23       	and	r24, r25
-     aa4:	41 f0       	breq	.+16     	; 0xab6 <FM_setTime+0x2ae>
-     aa6:	83 2d       	mov	r24, r3
-     aa8:	92 e0       	ldi	r25, 0x02	; 2
-     aaa:	c9 16       	cp	r12, r25
-     aac:	d1 04       	cpc	r13, r1
-     aae:	09 f0       	breq	.+2      	; 0xab2 <FM_setTime+0x2aa>
-     ab0:	80 e0       	ldi	r24, 0x00	; 0
-     ab2:	81 11       	cpse	r24, r1
-     ab4:	2b c0       	rjmp	.+86     	; 0xb0c <FM_setTime+0x304>
-				{
+     aa0:	84 2d       	mov	r24, r4
+     aa2:	81 11       	cpse	r24, r1
+     aa4:	2d c0       	rjmp	.+90     	; 0xb00 <FM_setTime+0x2f8>
+					bad_paket = 0;
 					return mins;
 				}
 				else
 				{
 					if(h==2)
-     ab6:	22 e0       	ldi	r18, 0x02	; 2
-     ab8:	c2 16       	cp	r12, r18
-     aba:	d1 04       	cpc	r13, r1
-     abc:	d9 f4       	brne	.+54     	; 0xaf4 <FM_setTime+0x2ec>
+     aa6:	22 e0       	ldi	r18, 0x02	; 2
+     aa8:	e2 16       	cp	r14, r18
+     aaa:	f1 04       	cpc	r15, r1
+     aac:	e9 f4       	brne	.+58     	; 0xae8 <FM_setTime+0x2e0>
 					{
 						time_rds[0]=0;
-     abe:	1a 82       	std	Y+2, r1	; 0x02
-     ac0:	19 82       	std	Y+1, r1	; 0x01
+     aae:	1a 82       	std	Y+2, r1	; 0x02
+     ab0:	19 82       	std	Y+1, r1	; 0x01
 						time_rds[1]=0;
-     ac2:	1c 82       	std	Y+4, r1	; 0x04
-     ac4:	1b 82       	std	Y+3, r1	; 0x03
+     ab2:	1c 82       	std	Y+4, r1	; 0x04
+     ab4:	1b 82       	std	Y+3, r1	; 0x03
 						time_rds[2]=0;
-     ac6:	1e 82       	std	Y+6, r1	; 0x06
-     ac8:	1d 82       	std	Y+5, r1	; 0x05
+     ab6:	1e 82       	std	Y+6, r1	; 0x06
+     ab8:	1d 82       	std	Y+5, r1	; 0x05
 						h=0;
 						bad_paket++;
-     aca:	3f ef       	ldi	r19, 0xFF	; 255
-     acc:	43 1a       	sub	r4, r19
-     ace:	53 0a       	sbc	r5, r19
-						if(bad_paket == 15)
-     ad0:	8f e0       	ldi	r24, 0x0F	; 15
-     ad2:	48 16       	cp	r4, r24
-     ad4:	51 04       	cpc	r5, r1
-     ad6:	e9 f0       	breq	.+58     	; 0xb12 <FM_setTime+0x30a>
-     ad8:	47 01       	movw	r8, r14
+     aba:	3f ef       	ldi	r19, 0xFF	; 255
+     abc:	a3 1a       	sub	r10, r19
+     abe:	b3 0a       	sbc	r11, r19
+						if(bad_paket == 10)
+     ac0:	8a e0       	ldi	r24, 0x0A	; 10
+     ac2:	a8 16       	cp	r10, r24
+     ac4:	b1 04       	cpc	r11, r1
+     ac6:	f9 f0       	breq	.+62     	; 0xb06 <FM_setTime+0x2fe>
+     ac8:	46 01       	movw	r8, r12
 	unsigned int RDS[6];
 	char grp, ver;
 	uint16_t offset = 0, mins = 0;
 	uint16_t bad_paket = 0;
 	
 	for(int h=0;h<3;h++)
-     ada:	cc 24       	eor	r12, r12
-     adc:	c3 94       	inc	r12
-     ade:	d1 2c       	mov	r13, r1
-     ae0:	c0 ce       	rjmp	.-640    	; 0x862 <FM_setTime+0x5a>
-							return 3333;
+     aca:	ee 24       	eor	r14, r14
+     acc:	e3 94       	inc	r14
+     ace:	f1 2c       	mov	r15, r1
+     ad0:	c6 ce       	rjmp	.-628    	; 0x85e <FM_setTime+0x56>
+							
 					}
 				}
 			}
 			else
-				h--;
-     ae2:	91 e0       	ldi	r25, 0x01	; 1
-     ae4:	c9 1a       	sub	r12, r25
-     ae6:	d1 08       	sbc	r13, r1
-     ae8:	47 01       	movw	r8, r14
-     aea:	05 c0       	rjmp	.+10     	; 0xaf6 <FM_setTime+0x2ee>
+				h--;			
+     ad2:	91 e0       	ldi	r25, 0x01	; 1
+     ad4:	e9 1a       	sub	r14, r25
+     ad6:	f1 08       	sbc	r15, r1
+     ad8:	46 01       	movw	r8, r12
+     ada:	07 c0       	rjmp	.+14     	; 0xaea <FM_setTime+0x2e2>
+		uint16_t rdsGroupType = 0x0A | ((block2 & 0xF000) >> 8) | ((block2 & 0x0800) >> 11);
+		
+		if (rdssynchro != 0x1000){  // RDS not synchronised or tuning changed, reset all the RDS info.
 			
-			break;
+			rdsGroupType = 0;
+			mins = 0;
+     adc:	c1 2c       	mov	r12, r1
+     ade:	d1 2c       	mov	r13, r1
+			else
+				h--;			
+				break;
 
 			default:
 				h--;
-     aec:	21 e0       	ldi	r18, 0x01	; 1
-     aee:	c2 1a       	sub	r12, r18
-     af0:	d1 08       	sbc	r13, r1
+     ae0:	21 e0       	ldi	r18, 0x01	; 1
+     ae2:	e2 1a       	sub	r14, r18
+     ae4:	f1 08       	sbc	r15, r1
 				break;
-     af2:	01 c0       	rjmp	.+2      	; 0xaf6 <FM_setTime+0x2ee>
-     af4:	47 01       	movw	r8, r14
+     ae6:	01 c0       	rjmp	.+2      	; 0xaea <FM_setTime+0x2e2>
+     ae8:	46 01       	movw	r8, r12
 	unsigned int RDS[6];
 	char grp, ver;
 	uint16_t offset = 0, mins = 0;
 	uint16_t bad_paket = 0;
 	
 	for(int h=0;h<3;h++)
-     af6:	3f ef       	ldi	r19, 0xFF	; 255
-     af8:	c3 1a       	sub	r12, r19
-     afa:	d3 0a       	sbc	r13, r19
-     afc:	83 e0       	ldi	r24, 0x03	; 3
-     afe:	c8 16       	cp	r12, r24
-     b00:	d1 04       	cpc	r13, r1
-     b02:	0c f4       	brge	.+2      	; 0xb06 <FM_setTime+0x2fe>
-     b04:	ae ce       	rjmp	.-676    	; 0x862 <FM_setTime+0x5a>
+     aea:	3f ef       	ldi	r19, 0xFF	; 255
+     aec:	e3 1a       	sub	r14, r19
+     aee:	f3 0a       	sbc	r15, r19
+     af0:	83 e0       	ldi	r24, 0x03	; 3
+     af2:	e8 16       	cp	r14, r24
+     af4:	f1 04       	cpc	r15, r1
+     af6:	0c f4       	brge	.+2      	; 0xafa <FM_setTime+0x2f2>
+     af8:	b2 ce       	rjmp	.-668    	; 0x85e <FM_setTime+0x56>
 			default:
 				h--;
 				break;
 		}
 	}
 	return 9999;
-     b06:	8f e0       	ldi	r24, 0x0F	; 15
-     b08:	97 e2       	ldi	r25, 0x27	; 39
-     b0a:	05 c0       	rjmp	.+10     	; 0xb16 <FM_setTime+0x30e>
-     b0c:	8e 2d       	mov	r24, r14
-     b0e:	9f 2d       	mov	r25, r15
-     b10:	02 c0       	rjmp	.+4      	; 0xb16 <FM_setTime+0x30e>
-						time_rds[1]=0;
-						time_rds[2]=0;
+     afa:	8f e0       	ldi	r24, 0x0F	; 15
+     afc:	97 e2       	ldi	r25, 0x27	; 39
+     afe:	05 c0       	rjmp	.+10     	; 0xb0a <FM_setTime+0x302>
+     b00:	8c 2d       	mov	r24, r12
+     b02:	9d 2d       	mov	r25, r13
+     b04:	02 c0       	rjmp	.+4      	; 0xb0a <FM_setTime+0x302>
 						h=0;
 						bad_paket++;
-						if(bad_paket == 15)
-							return 3333;
-     b12:	85 e0       	ldi	r24, 0x05	; 5
-     b14:	9d e0       	ldi	r25, 0x0D	; 13
+						if(bad_paket == 10)
+						{
+							bad_paket = 0;
+							return 3333;	
+     b06:	85 e0       	ldi	r24, 0x05	; 5
+     b08:	9d e0       	ldi	r25, 0x0D	; 13
 				h--;
 				break;
 		}
 	}
 	return 9999;
 }
-     b16:	62 96       	adiw	r28, 0x12	; 18
-     b18:	0f b6       	in	r0, 0x3f	; 63
-     b1a:	f8 94       	cli
-     b1c:	de bf       	out	0x3e, r29	; 62
-     b1e:	0f be       	out	0x3f, r0	; 63
-     b20:	cd bf       	out	0x3d, r28	; 61
-     b22:	df 91       	pop	r29
-     b24:	cf 91       	pop	r28
-     b26:	1f 91       	pop	r17
-     b28:	0f 91       	pop	r16
-     b2a:	ff 90       	pop	r15
-     b2c:	ef 90       	pop	r14
-     b2e:	df 90       	pop	r13
-     b30:	cf 90       	pop	r12
-     b32:	bf 90       	pop	r11
-     b34:	af 90       	pop	r10
-     b36:	9f 90       	pop	r9
-     b38:	8f 90       	pop	r8
-     b3a:	7f 90       	pop	r7
-     b3c:	6f 90       	pop	r6
-     b3e:	5f 90       	pop	r5
-     b40:	4f 90       	pop	r4
-     b42:	3f 90       	pop	r3
-     b44:	2f 90       	pop	r2
-     b46:	08 95       	ret
+     b0a:	62 96       	adiw	r28, 0x12	; 18
+     b0c:	0f b6       	in	r0, 0x3f	; 63
+     b0e:	f8 94       	cli
+     b10:	de bf       	out	0x3e, r29	; 62
+     b12:	0f be       	out	0x3f, r0	; 63
+     b14:	cd bf       	out	0x3d, r28	; 61
+     b16:	df 91       	pop	r29
+     b18:	cf 91       	pop	r28
+     b1a:	1f 91       	pop	r17
+     b1c:	0f 91       	pop	r16
+     b1e:	ff 90       	pop	r15
+     b20:	ef 90       	pop	r14
+     b22:	df 90       	pop	r13
+     b24:	cf 90       	pop	r12
+     b26:	bf 90       	pop	r11
+     b28:	af 90       	pop	r10
+     b2a:	9f 90       	pop	r9
+     b2c:	8f 90       	pop	r8
+     b2e:	7f 90       	pop	r7
+     b30:	6f 90       	pop	r6
+     b32:	5f 90       	pop	r5
+     b34:	4f 90       	pop	r4
+     b36:	3f 90       	pop	r3
+     b38:	08 95       	ret
 
-00000b48 <FM_getBandAndSpacing>:
+00000b3a <FM_getBandAndSpacing>:
 
 uint16_t FM_getBandAndSpacing(void) {
 	uint8_t band = FM_getRegister(RDA5807M_REG_TUNING) & (RDA5807M_BAND_MASK | RDA5807M_SPACE_MASK);
-     b48:	83 e0       	ldi	r24, 0x03	; 3
-     b4a:	2c de       	rcall	.-936    	; 0x7a4 <FM_getRegister>
-     b4c:	28 2f       	mov	r18, r24
-     b4e:	2f 70       	andi	r18, 0x0F	; 15
+     b3a:	83 e0       	ldi	r24, 0x03	; 3
+     b3c:	33 de       	rcall	.-922    	; 0x7a4 <FM_getRegister>
+     b3e:	28 2f       	mov	r18, r24
+     b40:	2f 70       	andi	r18, 0x0F	; 15
 	if (band & RDA5807M_BAND_MASK == BAND_EAST && !(FM_getRegister(RDA5807M_REG_BLEND) & RDA5807M_FLG_EASTBAND65M))
 	// Lower band limit is 50MHz
 	band = (band >> RDA5807M_BAND_SHIFT) + 1;
 	else
 	band >>= RDA5807M_BAND_SHIFT;
 	return ((uint16_t)space<<8 | band);
-     b50:	83 70       	andi	r24, 0x03	; 3
-     b52:	90 e0       	ldi	r25, 0x00	; 0
-     b54:	98 2f       	mov	r25, r24
-     b56:	88 27       	eor	r24, r24
-     b58:	26 95       	lsr	r18
-     b5a:	26 95       	lsr	r18
+     b42:	83 70       	andi	r24, 0x03	; 3
+     b44:	90 e0       	ldi	r25, 0x00	; 0
+     b46:	98 2f       	mov	r25, r24
+     b48:	88 27       	eor	r24, r24
+     b4a:	26 95       	lsr	r18
+     b4c:	26 95       	lsr	r18
 }
-     b5c:	82 2b       	or	r24, r18
-     b5e:	08 95       	ret
+     b4e:	82 2b       	or	r24, r18
+     b50:	08 95       	ret
 
-00000b60 <FM_setFrequency>:
+00000b52 <FM_setFrequency>:
 
 uint8_t FM_setFrequency(uint16_t frequency) {
-     b60:	cf 93       	push	r28
-     b62:	df 93       	push	r29
-     b64:	ec 01       	movw	r28, r24
+     b52:	cf 93       	push	r28
+     b54:	df 93       	push	r29
+     b56:	ec 01       	movw	r28, r24
 	uint16_t spaceandband = FM_getBandAndSpacing();
-     b66:	f0 df       	rcall	.-32     	; 0xb48 <FM_getBandAndSpacing>
+     b58:	f0 df       	rcall	.-32     	; 0xb3a <FM_getBandAndSpacing>
 	uint16_t origin = pgm_read_word(&RDA5807M_BandLowerLimits[spaceandband & 0x00FF]);
-     b68:	9c 01       	movw	r18, r24
-     b6a:	33 27       	eor	r19, r19
-     b6c:	f9 01       	movw	r30, r18
-     b6e:	ee 0f       	add	r30, r30
-     b70:	ff 1f       	adc	r31, r31
-     b72:	e2 50       	subi	r30, 0x02	; 2
-     b74:	ff 4f       	sbci	r31, 0xFF	; 255
-     b76:	45 91       	lpm	r20, Z+
-     b78:	54 91       	lpm	r21, Z
+     b5a:	9c 01       	movw	r18, r24
+     b5c:	33 27       	eor	r19, r19
+     b5e:	f9 01       	movw	r30, r18
+     b60:	ee 0f       	add	r30, r30
+     b62:	ff 1f       	adc	r31, r31
+     b64:	e2 50       	subi	r30, 0x02	; 2
+     b66:	ff 4f       	sbci	r31, 0xFF	; 255
+     b68:	45 91       	lpm	r20, Z+
+     b6a:	54 91       	lpm	r21, Z
 	// Check that specified frequency falls within our current band limits
 	if (frequency < origin || frequency > pgm_read_word(&RDA5807M_BandHigherLimits[spaceandband & 0x00FF]))
-     b7a:	c4 17       	cp	r28, r20
-     b7c:	d5 07       	cpc	r29, r21
-     b7e:	08 f4       	brcc	.+2      	; 0xb82 <FM_setFrequency+0x22>
-     b80:	38 c0       	rjmp	.+112    	; 0xbf2 <FM_setFrequency+0x92>
-     b82:	f9 01       	movw	r30, r18
-     b84:	ee 0f       	add	r30, r30
-     b86:	ff 1f       	adc	r31, r31
-     b88:	ec 50       	subi	r30, 0x0C	; 12
-     b8a:	ff 4f       	sbci	r31, 0xFF	; 255
-     b8c:	25 91       	lpm	r18, Z+
-     b8e:	34 91       	lpm	r19, Z
-     b90:	2c 17       	cp	r18, r28
-     b92:	3d 07       	cpc	r19, r29
-     b94:	80 f1       	brcs	.+96     	; 0xbf6 <FM_setFrequency+0x96>
+     b6c:	c4 17       	cp	r28, r20
+     b6e:	d5 07       	cpc	r29, r21
+     b70:	08 f4       	brcc	.+2      	; 0xb74 <FM_setFrequency+0x22>
+     b72:	38 c0       	rjmp	.+112    	; 0xbe4 <FM_setFrequency+0x92>
+     b74:	f9 01       	movw	r30, r18
+     b76:	ee 0f       	add	r30, r30
+     b78:	ff 1f       	adc	r31, r31
+     b7a:	ec 50       	subi	r30, 0x0C	; 12
+     b7c:	ff 4f       	sbci	r31, 0xFF	; 255
+     b7e:	25 91       	lpm	r18, Z+
+     b80:	34 91       	lpm	r19, Z
+     b82:	2c 17       	cp	r18, r28
+     b84:	3d 07       	cpc	r19, r29
+     b86:	80 f1       	brcs	.+96     	; 0xbe8 <FM_setFrequency+0x96>
 	return 1;
 	// Adjust start offset
 	frequency -= origin;
 	uint8_t spacing = pgm_read_byte(&RDA5807M_ChannelSpacings[spaceandband>>8]);
-     b96:	e9 2f       	mov	r30, r25
-     b98:	ff 27       	eor	r31, r31
-     b9a:	ee 0f       	add	r30, r30
-     b9c:	ff 1f       	adc	r31, r31
-     b9e:	e4 51       	subi	r30, 0x14	; 20
-     ba0:	ff 4f       	sbci	r31, 0xFF	; 255
-     ba2:	e4 91       	lpm	r30, Z
+     b88:	e9 2f       	mov	r30, r25
+     b8a:	ff 27       	eor	r31, r31
+     b8c:	ee 0f       	add	r30, r30
+     b8e:	ff 1f       	adc	r31, r31
+     b90:	e4 51       	subi	r30, 0x14	; 20
+     b92:	ff 4f       	sbci	r31, 0xFF	; 255
+     b94:	e4 91       	lpm	r30, Z
 	// Check that the given frequency can be tuned given current channel spacing
 	if (frequency * 10 % spacing) return 1;
-     ba4:	c4 1b       	sub	r28, r20
-     ba6:	d5 0b       	sbc	r29, r21
-     ba8:	ce 01       	movw	r24, r28
-     baa:	88 0f       	add	r24, r24
-     bac:	99 1f       	adc	r25, r25
-     bae:	cc 0f       	add	r28, r28
-     bb0:	dd 1f       	adc	r29, r29
-     bb2:	cc 0f       	add	r28, r28
-     bb4:	dd 1f       	adc	r29, r29
-     bb6:	cc 0f       	add	r28, r28
-     bb8:	dd 1f       	adc	r29, r29
-     bba:	c8 0f       	add	r28, r24
-     bbc:	d9 1f       	adc	r29, r25
-     bbe:	f0 e0       	ldi	r31, 0x00	; 0
-     bc0:	ce 01       	movw	r24, r28
-     bc2:	bf 01       	movw	r22, r30
-     bc4:	10 d3       	rcall	.+1568   	; 0x11e6 <__udivmodhi4>
-     bc6:	89 2b       	or	r24, r25
-     bc8:	c1 f4       	brne	.+48     	; 0xbfa <FM_setFrequency+0x9a>
+     b96:	c4 1b       	sub	r28, r20
+     b98:	d5 0b       	sbc	r29, r21
+     b9a:	ce 01       	movw	r24, r28
+     b9c:	88 0f       	add	r24, r24
+     b9e:	99 1f       	adc	r25, r25
+     ba0:	cc 0f       	add	r28, r28
+     ba2:	dd 1f       	adc	r29, r29
+     ba4:	cc 0f       	add	r28, r28
+     ba6:	dd 1f       	adc	r29, r29
+     ba8:	cc 0f       	add	r28, r28
+     baa:	dd 1f       	adc	r29, r29
+     bac:	c8 0f       	add	r28, r24
+     bae:	d9 1f       	adc	r29, r25
+     bb0:	f0 e0       	ldi	r31, 0x00	; 0
+     bb2:	ce 01       	movw	r24, r28
+     bb4:	bf 01       	movw	r22, r30
+     bb6:	10 d3       	rcall	.+1568   	; 0x11d8 <__udivmodhi4>
+     bb8:	89 2b       	or	r24, r25
+     bba:	c1 f4       	brne	.+48     	; 0xbec <FM_setFrequency+0x9a>
 	// Attempt to tune to the requested frequency
 	FM_updateRegister(RDA5807M_REG_TUNING, RDA5807M_CHAN_MASK | RDA5807M_FLG_TUNE,((frequency * 10 / spacing) << RDA5807M_CHAN_SHIFT) | RDA5807M_FLG_TUNE);
-     bca:	ce 01       	movw	r24, r28
-     bcc:	bf 01       	movw	r22, r30
-     bce:	0b d3       	rcall	.+1558   	; 0x11e6 <__udivmodhi4>
-     bd0:	ab 01       	movw	r20, r22
-     bd2:	00 24       	eor	r0, r0
-     bd4:	56 95       	lsr	r21
-     bd6:	47 95       	ror	r20
-     bd8:	07 94       	ror	r0
-     bda:	56 95       	lsr	r21
-     bdc:	47 95       	ror	r20
-     bde:	07 94       	ror	r0
-     be0:	54 2f       	mov	r21, r20
-     be2:	40 2d       	mov	r20, r0
-     be4:	40 61       	ori	r20, 0x10	; 16
-     be6:	60 ed       	ldi	r22, 0xD0	; 208
-     be8:	7f ef       	ldi	r23, 0xFF	; 255
-     bea:	83 e0       	ldi	r24, 0x03	; 3
-     bec:	f0 dd       	rcall	.-1056   	; 0x7ce <FM_updateRegister>
+     bbc:	ce 01       	movw	r24, r28
+     bbe:	bf 01       	movw	r22, r30
+     bc0:	0b d3       	rcall	.+1558   	; 0x11d8 <__udivmodhi4>
+     bc2:	ab 01       	movw	r20, r22
+     bc4:	00 24       	eor	r0, r0
+     bc6:	56 95       	lsr	r21
+     bc8:	47 95       	ror	r20
+     bca:	07 94       	ror	r0
+     bcc:	56 95       	lsr	r21
+     bce:	47 95       	ror	r20
+     bd0:	07 94       	ror	r0
+     bd2:	54 2f       	mov	r21, r20
+     bd4:	40 2d       	mov	r20, r0
+     bd6:	40 61       	ori	r20, 0x10	; 16
+     bd8:	60 ed       	ldi	r22, 0xD0	; 208
+     bda:	7f ef       	ldi	r23, 0xFF	; 255
+     bdc:	83 e0       	ldi	r24, 0x03	; 3
+     bde:	f7 dd       	rcall	.-1042   	; 0x7ce <FM_updateRegister>
 	return 0;
-     bee:	80 e0       	ldi	r24, 0x00	; 0
-     bf0:	05 c0       	rjmp	.+10     	; 0xbfc <FM_setFrequency+0x9c>
+     be0:	80 e0       	ldi	r24, 0x00	; 0
+     be2:	05 c0       	rjmp	.+10     	; 0xbee <FM_setFrequency+0x9c>
 uint8_t FM_setFrequency(uint16_t frequency) {
 	uint16_t spaceandband = FM_getBandAndSpacing();
 	uint16_t origin = pgm_read_word(&RDA5807M_BandLowerLimits[spaceandband & 0x00FF]);
 	// Check that specified frequency falls within our current band limits
 	if (frequency < origin || frequency > pgm_read_word(&RDA5807M_BandHigherLimits[spaceandband & 0x00FF]))
 	return 1;
-     bf2:	81 e0       	ldi	r24, 0x01	; 1
-     bf4:	03 c0       	rjmp	.+6      	; 0xbfc <FM_setFrequency+0x9c>
-     bf6:	81 e0       	ldi	r24, 0x01	; 1
-     bf8:	01 c0       	rjmp	.+2      	; 0xbfc <FM_setFrequency+0x9c>
+     be4:	81 e0       	ldi	r24, 0x01	; 1
+     be6:	03 c0       	rjmp	.+6      	; 0xbee <FM_setFrequency+0x9c>
+     be8:	81 e0       	ldi	r24, 0x01	; 1
+     bea:	01 c0       	rjmp	.+2      	; 0xbee <FM_setFrequency+0x9c>
 	// Adjust start offset
 	frequency -= origin;
 	uint8_t spacing = pgm_read_byte(&RDA5807M_ChannelSpacings[spaceandband>>8]);
 	// Check that the given frequency can be tuned given current channel spacing
 	if (frequency * 10 % spacing) return 1;
-     bfa:	81 e0       	ldi	r24, 0x01	; 1
+     bec:	81 e0       	ldi	r24, 0x01	; 1
 	// Attempt to tune to the requested frequency
 	FM_updateRegister(RDA5807M_REG_TUNING, RDA5807M_CHAN_MASK | RDA5807M_FLG_TUNE,((frequency * 10 / spacing) << RDA5807M_CHAN_SHIFT) | RDA5807M_FLG_TUNE);
 	return 0;
 }
-     bfc:	df 91       	pop	r29
-     bfe:	cf 91       	pop	r28
-     c00:	08 95       	ret
+     bee:	df 91       	pop	r29
+     bf0:	cf 91       	pop	r28
+     bf2:	08 95       	ret
 
-00000c02 <FM_getFrequency>:
+00000bf4 <FM_getFrequency>:
 
 uint16_t FM_getFrequency(void) {
-     c02:	0f 93       	push	r16
-     c04:	1f 93       	push	r17
-     c06:	cf 93       	push	r28
-     c08:	df 93       	push	r29
+     bf4:	0f 93       	push	r16
+     bf6:	1f 93       	push	r17
+     bf8:	cf 93       	push	r28
+     bfa:	df 93       	push	r29
 	uint16_t spaceandband = FM_getBandAndSpacing();
-     c0a:	9e df       	rcall	.-196    	; 0xb48 <FM_getBandAndSpacing>
-     c0c:	ec 01       	movw	r28, r24
+     bfc:	9e df       	rcall	.-196    	; 0xb3a <FM_getBandAndSpacing>
+     bfe:	ec 01       	movw	r28, r24
 	return pgm_read_word(&RDA5807M_BandLowerLimits[spaceandband & 0x00FF]) +
-     c0e:	fc 01       	movw	r30, r24
-     c10:	ff 27       	eor	r31, r31
-     c12:	ee 0f       	add	r30, r30
-     c14:	ff 1f       	adc	r31, r31
-     c16:	e2 50       	subi	r30, 0x02	; 2
-     c18:	ff 4f       	sbci	r31, 0xFF	; 255
-     c1a:	05 91       	lpm	r16, Z+
-     c1c:	14 91       	lpm	r17, Z
+     c00:	fc 01       	movw	r30, r24
+     c02:	ff 27       	eor	r31, r31
+     c04:	ee 0f       	add	r30, r30
+     c06:	ff 1f       	adc	r31, r31
+     c08:	e2 50       	subi	r30, 0x02	; 2
+     c0a:	ff 4f       	sbci	r31, 0xFF	; 255
+     c0c:	05 91       	lpm	r16, Z+
+     c0e:	14 91       	lpm	r17, Z
 	(FM_getRegister(RDA5807M_REG_STATUS) & RDA5807M_READCHAN_MASK) *
-     c1e:	8a e0       	ldi	r24, 0x0A	; 10
-     c20:	c1 dd       	rcall	.-1150   	; 0x7a4 <FM_getRegister>
+     c10:	8a e0       	ldi	r24, 0x0A	; 10
+     c12:	c8 dd       	rcall	.-1136   	; 0x7a4 <FM_getRegister>
 	pgm_read_byte(&RDA5807M_ChannelSpacings[spaceandband>>8]) /	10;
-     c22:	ed 2f       	mov	r30, r29
-     c24:	ff 27       	eor	r31, r31
-     c26:	ee 0f       	add	r30, r30
-     c28:	ff 1f       	adc	r31, r31
-     c2a:	e4 51       	subi	r30, 0x14	; 20
-     c2c:	ff 4f       	sbci	r31, 0xFF	; 255
-     c2e:	e4 91       	lpm	r30, Z
+     c14:	ed 2f       	mov	r30, r29
+     c16:	ff 27       	eor	r31, r31
+     c18:	ee 0f       	add	r30, r30
+     c1a:	ff 1f       	adc	r31, r31
+     c1c:	e4 51       	subi	r30, 0x14	; 20
+     c1e:	ff 4f       	sbci	r31, 0xFF	; 255
+     c20:	e4 91       	lpm	r30, Z
 	return 0;
 }
 
 uint16_t FM_getFrequency(void) {
 	uint16_t spaceandband = FM_getBandAndSpacing();
 	return pgm_read_word(&RDA5807M_BandLowerLimits[spaceandband & 0x00FF]) +
-     c30:	93 70       	andi	r25, 0x03	; 3
-     c32:	e8 9f       	mul	r30, r24
-     c34:	90 01       	movw	r18, r0
-     c36:	e9 9f       	mul	r30, r25
-     c38:	30 0d       	add	r19, r0
-     c3a:	11 24       	eor	r1, r1
-     c3c:	ad ec       	ldi	r26, 0xCD	; 205
-     c3e:	bc ec       	ldi	r27, 0xCC	; 204
-     c40:	02 d3       	rcall	.+1540   	; 0x1246 <__umulhisi3>
-     c42:	96 95       	lsr	r25
-     c44:	87 95       	ror	r24
-     c46:	96 95       	lsr	r25
-     c48:	87 95       	ror	r24
-     c4a:	96 95       	lsr	r25
-     c4c:	87 95       	ror	r24
+     c22:	93 70       	andi	r25, 0x03	; 3
+     c24:	e8 9f       	mul	r30, r24
+     c26:	90 01       	movw	r18, r0
+     c28:	e9 9f       	mul	r30, r25
+     c2a:	30 0d       	add	r19, r0
+     c2c:	11 24       	eor	r1, r1
+     c2e:	ad ec       	ldi	r26, 0xCD	; 205
+     c30:	bc ec       	ldi	r27, 0xCC	; 204
+     c32:	02 d3       	rcall	.+1540   	; 0x1238 <__umulhisi3>
+     c34:	96 95       	lsr	r25
+     c36:	87 95       	ror	r24
+     c38:	96 95       	lsr	r25
+     c3a:	87 95       	ror	r24
+     c3c:	96 95       	lsr	r25
+     c3e:	87 95       	ror	r24
 	(FM_getRegister(RDA5807M_REG_STATUS) & RDA5807M_READCHAN_MASK) *
 	pgm_read_byte(&RDA5807M_ChannelSpacings[spaceandband>>8]) /	10;
 }
-     c4e:	80 0f       	add	r24, r16
-     c50:	91 1f       	adc	r25, r17
-     c52:	df 91       	pop	r29
-     c54:	cf 91       	pop	r28
-     c56:	1f 91       	pop	r17
-     c58:	0f 91       	pop	r16
-     c5a:	08 95       	ret
+     c40:	80 0f       	add	r24, r16
+     c42:	91 1f       	adc	r25, r17
+     c44:	df 91       	pop	r29
+     c46:	cf 91       	pop	r28
+     c48:	1f 91       	pop	r17
+     c4a:	0f 91       	pop	r16
+     c4c:	08 95       	ret
 
-00000c5c <FM_getRSSI>:
+00000c4e <FM_getRSSI>:
 
 uint8_t FM_getRSSI(void) {
 	return (FM_getRegister(RDA5807M_REG_RSSI) & RDA5807M_RSSI_MASK) >> RDA5807M_RSSI_SHIFT;
-     c5c:	8b e0       	ldi	r24, 0x0B	; 11
-     c5e:	a2 dd       	rcall	.-1212   	; 0x7a4 <FM_getRegister>
+     c4e:	8b e0       	ldi	r24, 0x0B	; 11
+     c50:	a9 dd       	rcall	.-1198   	; 0x7a4 <FM_getRegister>
 }
-     c60:	89 2f       	mov	r24, r25
-     c62:	86 95       	lsr	r24
-     c64:	08 95       	ret
+     c52:	89 2f       	mov	r24, r25
+     c54:	86 95       	lsr	r24
+     c56:	08 95       	ret
 
-00000c66 <SEEK_FOR_RDS>:
+00000c58 <SEEK_FOR_RDS>:
 
 struct max_station station = {0,0};
 	
 uint16_t SEEK_FOR_RDS()
 {
-     c66:	2f 92       	push	r2
-     c68:	3f 92       	push	r3
-     c6a:	4f 92       	push	r4
-     c6c:	5f 92       	push	r5
-     c6e:	6f 92       	push	r6
-     c70:	7f 92       	push	r7
-     c72:	8f 92       	push	r8
-     c74:	9f 92       	push	r9
-     c76:	af 92       	push	r10
-     c78:	bf 92       	push	r11
-     c7a:	cf 92       	push	r12
-     c7c:	df 92       	push	r13
-     c7e:	ef 92       	push	r14
-     c80:	ff 92       	push	r15
-     c82:	0f 93       	push	r16
-     c84:	1f 93       	push	r17
-     c86:	cf 93       	push	r28
-     c88:	df 93       	push	r29
-     c8a:	00 d0       	rcall	.+0      	; 0xc8c <SEEK_FOR_RDS+0x26>
-     c8c:	00 d0       	rcall	.+0      	; 0xc8e <SEEK_FOR_RDS+0x28>
-     c8e:	cd b7       	in	r28, 0x3d	; 61
-     c90:	de b7       	in	r29, 0x3e	; 62
-     c92:	24 e1       	ldi	r18, 0x14	; 20
-     c94:	30 e0       	ldi	r19, 0x00	; 0
-     c96:	3a 83       	std	Y+2, r19	; 0x02
-     c98:	29 83       	std	Y+1, r18	; 0x01
+     c58:	2f 92       	push	r2
+     c5a:	3f 92       	push	r3
+     c5c:	4f 92       	push	r4
+     c5e:	5f 92       	push	r5
+     c60:	6f 92       	push	r6
+     c62:	7f 92       	push	r7
+     c64:	8f 92       	push	r8
+     c66:	9f 92       	push	r9
+     c68:	af 92       	push	r10
+     c6a:	bf 92       	push	r11
+     c6c:	cf 92       	push	r12
+     c6e:	df 92       	push	r13
+     c70:	ef 92       	push	r14
+     c72:	ff 92       	push	r15
+     c74:	0f 93       	push	r16
+     c76:	1f 93       	push	r17
+     c78:	cf 93       	push	r28
+     c7a:	df 93       	push	r29
+     c7c:	00 d0       	rcall	.+0      	; 0xc7e <SEEK_FOR_RDS+0x26>
+     c7e:	00 d0       	rcall	.+0      	; 0xc80 <SEEK_FOR_RDS+0x28>
+     c80:	cd b7       	in	r28, 0x3d	; 61
+     c82:	de b7       	in	r29, 0x3e	; 62
+     c84:	24 e1       	ldi	r18, 0x14	; 20
+     c86:	30 e0       	ldi	r19, 0x00	; 0
+     c88:	3a 83       	std	Y+2, r19	; 0x02
+     c8a:	29 83       	std	Y+1, r18	; 0x01
 		uint16_t temp1 = tempw%100000;
 		uint16_t temp2 = temp1;
 		tempw = temp1/1000;
 		UART_Send_Char(tempw/10 + 0x30);
 		UART_Send_Char(tempw%10 + 0x30);
 		temp1 = temp1 % 1000;
-     c9a:	0f 2e       	mov	r0, r31
-     c9c:	f8 ee       	ldi	r31, 0xE8	; 232
-     c9e:	ef 2e       	mov	r14, r31
-     ca0:	f3 e0       	ldi	r31, 0x03	; 3
-     ca2:	ff 2e       	mov	r15, r31
-     ca4:	f0 2d       	mov	r31, r0
+     c8c:	0f 2e       	mov	r0, r31
+     c8e:	f8 ee       	ldi	r31, 0xE8	; 232
+     c90:	ef 2e       	mov	r14, r31
+     c92:	f3 e0       	ldi	r31, 0x03	; 3
+     c94:	ff 2e       	mov	r15, r31
+     c96:	f0 2d       	mov	r31, r0
 		tempw = temp1/100;
 		UART_Send_Char(tempw + 0x30);
 		tempw = temp1 % 100;
-     ca6:	0f 2e       	mov	r0, r31
-     ca8:	f4 e6       	ldi	r31, 0x64	; 100
-     caa:	bf 2e       	mov	r11, r31
-     cac:	f0 2d       	mov	r31, r0
+     c98:	0f 2e       	mov	r0, r31
+     c9a:	f4 e6       	ldi	r31, 0x64	; 100
+     c9c:	bf 2e       	mov	r11, r31
+     c9e:	f0 2d       	mov	r31, r0
 	char grp, ver;
 	uint8_t ending = 0;
 	uint16_t iter = 0;
 	while(ending==0)
 	{
 		FM_updateRegister(RDA5807M_REG_CONFIG,(RDA5807M_FLG_SEEKUP | RDA5807M_FLG_SEEK | RDA5807M_FLG_SKMODE), (RDA5807M_FLG_SEEKUP | RDA5807M_FLG_SEEK | RDA5807M_FLG_SKMODE));
-     cae:	40 e8       	ldi	r20, 0x80	; 128
-     cb0:	53 e0       	ldi	r21, 0x03	; 3
-     cb2:	60 e8       	ldi	r22, 0x80	; 128
-     cb4:	73 e0       	ldi	r23, 0x03	; 3
-     cb6:	82 e0       	ldi	r24, 0x02	; 2
-     cb8:	8a dd       	rcall	.-1260   	; 0x7ce <FM_updateRegister>
-     cba:	87 ea       	ldi	r24, 0xA7	; 167
-     cbc:	91 e6       	ldi	r25, 0x61	; 97
-     cbe:	01 97       	sbiw	r24, 0x01	; 1
-     cc0:	f1 f7       	brne	.-4      	; 0xcbe <SEEK_FOR_RDS+0x58>
-     cc2:	00 c0       	rjmp	.+0      	; 0xcc4 <SEEK_FOR_RDS+0x5e>
-     cc4:	00 00       	nop
+     ca0:	40 e8       	ldi	r20, 0x80	; 128
+     ca2:	53 e0       	ldi	r21, 0x03	; 3
+     ca4:	60 e8       	ldi	r22, 0x80	; 128
+     ca6:	73 e0       	ldi	r23, 0x03	; 3
+     ca8:	82 e0       	ldi	r24, 0x02	; 2
+     caa:	91 dd       	rcall	.-1246   	; 0x7ce <FM_updateRegister>
+     cac:	87 ea       	ldi	r24, 0xA7	; 167
+     cae:	91 e6       	ldi	r25, 0x61	; 97
+     cb0:	01 97       	sbiw	r24, 0x01	; 1
+     cb2:	f1 f7       	brne	.-4      	; 0xcb0 <SEEK_FOR_RDS+0x58>
+     cb4:	00 c0       	rjmp	.+0      	; 0xcb6 <SEEK_FOR_RDS+0x5e>
+     cb6:	00 00       	nop
 		tempw = 0;
 		tempq = 0;
 		while(!(((tempw&0x4000)>>14)&((tempq&0x0080)>>7)))
 		{
 			_delay_ms(100);
 			tempw = FM_getRegister(0x0A); //–æ–∂–∏–¥–∞–Ω–∏–µ –∑–∞–≤–µ—Ä—à–µ–Ω–∏—è –Ω–∞—Å—Ç—Ä–æ–π–∫–∏
-     cc6:	8a e0       	ldi	r24, 0x0A	; 10
-     cc8:	6d dd       	rcall	.-1318   	; 0x7a4 <FM_getRegister>
-     cca:	9c 83       	std	Y+4, r25	; 0x04
-     ccc:	8b 83       	std	Y+3, r24	; 0x03
+     cb8:	8a e0       	ldi	r24, 0x0A	; 10
+     cba:	74 dd       	rcall	.-1304   	; 0x7a4 <FM_getRegister>
+     cbc:	9c 83       	std	Y+4, r25	; 0x04
+     cbe:	8b 83       	std	Y+3, r24	; 0x03
 			tempq = FM_getRegister(0x0B);
-     cce:	8b e0       	ldi	r24, 0x0B	; 11
-     cd0:	69 dd       	rcall	.-1326   	; 0x7a4 <FM_getRegister>
+     cc0:	8b e0       	ldi	r24, 0x0B	; 11
+     cc2:	70 dd       	rcall	.-1312   	; 0x7a4 <FM_getRegister>
 	while(ending==0)
 	{
 		FM_updateRegister(RDA5807M_REG_CONFIG,(RDA5807M_FLG_SEEKUP | RDA5807M_FLG_SEEK | RDA5807M_FLG_SKMODE), (RDA5807M_FLG_SEEKUP | RDA5807M_FLG_SEEK | RDA5807M_FLG_SKMODE));
 		tempw = 0;
 		tempq = 0;
 		while(!(((tempw&0x4000)>>14)&((tempq&0x0080)>>7)))
-     cd2:	eb 81       	ldd	r30, Y+3	; 0x03
-     cd4:	fc 81       	ldd	r31, Y+4	; 0x04
-     cd6:	e4 e0       	ldi	r30, 0x04	; 4
-     cd8:	fe 9f       	mul	r31, r30
-     cda:	e1 2d       	mov	r30, r1
-     cdc:	ff 27       	eor	r31, r31
-     cde:	11 24       	eor	r1, r1
-     ce0:	87 fb       	bst	r24, 7
-     ce2:	00 27       	eor	r16, r16
-     ce4:	00 f9       	bld	r16, 0
-     ce6:	10 e0       	ldi	r17, 0x00	; 0
-     ce8:	e0 23       	and	r30, r16
-     cea:	f1 23       	and	r31, r17
-     cec:	ef 2b       	or	r30, r31
-     cee:	29 f3       	breq	.-54     	; 0xcba <SEEK_FOR_RDS+0x54>
+     cc4:	eb 81       	ldd	r30, Y+3	; 0x03
+     cc6:	fc 81       	ldd	r31, Y+4	; 0x04
+     cc8:	e4 e0       	ldi	r30, 0x04	; 4
+     cca:	fe 9f       	mul	r31, r30
+     ccc:	e1 2d       	mov	r30, r1
+     cce:	ff 27       	eor	r31, r31
+     cd0:	11 24       	eor	r1, r1
+     cd2:	87 fb       	bst	r24, 7
+     cd4:	00 27       	eor	r16, r16
+     cd6:	00 f9       	bld	r16, 0
+     cd8:	10 e0       	ldi	r17, 0x00	; 0
+     cda:	e0 23       	and	r30, r16
+     cdc:	f1 23       	and	r31, r17
+     cde:	ef 2b       	or	r30, r31
+     ce0:	29 f3       	breq	.-54     	; 0xcac <SEEK_FOR_RDS+0x54>
 		{
 			_delay_ms(100);
 			tempw = FM_getRegister(0x0A); //–æ–∂–∏–¥–∞–Ω–∏–µ –∑–∞–≤–µ—Ä—à–µ–Ω–∏—è –Ω–∞—Å—Ç—Ä–æ–π–∫–∏
 			tempq = FM_getRegister(0x0B);
 		}
 		UART_Send_Str("found! ");
-     cf0:	86 e8       	ldi	r24, 0x86	; 134
-     cf2:	90 e0       	ldi	r25, 0x00	; 0
-     cf4:	6a d2       	rcall	.+1236   	; 0x11ca <UART_Send_Str>
+     ce2:	86 e8       	ldi	r24, 0x86	; 134
+     ce4:	90 e0       	ldi	r25, 0x00	; 0
+     ce6:	6a d2       	rcall	.+1236   	; 0x11bc <UART_Send_Str>
 		tempw = FM_getFrequency();
-     cf6:	85 df       	rcall	.-246    	; 0xc02 <FM_getFrequency>
+     ce8:	85 df       	rcall	.-246    	; 0xbf4 <FM_getFrequency>
 			
 		uint16_t temp1 = tempw%100000;
-     cf8:	bc 01       	movw	r22, r24
-     cfa:	80 e0       	ldi	r24, 0x00	; 0
-     cfc:	90 e0       	ldi	r25, 0x00	; 0
-     cfe:	20 ea       	ldi	r18, 0xA0	; 160
-     d00:	36 e8       	ldi	r19, 0x86	; 134
-     d02:	41 e0       	ldi	r20, 0x01	; 1
-     d04:	50 e0       	ldi	r21, 0x00	; 0
-     d06:	83 d2       	rcall	.+1286   	; 0x120e <__divmodsi4>
-     d08:	2b 01       	movw	r4, r22
-     d0a:	3c 01       	movw	r6, r24
+     cea:	bc 01       	movw	r22, r24
+     cec:	80 e0       	ldi	r24, 0x00	; 0
+     cee:	90 e0       	ldi	r25, 0x00	; 0
+     cf0:	20 ea       	ldi	r18, 0xA0	; 160
+     cf2:	36 e8       	ldi	r19, 0x86	; 134
+     cf4:	41 e0       	ldi	r20, 0x01	; 1
+     cf6:	50 e0       	ldi	r21, 0x00	; 0
+     cf8:	83 d2       	rcall	.+1286   	; 0x1200 <__divmodsi4>
+     cfa:	2b 01       	movw	r4, r22
+     cfc:	3c 01       	movw	r6, r24
 		uint16_t temp2 = temp1;
 		tempw = temp1/1000;
 		UART_Send_Char(tempw/10 + 0x30);
-     d0c:	9b 01       	movw	r18, r22
-     d0e:	32 95       	swap	r19
-     d10:	22 95       	swap	r18
-     d12:	2f 70       	andi	r18, 0x0F	; 15
-     d14:	23 27       	eor	r18, r19
-     d16:	3f 70       	andi	r19, 0x0F	; 15
-     d18:	23 27       	eor	r18, r19
-     d1a:	a7 e4       	ldi	r26, 0x47	; 71
-     d1c:	b3 e0       	ldi	r27, 0x03	; 3
-     d1e:	93 d2       	rcall	.+1318   	; 0x1246 <__umulhisi3>
-     d20:	96 95       	lsr	r25
-     d22:	87 95       	ror	r24
-     d24:	96 95       	lsr	r25
-     d26:	87 95       	ror	r24
-     d28:	96 95       	lsr	r25
-     d2a:	87 95       	ror	r24
-     d2c:	80 5d       	subi	r24, 0xD0	; 208
-     d2e:	49 d2       	rcall	.+1170   	; 0x11c2 <UART_Send_Char>
+     cfe:	9b 01       	movw	r18, r22
+     d00:	32 95       	swap	r19
+     d02:	22 95       	swap	r18
+     d04:	2f 70       	andi	r18, 0x0F	; 15
+     d06:	23 27       	eor	r18, r19
+     d08:	3f 70       	andi	r19, 0x0F	; 15
+     d0a:	23 27       	eor	r18, r19
+     d0c:	a7 e4       	ldi	r26, 0x47	; 71
+     d0e:	b3 e0       	ldi	r27, 0x03	; 3
+     d10:	93 d2       	rcall	.+1318   	; 0x1238 <__umulhisi3>
+     d12:	96 95       	lsr	r25
+     d14:	87 95       	ror	r24
+     d16:	96 95       	lsr	r25
+     d18:	87 95       	ror	r24
+     d1a:	96 95       	lsr	r25
+     d1c:	87 95       	ror	r24
+     d1e:	80 5d       	subi	r24, 0xD0	; 208
+     d20:	49 d2       	rcall	.+1170   	; 0x11b4 <UART_Send_Char>
 		UART_Send_Char(tempw%10 + 0x30);
-     d30:	92 01       	movw	r18, r4
-     d32:	36 95       	lsr	r19
-     d34:	27 95       	ror	r18
-     d36:	36 95       	lsr	r19
-     d38:	27 95       	ror	r18
-     d3a:	36 95       	lsr	r19
-     d3c:	27 95       	ror	r18
-     d3e:	a5 ec       	ldi	r26, 0xC5	; 197
-     d40:	b0 e2       	ldi	r27, 0x20	; 32
-     d42:	81 d2       	rcall	.+1282   	; 0x1246 <__umulhisi3>
-     d44:	92 95       	swap	r25
-     d46:	82 95       	swap	r24
-     d48:	8f 70       	andi	r24, 0x0F	; 15
-     d4a:	89 27       	eor	r24, r25
-     d4c:	9f 70       	andi	r25, 0x0F	; 15
-     d4e:	89 27       	eor	r24, r25
-     d50:	9c 83       	std	Y+4, r25	; 0x04
-     d52:	8b 83       	std	Y+3, r24	; 0x03
-     d54:	9c 01       	movw	r18, r24
-     d56:	ad ec       	ldi	r26, 0xCD	; 205
-     d58:	bc ec       	ldi	r27, 0xCC	; 204
-     d5a:	75 d2       	rcall	.+1258   	; 0x1246 <__umulhisi3>
-     d5c:	96 95       	lsr	r25
-     d5e:	87 95       	ror	r24
-     d60:	96 95       	lsr	r25
-     d62:	87 95       	ror	r24
-     d64:	96 95       	lsr	r25
-     d66:	87 95       	ror	r24
-     d68:	9c 01       	movw	r18, r24
-     d6a:	22 0f       	add	r18, r18
-     d6c:	33 1f       	adc	r19, r19
-     d6e:	88 0f       	add	r24, r24
-     d70:	99 1f       	adc	r25, r25
-     d72:	88 0f       	add	r24, r24
-     d74:	99 1f       	adc	r25, r25
-     d76:	88 0f       	add	r24, r24
-     d78:	99 1f       	adc	r25, r25
-     d7a:	82 0f       	add	r24, r18
-     d7c:	93 1f       	adc	r25, r19
-     d7e:	2b 81       	ldd	r18, Y+3	; 0x03
-     d80:	3c 81       	ldd	r19, Y+4	; 0x04
-     d82:	28 1b       	sub	r18, r24
-     d84:	39 0b       	sbc	r19, r25
-     d86:	c9 01       	movw	r24, r18
-     d88:	80 5d       	subi	r24, 0xD0	; 208
-     d8a:	1b d2       	rcall	.+1078   	; 0x11c2 <UART_Send_Char>
+     d22:	92 01       	movw	r18, r4
+     d24:	36 95       	lsr	r19
+     d26:	27 95       	ror	r18
+     d28:	36 95       	lsr	r19
+     d2a:	27 95       	ror	r18
+     d2c:	36 95       	lsr	r19
+     d2e:	27 95       	ror	r18
+     d30:	a5 ec       	ldi	r26, 0xC5	; 197
+     d32:	b0 e2       	ldi	r27, 0x20	; 32
+     d34:	81 d2       	rcall	.+1282   	; 0x1238 <__umulhisi3>
+     d36:	92 95       	swap	r25
+     d38:	82 95       	swap	r24
+     d3a:	8f 70       	andi	r24, 0x0F	; 15
+     d3c:	89 27       	eor	r24, r25
+     d3e:	9f 70       	andi	r25, 0x0F	; 15
+     d40:	89 27       	eor	r24, r25
+     d42:	9c 83       	std	Y+4, r25	; 0x04
+     d44:	8b 83       	std	Y+3, r24	; 0x03
+     d46:	9c 01       	movw	r18, r24
+     d48:	ad ec       	ldi	r26, 0xCD	; 205
+     d4a:	bc ec       	ldi	r27, 0xCC	; 204
+     d4c:	75 d2       	rcall	.+1258   	; 0x1238 <__umulhisi3>
+     d4e:	96 95       	lsr	r25
+     d50:	87 95       	ror	r24
+     d52:	96 95       	lsr	r25
+     d54:	87 95       	ror	r24
+     d56:	96 95       	lsr	r25
+     d58:	87 95       	ror	r24
+     d5a:	9c 01       	movw	r18, r24
+     d5c:	22 0f       	add	r18, r18
+     d5e:	33 1f       	adc	r19, r19
+     d60:	88 0f       	add	r24, r24
+     d62:	99 1f       	adc	r25, r25
+     d64:	88 0f       	add	r24, r24
+     d66:	99 1f       	adc	r25, r25
+     d68:	88 0f       	add	r24, r24
+     d6a:	99 1f       	adc	r25, r25
+     d6c:	82 0f       	add	r24, r18
+     d6e:	93 1f       	adc	r25, r19
+     d70:	2b 81       	ldd	r18, Y+3	; 0x03
+     d72:	3c 81       	ldd	r19, Y+4	; 0x04
+     d74:	28 1b       	sub	r18, r24
+     d76:	39 0b       	sbc	r19, r25
+     d78:	c9 01       	movw	r24, r18
+     d7a:	80 5d       	subi	r24, 0xD0	; 208
+     d7c:	1b d2       	rcall	.+1078   	; 0x11b4 <UART_Send_Char>
 		temp1 = temp1 % 1000;
-     d8c:	eb 81       	ldd	r30, Y+3	; 0x03
-     d8e:	fc 81       	ldd	r31, Y+4	; 0x04
-     d90:	ee 9d       	mul	r30, r14
-     d92:	c0 01       	movw	r24, r0
-     d94:	ef 9d       	mul	r30, r15
-     d96:	90 0d       	add	r25, r0
-     d98:	fe 9d       	mul	r31, r14
-     d9a:	90 0d       	add	r25, r0
-     d9c:	11 24       	eor	r1, r1
-     d9e:	92 01       	movw	r18, r4
-     da0:	28 1b       	sub	r18, r24
-     da2:	39 0b       	sbc	r19, r25
-     da4:	3c 83       	std	Y+4, r19	; 0x04
-     da6:	2b 83       	std	Y+3, r18	; 0x03
+     d7e:	eb 81       	ldd	r30, Y+3	; 0x03
+     d80:	fc 81       	ldd	r31, Y+4	; 0x04
+     d82:	ee 9d       	mul	r30, r14
+     d84:	c0 01       	movw	r24, r0
+     d86:	ef 9d       	mul	r30, r15
+     d88:	90 0d       	add	r25, r0
+     d8a:	fe 9d       	mul	r31, r14
+     d8c:	90 0d       	add	r25, r0
+     d8e:	11 24       	eor	r1, r1
+     d90:	92 01       	movw	r18, r4
+     d92:	28 1b       	sub	r18, r24
+     d94:	39 0b       	sbc	r19, r25
+     d96:	3c 83       	std	Y+4, r19	; 0x04
+     d98:	2b 83       	std	Y+3, r18	; 0x03
 		tempw = temp1/100;
 		UART_Send_Char(tempw + 0x30);
-     da8:	36 95       	lsr	r19
-     daa:	27 95       	ror	r18
-     dac:	36 95       	lsr	r19
-     dae:	27 95       	ror	r18
-     db0:	ab e7       	ldi	r26, 0x7B	; 123
-     db2:	b4 e1       	ldi	r27, 0x14	; 20
-     db4:	48 d2       	rcall	.+1168   	; 0x1246 <__umulhisi3>
-     db6:	6c 01       	movw	r12, r24
-     db8:	d6 94       	lsr	r13
-     dba:	c7 94       	ror	r12
-     dbc:	80 e3       	ldi	r24, 0x30	; 48
-     dbe:	8c 0d       	add	r24, r12
-     dc0:	00 d2       	rcall	.+1024   	; 0x11c2 <UART_Send_Char>
+     d9a:	36 95       	lsr	r19
+     d9c:	27 95       	ror	r18
+     d9e:	36 95       	lsr	r19
+     da0:	27 95       	ror	r18
+     da2:	ab e7       	ldi	r26, 0x7B	; 123
+     da4:	b4 e1       	ldi	r27, 0x14	; 20
+     da6:	48 d2       	rcall	.+1168   	; 0x1238 <__umulhisi3>
+     da8:	6c 01       	movw	r12, r24
+     daa:	d6 94       	lsr	r13
+     dac:	c7 94       	ror	r12
+     dae:	80 e3       	ldi	r24, 0x30	; 48
+     db0:	8c 0d       	add	r24, r12
+     db2:	00 d2       	rcall	.+1024   	; 0x11b4 <UART_Send_Char>
 		tempw = temp1 % 100;
-     dc2:	bc 9c       	mul	r11, r12
-     dc4:	c0 01       	movw	r24, r0
-     dc6:	bd 9c       	mul	r11, r13
-     dc8:	90 0d       	add	r25, r0
-     dca:	11 24       	eor	r1, r1
-     dcc:	eb 81       	ldd	r30, Y+3	; 0x03
-     dce:	fc 81       	ldd	r31, Y+4	; 0x04
-     dd0:	e8 1b       	sub	r30, r24
-     dd2:	f9 0b       	sbc	r31, r25
-     dd4:	fc 83       	std	Y+4, r31	; 0x04
-     dd6:	eb 83       	std	Y+3, r30	; 0x03
+     db4:	bc 9c       	mul	r11, r12
+     db6:	c0 01       	movw	r24, r0
+     db8:	bd 9c       	mul	r11, r13
+     dba:	90 0d       	add	r25, r0
+     dbc:	11 24       	eor	r1, r1
+     dbe:	eb 81       	ldd	r30, Y+3	; 0x03
+     dc0:	fc 81       	ldd	r31, Y+4	; 0x04
+     dc2:	e8 1b       	sub	r30, r24
+     dc4:	f9 0b       	sbc	r31, r25
+     dc6:	fc 83       	std	Y+4, r31	; 0x04
+     dc8:	eb 83       	std	Y+3, r30	; 0x03
 		UART_Send_Char(tempw/10 + 0x30);
-     dd8:	9f 01       	movw	r18, r30
-     dda:	ad ec       	ldi	r26, 0xCD	; 205
-     ddc:	bc ec       	ldi	r27, 0xCC	; 204
-     dde:	33 d2       	rcall	.+1126   	; 0x1246 <__umulhisi3>
-     de0:	6c 01       	movw	r12, r24
-     de2:	d6 94       	lsr	r13
-     de4:	c7 94       	ror	r12
-     de6:	d6 94       	lsr	r13
-     de8:	c7 94       	ror	r12
-     dea:	d6 94       	lsr	r13
-     dec:	c7 94       	ror	r12
-     dee:	80 e3       	ldi	r24, 0x30	; 48
-     df0:	8c 0d       	add	r24, r12
-     df2:	e7 d1       	rcall	.+974    	; 0x11c2 <UART_Send_Char>
+     dca:	9f 01       	movw	r18, r30
+     dcc:	ad ec       	ldi	r26, 0xCD	; 205
+     dce:	bc ec       	ldi	r27, 0xCC	; 204
+     dd0:	33 d2       	rcall	.+1126   	; 0x1238 <__umulhisi3>
+     dd2:	6c 01       	movw	r12, r24
+     dd4:	d6 94       	lsr	r13
+     dd6:	c7 94       	ror	r12
+     dd8:	d6 94       	lsr	r13
+     dda:	c7 94       	ror	r12
+     ddc:	d6 94       	lsr	r13
+     dde:	c7 94       	ror	r12
+     de0:	80 e3       	ldi	r24, 0x30	; 48
+     de2:	8c 0d       	add	r24, r12
+     de4:	e7 d1       	rcall	.+974    	; 0x11b4 <UART_Send_Char>
 		UART_Send_Char(tempw%10 + 0x30);
-     df4:	c6 01       	movw	r24, r12
-     df6:	88 0f       	add	r24, r24
-     df8:	99 1f       	adc	r25, r25
-     dfa:	cc 0c       	add	r12, r12
-     dfc:	dd 1c       	adc	r13, r13
-     dfe:	cc 0c       	add	r12, r12
-     e00:	dd 1c       	adc	r13, r13
-     e02:	cc 0c       	add	r12, r12
-     e04:	dd 1c       	adc	r13, r13
-     e06:	c8 0e       	add	r12, r24
-     e08:	d9 1e       	adc	r13, r25
-     e0a:	8b 81       	ldd	r24, Y+3	; 0x03
-     e0c:	9c 81       	ldd	r25, Y+4	; 0x04
-     e0e:	8c 19       	sub	r24, r12
-     e10:	9d 09       	sbc	r25, r13
-     e12:	80 5d       	subi	r24, 0xD0	; 208
-     e14:	d6 d1       	rcall	.+940    	; 0x11c2 <UART_Send_Char>
+     de6:	c6 01       	movw	r24, r12
+     de8:	88 0f       	add	r24, r24
+     dea:	99 1f       	adc	r25, r25
+     dec:	cc 0c       	add	r12, r12
+     dee:	dd 1c       	adc	r13, r13
+     df0:	cc 0c       	add	r12, r12
+     df2:	dd 1c       	adc	r13, r13
+     df4:	cc 0c       	add	r12, r12
+     df6:	dd 1c       	adc	r13, r13
+     df8:	c8 0e       	add	r12, r24
+     dfa:	d9 1e       	adc	r13, r25
+     dfc:	8b 81       	ldd	r24, Y+3	; 0x03
+     dfe:	9c 81       	ldd	r25, Y+4	; 0x04
+     e00:	8c 19       	sub	r24, r12
+     e02:	9d 09       	sbc	r25, r13
+     e04:	80 5d       	subi	r24, 0xD0	; 208
+     e06:	d6 d1       	rcall	.+940    	; 0x11b4 <UART_Send_Char>
 			
 		UART_Send_Str(" MHz ");
-     e16:	8e e8       	ldi	r24, 0x8E	; 142
-     e18:	90 e0       	ldi	r25, 0x00	; 0
-     e1a:	d7 d1       	rcall	.+942    	; 0x11ca <UART_Send_Str>
+     e08:	8e e8       	ldi	r24, 0x8E	; 142
+     e0a:	90 e0       	ldi	r25, 0x00	; 0
+     e0c:	d7 d1       	rcall	.+942    	; 0x11bc <UART_Send_Str>
 			
 		tempw = FM_getRSSI();
-     e1c:	1f df       	rcall	.-450    	; 0xc5c <FM_getRSSI>
-     e1e:	a8 2e       	mov	r10, r24
-     e20:	88 2e       	mov	r8, r24
-     e22:	91 2c       	mov	r9, r1
+     e0e:	1f df       	rcall	.-450    	; 0xc4e <FM_getRSSI>
+     e10:	a8 2e       	mov	r10, r24
+     e12:	88 2e       	mov	r8, r24
+     e14:	91 2c       	mov	r9, r1
 		temp1 = tempw;
 		tempw = temp1/100;
 		UART_Send_Char(tempw + 0x30);
-     e24:	94 01       	movw	r18, r8
-     e26:	36 95       	lsr	r19
-     e28:	27 95       	ror	r18
-     e2a:	36 95       	lsr	r19
-     e2c:	27 95       	ror	r18
-     e2e:	ab e7       	ldi	r26, 0x7B	; 123
-     e30:	b4 e1       	ldi	r27, 0x14	; 20
-     e32:	09 d2       	rcall	.+1042   	; 0x1246 <__umulhisi3>
-     e34:	96 95       	lsr	r25
-     e36:	87 95       	ror	r24
-     e38:	9c 83       	std	Y+4, r25	; 0x04
-     e3a:	8b 83       	std	Y+3, r24	; 0x03
-     e3c:	8b 81       	ldd	r24, Y+3	; 0x03
-     e3e:	80 5d       	subi	r24, 0xD0	; 208
-     e40:	c0 d1       	rcall	.+896    	; 0x11c2 <UART_Send_Char>
+     e16:	94 01       	movw	r18, r8
+     e18:	36 95       	lsr	r19
+     e1a:	27 95       	ror	r18
+     e1c:	36 95       	lsr	r19
+     e1e:	27 95       	ror	r18
+     e20:	ab e7       	ldi	r26, 0x7B	; 123
+     e22:	b4 e1       	ldi	r27, 0x14	; 20
+     e24:	09 d2       	rcall	.+1042   	; 0x1238 <__umulhisi3>
+     e26:	96 95       	lsr	r25
+     e28:	87 95       	ror	r24
+     e2a:	9c 83       	std	Y+4, r25	; 0x04
+     e2c:	8b 83       	std	Y+3, r24	; 0x03
+     e2e:	8b 81       	ldd	r24, Y+3	; 0x03
+     e30:	80 5d       	subi	r24, 0xD0	; 208
+     e32:	c0 d1       	rcall	.+896    	; 0x11b4 <UART_Send_Char>
 		tempw = temp1 % 100;
-     e42:	2b 81       	ldd	r18, Y+3	; 0x03
-     e44:	3c 81       	ldd	r19, Y+4	; 0x04
-     e46:	b2 9e       	mul	r11, r18
-     e48:	c0 01       	movw	r24, r0
-     e4a:	b3 9e       	mul	r11, r19
-     e4c:	90 0d       	add	r25, r0
-     e4e:	11 24       	eor	r1, r1
-     e50:	64 01       	movw	r12, r8
-     e52:	c8 1a       	sub	r12, r24
-     e54:	d9 0a       	sbc	r13, r25
+     e34:	2b 81       	ldd	r18, Y+3	; 0x03
+     e36:	3c 81       	ldd	r19, Y+4	; 0x04
+     e38:	b2 9e       	mul	r11, r18
+     e3a:	c0 01       	movw	r24, r0
+     e3c:	b3 9e       	mul	r11, r19
+     e3e:	90 0d       	add	r25, r0
+     e40:	11 24       	eor	r1, r1
+     e42:	64 01       	movw	r12, r8
+     e44:	c8 1a       	sub	r12, r24
+     e46:	d9 0a       	sbc	r13, r25
 		UART_Send_Char(tempw/10 + 0x30);
-     e56:	96 01       	movw	r18, r12
-     e58:	ad ec       	ldi	r26, 0xCD	; 205
-     e5a:	bc ec       	ldi	r27, 0xCC	; 204
-     e5c:	f4 d1       	rcall	.+1000   	; 0x1246 <__umulhisi3>
-     e5e:	96 95       	lsr	r25
-     e60:	87 95       	ror	r24
-     e62:	96 95       	lsr	r25
-     e64:	87 95       	ror	r24
-     e66:	96 95       	lsr	r25
-     e68:	87 95       	ror	r24
-     e6a:	9c 83       	std	Y+4, r25	; 0x04
-     e6c:	8b 83       	std	Y+3, r24	; 0x03
-     e6e:	8b 81       	ldd	r24, Y+3	; 0x03
-     e70:	80 5d       	subi	r24, 0xD0	; 208
-     e72:	a7 d1       	rcall	.+846    	; 0x11c2 <UART_Send_Char>
+     e48:	96 01       	movw	r18, r12
+     e4a:	ad ec       	ldi	r26, 0xCD	; 205
+     e4c:	bc ec       	ldi	r27, 0xCC	; 204
+     e4e:	f4 d1       	rcall	.+1000   	; 0x1238 <__umulhisi3>
+     e50:	96 95       	lsr	r25
+     e52:	87 95       	ror	r24
+     e54:	96 95       	lsr	r25
+     e56:	87 95       	ror	r24
+     e58:	96 95       	lsr	r25
+     e5a:	87 95       	ror	r24
+     e5c:	9c 83       	std	Y+4, r25	; 0x04
+     e5e:	8b 83       	std	Y+3, r24	; 0x03
+     e60:	8b 81       	ldd	r24, Y+3	; 0x03
+     e62:	80 5d       	subi	r24, 0xD0	; 208
+     e64:	a7 d1       	rcall	.+846    	; 0x11b4 <UART_Send_Char>
 		UART_Send_Char(tempw%10 + 0x30);
-     e74:	8b 81       	ldd	r24, Y+3	; 0x03
-     e76:	9c 81       	ldd	r25, Y+4	; 0x04
-     e78:	88 0f       	add	r24, r24
-     e7a:	99 1f       	adc	r25, r25
-     e7c:	eb 81       	ldd	r30, Y+3	; 0x03
-     e7e:	fc 81       	ldd	r31, Y+4	; 0x04
-     e80:	ee 0f       	add	r30, r30
-     e82:	ff 1f       	adc	r31, r31
-     e84:	ee 0f       	add	r30, r30
-     e86:	ff 1f       	adc	r31, r31
-     e88:	ee 0f       	add	r30, r30
-     e8a:	ff 1f       	adc	r31, r31
-     e8c:	e8 0f       	add	r30, r24
-     e8e:	f9 1f       	adc	r31, r25
-     e90:	c6 01       	movw	r24, r12
-     e92:	8e 1b       	sub	r24, r30
-     e94:	9f 0b       	sbc	r25, r31
-     e96:	80 5d       	subi	r24, 0xD0	; 208
-     e98:	94 d1       	rcall	.+808    	; 0x11c2 <UART_Send_Char>
+     e66:	8b 81       	ldd	r24, Y+3	; 0x03
+     e68:	9c 81       	ldd	r25, Y+4	; 0x04
+     e6a:	88 0f       	add	r24, r24
+     e6c:	99 1f       	adc	r25, r25
+     e6e:	eb 81       	ldd	r30, Y+3	; 0x03
+     e70:	fc 81       	ldd	r31, Y+4	; 0x04
+     e72:	ee 0f       	add	r30, r30
+     e74:	ff 1f       	adc	r31, r31
+     e76:	ee 0f       	add	r30, r30
+     e78:	ff 1f       	adc	r31, r31
+     e7a:	ee 0f       	add	r30, r30
+     e7c:	ff 1f       	adc	r31, r31
+     e7e:	e8 0f       	add	r30, r24
+     e80:	f9 1f       	adc	r31, r25
+     e82:	c6 01       	movw	r24, r12
+     e84:	8e 1b       	sub	r24, r30
+     e86:	9f 0b       	sbc	r25, r31
+     e88:	80 5d       	subi	r24, 0xD0	; 208
+     e8a:	94 d1       	rcall	.+808    	; 0x11b4 <UART_Send_Char>
 		UART_Send_Str(" LEVEL \r\n");
-     e9a:	84 e9       	ldi	r24, 0x94	; 148
-     e9c:	90 e0       	ldi	r25, 0x00	; 0
-     e9e:	95 d1       	rcall	.+810    	; 0x11ca <UART_Send_Str>
+     e8c:	84 e9       	ldi	r24, 0x94	; 148
+     e8e:	90 e0       	ldi	r25, 0x00	; 0
+     e90:	95 d1       	rcall	.+810    	; 0x11bc <UART_Send_Str>
 		
 		tempw = FM_getRegister(0x0A);
-     ea0:	8a e0       	ldi	r24, 0x0A	; 10
-     ea2:	80 dc       	rcall	.-1792   	; 0x7a4 <FM_getRegister>
+     e92:	8a e0       	ldi	r24, 0x0A	; 10
+     e94:	87 dc       	rcall	.-1778   	; 0x7a4 <FM_getRegister>
 		if((tempw&0x8000)>>15)
-     ea4:	99 23       	and	r25, r25
-     ea6:	0c f0       	brlt	.+2      	; 0xeaa <SEEK_FOR_RDS+0x244>
-     ea8:	02 cf       	rjmp	.-508    	; 0xcae <SEEK_FOR_RDS+0x48>
+     e96:	99 23       	and	r25, r25
+     e98:	0c f0       	brlt	.+2      	; 0xe9c <SEEK_FOR_RDS+0x244>
+     e9a:	02 cf       	rjmp	.-508    	; 0xca0 <SEEK_FOR_RDS+0x48>
 		{
 			UART_Send_Str("RDS! \r\n");
-     eaa:	8e e9       	ldi	r24, 0x9E	; 158
-     eac:	90 e0       	ldi	r25, 0x00	; 0
-     eae:	8d d1       	rcall	.+794    	; 0x11ca <UART_Send_Str>
+     e9c:	8e e9       	ldi	r24, 0x9E	; 158
+     e9e:	90 e0       	ldi	r25, 0x00	; 0
+     ea0:	8d d1       	rcall	.+794    	; 0x11bc <UART_Send_Str>
 			iter++;
 			if(temp1>station.rssi)
-     eb0:	80 91 d9 00 	lds	r24, 0x00D9	; 0x8000d9 <station+0x2>
-     eb4:	90 e0       	ldi	r25, 0x00	; 0
-     eb6:	88 15       	cp	r24, r8
-     eb8:	99 05       	cpc	r25, r9
-     eba:	30 f4       	brcc	.+12     	; 0xec8 <SEEK_FOR_RDS+0x262>
+     ea2:	80 91 d9 00 	lds	r24, 0x00D9	; 0x8000d9 <station+0x2>
+     ea6:	90 e0       	ldi	r25, 0x00	; 0
+     ea8:	88 15       	cp	r24, r8
+     eaa:	99 05       	cpc	r25, r9
+     eac:	30 f4       	brcc	.+12     	; 0xeba <SEEK_FOR_RDS+0x262>
 			{
 				station.rssi = temp1;
-     ebc:	a0 92 d9 00 	sts	0x00D9, r10	; 0x8000d9 <station+0x2>
+     eae:	a0 92 d9 00 	sts	0x00D9, r10	; 0x8000d9 <station+0x2>
 				station.freq = temp2;
-     ec0:	e7 ed       	ldi	r30, 0xD7	; 215
-     ec2:	f0 e0       	ldi	r31, 0x00	; 0
-     ec4:	51 82       	std	Z+1, r5	; 0x01
-     ec6:	40 82       	st	Z, r4
-     ec8:	29 81       	ldd	r18, Y+1	; 0x01
-     eca:	3a 81       	ldd	r19, Y+2	; 0x02
-     ecc:	21 50       	subi	r18, 0x01	; 1
-     ece:	31 09       	sbc	r19, r1
-     ed0:	3a 83       	std	Y+2, r19	; 0x02
-     ed2:	29 83       	std	Y+1, r18	; 0x01
+     eb2:	e7 ed       	ldi	r30, 0xD7	; 215
+     eb4:	f0 e0       	ldi	r31, 0x00	; 0
+     eb6:	51 82       	std	Z+1, r5	; 0x01
+     eb8:	40 82       	st	Z, r4
+     eba:	29 81       	ldd	r18, Y+1	; 0x01
+     ebc:	3a 81       	ldd	r19, Y+2	; 0x02
+     ebe:	21 50       	subi	r18, 0x01	; 1
+     ec0:	31 09       	sbc	r19, r1
+     ec2:	3a 83       	std	Y+2, r19	; 0x02
+     ec4:	29 83       	std	Y+1, r18	; 0x01
 			}
 				
 			if(iter == SEARCH_ITER)
-     ed4:	23 2b       	or	r18, r19
-     ed6:	09 f0       	breq	.+2      	; 0xeda <SEEK_FOR_RDS+0x274>
-     ed8:	ea ce       	rjmp	.-556    	; 0xcae <SEEK_FOR_RDS+0x48>
+     ec6:	23 2b       	or	r18, r19
+     ec8:	09 f0       	breq	.+2      	; 0xecc <SEEK_FOR_RDS+0x274>
+     eca:	ea ce       	rjmp	.-556    	; 0xca0 <SEEK_FOR_RDS+0x48>
 			{
 				UART_Send_Str("\nSet: ");
-     eda:	86 ea       	ldi	r24, 0xA6	; 166
-     edc:	90 e0       	ldi	r25, 0x00	; 0
-     ede:	75 d1       	rcall	.+746    	; 0x11ca <UART_Send_Str>
+     ecc:	86 ea       	ldi	r24, 0xA6	; 166
+     ece:	90 e0       	ldi	r25, 0x00	; 0
+     ed0:	75 d1       	rcall	.+746    	; 0x11bc <UART_Send_Str>
 				UART_Send_Char(station.freq/10000 + 0x30);
-     ee0:	e7 ed       	ldi	r30, 0xD7	; 215
-     ee2:	f0 e0       	ldi	r31, 0x00	; 0
-     ee4:	20 81       	ld	r18, Z
-     ee6:	31 81       	ldd	r19, Z+1	; 0x01
-     ee8:	32 95       	swap	r19
-     eea:	22 95       	swap	r18
-     eec:	2f 70       	andi	r18, 0x0F	; 15
-     eee:	23 27       	eor	r18, r19
-     ef0:	3f 70       	andi	r19, 0x0F	; 15
-     ef2:	23 27       	eor	r18, r19
-     ef4:	a7 e4       	ldi	r26, 0x47	; 71
-     ef6:	b3 e0       	ldi	r27, 0x03	; 3
-     ef8:	a6 d1       	rcall	.+844    	; 0x1246 <__umulhisi3>
-     efa:	96 95       	lsr	r25
-     efc:	87 95       	ror	r24
-     efe:	96 95       	lsr	r25
-     f00:	87 95       	ror	r24
-     f02:	96 95       	lsr	r25
-     f04:	87 95       	ror	r24
-     f06:	80 5d       	subi	r24, 0xD0	; 208
-     f08:	5c d1       	rcall	.+696    	; 0x11c2 <UART_Send_Char>
+     ed2:	e7 ed       	ldi	r30, 0xD7	; 215
+     ed4:	f0 e0       	ldi	r31, 0x00	; 0
+     ed6:	20 81       	ld	r18, Z
+     ed8:	31 81       	ldd	r19, Z+1	; 0x01
+     eda:	32 95       	swap	r19
+     edc:	22 95       	swap	r18
+     ede:	2f 70       	andi	r18, 0x0F	; 15
+     ee0:	23 27       	eor	r18, r19
+     ee2:	3f 70       	andi	r19, 0x0F	; 15
+     ee4:	23 27       	eor	r18, r19
+     ee6:	a7 e4       	ldi	r26, 0x47	; 71
+     ee8:	b3 e0       	ldi	r27, 0x03	; 3
+     eea:	a6 d1       	rcall	.+844    	; 0x1238 <__umulhisi3>
+     eec:	96 95       	lsr	r25
+     eee:	87 95       	ror	r24
+     ef0:	96 95       	lsr	r25
+     ef2:	87 95       	ror	r24
+     ef4:	96 95       	lsr	r25
+     ef6:	87 95       	ror	r24
+     ef8:	80 5d       	subi	r24, 0xD0	; 208
+     efa:	5c d1       	rcall	.+696    	; 0x11b4 <UART_Send_Char>
 				UART_Send_Char(((station.freq%10000)/1000) + 0x30);
-     f0a:	e7 ed       	ldi	r30, 0xD7	; 215
-     f0c:	f0 e0       	ldi	r31, 0x00	; 0
-     f0e:	40 81       	ld	r20, Z
-     f10:	51 81       	ldd	r21, Z+1	; 0x01
-     f12:	9a 01       	movw	r18, r20
-     f14:	32 95       	swap	r19
-     f16:	22 95       	swap	r18
-     f18:	2f 70       	andi	r18, 0x0F	; 15
-     f1a:	23 27       	eor	r18, r19
-     f1c:	3f 70       	andi	r19, 0x0F	; 15
-     f1e:	23 27       	eor	r18, r19
-     f20:	a7 e4       	ldi	r26, 0x47	; 71
-     f22:	b3 e0       	ldi	r27, 0x03	; 3
-     f24:	90 d1       	rcall	.+800    	; 0x1246 <__umulhisi3>
-     f26:	96 95       	lsr	r25
-     f28:	87 95       	ror	r24
-     f2a:	96 95       	lsr	r25
-     f2c:	87 95       	ror	r24
-     f2e:	96 95       	lsr	r25
-     f30:	87 95       	ror	r24
-     f32:	0f 2e       	mov	r0, r31
-     f34:	f0 e1       	ldi	r31, 0x10	; 16
-     f36:	ef 2e       	mov	r14, r31
-     f38:	f7 e2       	ldi	r31, 0x27	; 39
-     f3a:	ff 2e       	mov	r15, r31
-     f3c:	f0 2d       	mov	r31, r0
-     f3e:	8e 9d       	mul	r24, r14
-     f40:	90 01       	movw	r18, r0
-     f42:	8f 9d       	mul	r24, r15
-     f44:	30 0d       	add	r19, r0
-     f46:	9e 9d       	mul	r25, r14
-     f48:	30 0d       	add	r19, r0
-     f4a:	11 24       	eor	r1, r1
-     f4c:	ca 01       	movw	r24, r20
-     f4e:	82 1b       	sub	r24, r18
-     f50:	93 0b       	sbc	r25, r19
-     f52:	9c 01       	movw	r18, r24
-     f54:	36 95       	lsr	r19
-     f56:	27 95       	ror	r18
-     f58:	36 95       	lsr	r19
-     f5a:	27 95       	ror	r18
-     f5c:	36 95       	lsr	r19
-     f5e:	27 95       	ror	r18
-     f60:	a5 ec       	ldi	r26, 0xC5	; 197
-     f62:	b0 e2       	ldi	r27, 0x20	; 32
-     f64:	70 d1       	rcall	.+736    	; 0x1246 <__umulhisi3>
-     f66:	92 95       	swap	r25
-     f68:	82 95       	swap	r24
-     f6a:	8f 70       	andi	r24, 0x0F	; 15
-     f6c:	89 27       	eor	r24, r25
-     f6e:	9f 70       	andi	r25, 0x0F	; 15
-     f70:	89 27       	eor	r24, r25
-     f72:	80 5d       	subi	r24, 0xD0	; 208
-     f74:	26 d1       	rcall	.+588    	; 0x11c2 <UART_Send_Char>
+     efc:	e7 ed       	ldi	r30, 0xD7	; 215
+     efe:	f0 e0       	ldi	r31, 0x00	; 0
+     f00:	40 81       	ld	r20, Z
+     f02:	51 81       	ldd	r21, Z+1	; 0x01
+     f04:	9a 01       	movw	r18, r20
+     f06:	32 95       	swap	r19
+     f08:	22 95       	swap	r18
+     f0a:	2f 70       	andi	r18, 0x0F	; 15
+     f0c:	23 27       	eor	r18, r19
+     f0e:	3f 70       	andi	r19, 0x0F	; 15
+     f10:	23 27       	eor	r18, r19
+     f12:	a7 e4       	ldi	r26, 0x47	; 71
+     f14:	b3 e0       	ldi	r27, 0x03	; 3
+     f16:	90 d1       	rcall	.+800    	; 0x1238 <__umulhisi3>
+     f18:	96 95       	lsr	r25
+     f1a:	87 95       	ror	r24
+     f1c:	96 95       	lsr	r25
+     f1e:	87 95       	ror	r24
+     f20:	96 95       	lsr	r25
+     f22:	87 95       	ror	r24
+     f24:	0f 2e       	mov	r0, r31
+     f26:	f0 e1       	ldi	r31, 0x10	; 16
+     f28:	ef 2e       	mov	r14, r31
+     f2a:	f7 e2       	ldi	r31, 0x27	; 39
+     f2c:	ff 2e       	mov	r15, r31
+     f2e:	f0 2d       	mov	r31, r0
+     f30:	8e 9d       	mul	r24, r14
+     f32:	90 01       	movw	r18, r0
+     f34:	8f 9d       	mul	r24, r15
+     f36:	30 0d       	add	r19, r0
+     f38:	9e 9d       	mul	r25, r14
+     f3a:	30 0d       	add	r19, r0
+     f3c:	11 24       	eor	r1, r1
+     f3e:	ca 01       	movw	r24, r20
+     f40:	82 1b       	sub	r24, r18
+     f42:	93 0b       	sbc	r25, r19
+     f44:	9c 01       	movw	r18, r24
+     f46:	36 95       	lsr	r19
+     f48:	27 95       	ror	r18
+     f4a:	36 95       	lsr	r19
+     f4c:	27 95       	ror	r18
+     f4e:	36 95       	lsr	r19
+     f50:	27 95       	ror	r18
+     f52:	a5 ec       	ldi	r26, 0xC5	; 197
+     f54:	b0 e2       	ldi	r27, 0x20	; 32
+     f56:	70 d1       	rcall	.+736    	; 0x1238 <__umulhisi3>
+     f58:	92 95       	swap	r25
+     f5a:	82 95       	swap	r24
+     f5c:	8f 70       	andi	r24, 0x0F	; 15
+     f5e:	89 27       	eor	r24, r25
+     f60:	9f 70       	andi	r25, 0x0F	; 15
+     f62:	89 27       	eor	r24, r25
+     f64:	80 5d       	subi	r24, 0xD0	; 208
+     f66:	26 d1       	rcall	.+588    	; 0x11b4 <UART_Send_Char>
 				UART_Send_Char(((station.freq%10000)%1000)/100 + 0x30);
-     f76:	e7 ed       	ldi	r30, 0xD7	; 215
-     f78:	f0 e0       	ldi	r31, 0x00	; 0
-     f7a:	40 81       	ld	r20, Z
-     f7c:	51 81       	ldd	r21, Z+1	; 0x01
-     f7e:	9a 01       	movw	r18, r20
-     f80:	32 95       	swap	r19
-     f82:	22 95       	swap	r18
-     f84:	2f 70       	andi	r18, 0x0F	; 15
-     f86:	23 27       	eor	r18, r19
-     f88:	3f 70       	andi	r19, 0x0F	; 15
-     f8a:	23 27       	eor	r18, r19
-     f8c:	a7 e4       	ldi	r26, 0x47	; 71
-     f8e:	b3 e0       	ldi	r27, 0x03	; 3
-     f90:	5a d1       	rcall	.+692    	; 0x1246 <__umulhisi3>
-     f92:	96 95       	lsr	r25
-     f94:	87 95       	ror	r24
-     f96:	96 95       	lsr	r25
-     f98:	87 95       	ror	r24
-     f9a:	96 95       	lsr	r25
-     f9c:	87 95       	ror	r24
-     f9e:	8e 9d       	mul	r24, r14
-     fa0:	90 01       	movw	r18, r0
-     fa2:	8f 9d       	mul	r24, r15
-     fa4:	30 0d       	add	r19, r0
-     fa6:	9e 9d       	mul	r25, r14
-     fa8:	30 0d       	add	r19, r0
-     faa:	11 24       	eor	r1, r1
-     fac:	42 1b       	sub	r20, r18
-     fae:	53 0b       	sbc	r21, r19
-     fb0:	9a 01       	movw	r18, r20
-     fb2:	36 95       	lsr	r19
-     fb4:	27 95       	ror	r18
-     fb6:	36 95       	lsr	r19
-     fb8:	27 95       	ror	r18
-     fba:	36 95       	lsr	r19
-     fbc:	27 95       	ror	r18
-     fbe:	a5 ec       	ldi	r26, 0xC5	; 197
-     fc0:	b0 e2       	ldi	r27, 0x20	; 32
-     fc2:	41 d1       	rcall	.+642    	; 0x1246 <__umulhisi3>
-     fc4:	92 95       	swap	r25
-     fc6:	82 95       	swap	r24
-     fc8:	8f 70       	andi	r24, 0x0F	; 15
-     fca:	89 27       	eor	r24, r25
-     fcc:	9f 70       	andi	r25, 0x0F	; 15
-     fce:	89 27       	eor	r24, r25
-     fd0:	08 ee       	ldi	r16, 0xE8	; 232
-     fd2:	13 e0       	ldi	r17, 0x03	; 3
-     fd4:	80 9f       	mul	r24, r16
-     fd6:	90 01       	movw	r18, r0
-     fd8:	81 9f       	mul	r24, r17
-     fda:	30 0d       	add	r19, r0
-     fdc:	90 9f       	mul	r25, r16
-     fde:	30 0d       	add	r19, r0
-     fe0:	11 24       	eor	r1, r1
-     fe2:	ca 01       	movw	r24, r20
-     fe4:	82 1b       	sub	r24, r18
-     fe6:	93 0b       	sbc	r25, r19
-     fe8:	9c 01       	movw	r18, r24
-     fea:	36 95       	lsr	r19
-     fec:	27 95       	ror	r18
-     fee:	36 95       	lsr	r19
-     ff0:	27 95       	ror	r18
-     ff2:	ab e7       	ldi	r26, 0x7B	; 123
-     ff4:	b4 e1       	ldi	r27, 0x14	; 20
-     ff6:	27 d1       	rcall	.+590    	; 0x1246 <__umulhisi3>
-     ff8:	96 95       	lsr	r25
-     ffa:	87 95       	ror	r24
-     ffc:	80 5d       	subi	r24, 0xD0	; 208
-     ffe:	e1 d0       	rcall	.+450    	; 0x11c2 <UART_Send_Char>
+     f68:	e7 ed       	ldi	r30, 0xD7	; 215
+     f6a:	f0 e0       	ldi	r31, 0x00	; 0
+     f6c:	40 81       	ld	r20, Z
+     f6e:	51 81       	ldd	r21, Z+1	; 0x01
+     f70:	9a 01       	movw	r18, r20
+     f72:	32 95       	swap	r19
+     f74:	22 95       	swap	r18
+     f76:	2f 70       	andi	r18, 0x0F	; 15
+     f78:	23 27       	eor	r18, r19
+     f7a:	3f 70       	andi	r19, 0x0F	; 15
+     f7c:	23 27       	eor	r18, r19
+     f7e:	a7 e4       	ldi	r26, 0x47	; 71
+     f80:	b3 e0       	ldi	r27, 0x03	; 3
+     f82:	5a d1       	rcall	.+692    	; 0x1238 <__umulhisi3>
+     f84:	96 95       	lsr	r25
+     f86:	87 95       	ror	r24
+     f88:	96 95       	lsr	r25
+     f8a:	87 95       	ror	r24
+     f8c:	96 95       	lsr	r25
+     f8e:	87 95       	ror	r24
+     f90:	8e 9d       	mul	r24, r14
+     f92:	90 01       	movw	r18, r0
+     f94:	8f 9d       	mul	r24, r15
+     f96:	30 0d       	add	r19, r0
+     f98:	9e 9d       	mul	r25, r14
+     f9a:	30 0d       	add	r19, r0
+     f9c:	11 24       	eor	r1, r1
+     f9e:	42 1b       	sub	r20, r18
+     fa0:	53 0b       	sbc	r21, r19
+     fa2:	9a 01       	movw	r18, r20
+     fa4:	36 95       	lsr	r19
+     fa6:	27 95       	ror	r18
+     fa8:	36 95       	lsr	r19
+     faa:	27 95       	ror	r18
+     fac:	36 95       	lsr	r19
+     fae:	27 95       	ror	r18
+     fb0:	a5 ec       	ldi	r26, 0xC5	; 197
+     fb2:	b0 e2       	ldi	r27, 0x20	; 32
+     fb4:	41 d1       	rcall	.+642    	; 0x1238 <__umulhisi3>
+     fb6:	92 95       	swap	r25
+     fb8:	82 95       	swap	r24
+     fba:	8f 70       	andi	r24, 0x0F	; 15
+     fbc:	89 27       	eor	r24, r25
+     fbe:	9f 70       	andi	r25, 0x0F	; 15
+     fc0:	89 27       	eor	r24, r25
+     fc2:	08 ee       	ldi	r16, 0xE8	; 232
+     fc4:	13 e0       	ldi	r17, 0x03	; 3
+     fc6:	80 9f       	mul	r24, r16
+     fc8:	90 01       	movw	r18, r0
+     fca:	81 9f       	mul	r24, r17
+     fcc:	30 0d       	add	r19, r0
+     fce:	90 9f       	mul	r25, r16
+     fd0:	30 0d       	add	r19, r0
+     fd2:	11 24       	eor	r1, r1
+     fd4:	ca 01       	movw	r24, r20
+     fd6:	82 1b       	sub	r24, r18
+     fd8:	93 0b       	sbc	r25, r19
+     fda:	9c 01       	movw	r18, r24
+     fdc:	36 95       	lsr	r19
+     fde:	27 95       	ror	r18
+     fe0:	36 95       	lsr	r19
+     fe2:	27 95       	ror	r18
+     fe4:	ab e7       	ldi	r26, 0x7B	; 123
+     fe6:	b4 e1       	ldi	r27, 0x14	; 20
+     fe8:	27 d1       	rcall	.+590    	; 0x1238 <__umulhisi3>
+     fea:	96 95       	lsr	r25
+     fec:	87 95       	ror	r24
+     fee:	80 5d       	subi	r24, 0xD0	; 208
+     ff0:	e1 d0       	rcall	.+450    	; 0x11b4 <UART_Send_Char>
 				UART_Send_Char((((station.freq%10000)%1000)%100)/10 + 0x30);
-    1000:	e7 ed       	ldi	r30, 0xD7	; 215
-    1002:	f0 e0       	ldi	r31, 0x00	; 0
-    1004:	40 81       	ld	r20, Z
-    1006:	51 81       	ldd	r21, Z+1	; 0x01
-    1008:	9a 01       	movw	r18, r20
-    100a:	32 95       	swap	r19
-    100c:	22 95       	swap	r18
-    100e:	2f 70       	andi	r18, 0x0F	; 15
-    1010:	23 27       	eor	r18, r19
-    1012:	3f 70       	andi	r19, 0x0F	; 15
-    1014:	23 27       	eor	r18, r19
-    1016:	a7 e4       	ldi	r26, 0x47	; 71
-    1018:	b3 e0       	ldi	r27, 0x03	; 3
-    101a:	15 d1       	rcall	.+554    	; 0x1246 <__umulhisi3>
-    101c:	96 95       	lsr	r25
-    101e:	87 95       	ror	r24
-    1020:	96 95       	lsr	r25
-    1022:	87 95       	ror	r24
-    1024:	96 95       	lsr	r25
-    1026:	87 95       	ror	r24
-    1028:	8e 9d       	mul	r24, r14
-    102a:	90 01       	movw	r18, r0
-    102c:	8f 9d       	mul	r24, r15
-    102e:	30 0d       	add	r19, r0
-    1030:	9e 9d       	mul	r25, r14
-    1032:	30 0d       	add	r19, r0
-    1034:	11 24       	eor	r1, r1
-    1036:	42 1b       	sub	r20, r18
-    1038:	53 0b       	sbc	r21, r19
-    103a:	9a 01       	movw	r18, r20
-    103c:	36 95       	lsr	r19
-    103e:	27 95       	ror	r18
-    1040:	36 95       	lsr	r19
-    1042:	27 95       	ror	r18
-    1044:	36 95       	lsr	r19
-    1046:	27 95       	ror	r18
-    1048:	a5 ec       	ldi	r26, 0xC5	; 197
-    104a:	b0 e2       	ldi	r27, 0x20	; 32
-    104c:	fc d0       	rcall	.+504    	; 0x1246 <__umulhisi3>
-    104e:	92 95       	swap	r25
-    1050:	82 95       	swap	r24
-    1052:	8f 70       	andi	r24, 0x0F	; 15
-    1054:	89 27       	eor	r24, r25
-    1056:	9f 70       	andi	r25, 0x0F	; 15
-    1058:	89 27       	eor	r24, r25
-    105a:	80 9f       	mul	r24, r16
-    105c:	90 01       	movw	r18, r0
-    105e:	81 9f       	mul	r24, r17
-    1060:	30 0d       	add	r19, r0
-    1062:	90 9f       	mul	r25, r16
-    1064:	30 0d       	add	r19, r0
-    1066:	11 24       	eor	r1, r1
-    1068:	42 1b       	sub	r20, r18
-    106a:	53 0b       	sbc	r21, r19
-    106c:	9a 01       	movw	r18, r20
-    106e:	36 95       	lsr	r19
-    1070:	27 95       	ror	r18
-    1072:	36 95       	lsr	r19
-    1074:	27 95       	ror	r18
-    1076:	ab e7       	ldi	r26, 0x7B	; 123
-    1078:	b4 e1       	ldi	r27, 0x14	; 20
-    107a:	e5 d0       	rcall	.+458    	; 0x1246 <__umulhisi3>
-    107c:	96 95       	lsr	r25
-    107e:	87 95       	ror	r24
-    1080:	0f 2e       	mov	r0, r31
-    1082:	f4 e6       	ldi	r31, 0x64	; 100
-    1084:	df 2e       	mov	r13, r31
-    1086:	f0 2d       	mov	r31, r0
-    1088:	d8 9e       	mul	r13, r24
-    108a:	90 01       	movw	r18, r0
-    108c:	d9 9e       	mul	r13, r25
-    108e:	30 0d       	add	r19, r0
-    1090:	11 24       	eor	r1, r1
-    1092:	ca 01       	movw	r24, r20
-    1094:	82 1b       	sub	r24, r18
-    1096:	93 0b       	sbc	r25, r19
-    1098:	9c 01       	movw	r18, r24
-    109a:	ad ec       	ldi	r26, 0xCD	; 205
-    109c:	bc ec       	ldi	r27, 0xCC	; 204
-    109e:	d3 d0       	rcall	.+422    	; 0x1246 <__umulhisi3>
-    10a0:	96 95       	lsr	r25
-    10a2:	87 95       	ror	r24
-    10a4:	96 95       	lsr	r25
-    10a6:	87 95       	ror	r24
-    10a8:	96 95       	lsr	r25
-    10aa:	87 95       	ror	r24
-    10ac:	80 5d       	subi	r24, 0xD0	; 208
-    10ae:	89 d0       	rcall	.+274    	; 0x11c2 <UART_Send_Char>
+     ff2:	e7 ed       	ldi	r30, 0xD7	; 215
+     ff4:	f0 e0       	ldi	r31, 0x00	; 0
+     ff6:	40 81       	ld	r20, Z
+     ff8:	51 81       	ldd	r21, Z+1	; 0x01
+     ffa:	9a 01       	movw	r18, r20
+     ffc:	32 95       	swap	r19
+     ffe:	22 95       	swap	r18
+    1000:	2f 70       	andi	r18, 0x0F	; 15
+    1002:	23 27       	eor	r18, r19
+    1004:	3f 70       	andi	r19, 0x0F	; 15
+    1006:	23 27       	eor	r18, r19
+    1008:	a7 e4       	ldi	r26, 0x47	; 71
+    100a:	b3 e0       	ldi	r27, 0x03	; 3
+    100c:	15 d1       	rcall	.+554    	; 0x1238 <__umulhisi3>
+    100e:	96 95       	lsr	r25
+    1010:	87 95       	ror	r24
+    1012:	96 95       	lsr	r25
+    1014:	87 95       	ror	r24
+    1016:	96 95       	lsr	r25
+    1018:	87 95       	ror	r24
+    101a:	8e 9d       	mul	r24, r14
+    101c:	90 01       	movw	r18, r0
+    101e:	8f 9d       	mul	r24, r15
+    1020:	30 0d       	add	r19, r0
+    1022:	9e 9d       	mul	r25, r14
+    1024:	30 0d       	add	r19, r0
+    1026:	11 24       	eor	r1, r1
+    1028:	42 1b       	sub	r20, r18
+    102a:	53 0b       	sbc	r21, r19
+    102c:	9a 01       	movw	r18, r20
+    102e:	36 95       	lsr	r19
+    1030:	27 95       	ror	r18
+    1032:	36 95       	lsr	r19
+    1034:	27 95       	ror	r18
+    1036:	36 95       	lsr	r19
+    1038:	27 95       	ror	r18
+    103a:	a5 ec       	ldi	r26, 0xC5	; 197
+    103c:	b0 e2       	ldi	r27, 0x20	; 32
+    103e:	fc d0       	rcall	.+504    	; 0x1238 <__umulhisi3>
+    1040:	92 95       	swap	r25
+    1042:	82 95       	swap	r24
+    1044:	8f 70       	andi	r24, 0x0F	; 15
+    1046:	89 27       	eor	r24, r25
+    1048:	9f 70       	andi	r25, 0x0F	; 15
+    104a:	89 27       	eor	r24, r25
+    104c:	80 9f       	mul	r24, r16
+    104e:	90 01       	movw	r18, r0
+    1050:	81 9f       	mul	r24, r17
+    1052:	30 0d       	add	r19, r0
+    1054:	90 9f       	mul	r25, r16
+    1056:	30 0d       	add	r19, r0
+    1058:	11 24       	eor	r1, r1
+    105a:	42 1b       	sub	r20, r18
+    105c:	53 0b       	sbc	r21, r19
+    105e:	9a 01       	movw	r18, r20
+    1060:	36 95       	lsr	r19
+    1062:	27 95       	ror	r18
+    1064:	36 95       	lsr	r19
+    1066:	27 95       	ror	r18
+    1068:	ab e7       	ldi	r26, 0x7B	; 123
+    106a:	b4 e1       	ldi	r27, 0x14	; 20
+    106c:	e5 d0       	rcall	.+458    	; 0x1238 <__umulhisi3>
+    106e:	96 95       	lsr	r25
+    1070:	87 95       	ror	r24
+    1072:	0f 2e       	mov	r0, r31
+    1074:	f4 e6       	ldi	r31, 0x64	; 100
+    1076:	df 2e       	mov	r13, r31
+    1078:	f0 2d       	mov	r31, r0
+    107a:	d8 9e       	mul	r13, r24
+    107c:	90 01       	movw	r18, r0
+    107e:	d9 9e       	mul	r13, r25
+    1080:	30 0d       	add	r19, r0
+    1082:	11 24       	eor	r1, r1
+    1084:	ca 01       	movw	r24, r20
+    1086:	82 1b       	sub	r24, r18
+    1088:	93 0b       	sbc	r25, r19
+    108a:	9c 01       	movw	r18, r24
+    108c:	ad ec       	ldi	r26, 0xCD	; 205
+    108e:	bc ec       	ldi	r27, 0xCC	; 204
+    1090:	d3 d0       	rcall	.+422    	; 0x1238 <__umulhisi3>
+    1092:	96 95       	lsr	r25
+    1094:	87 95       	ror	r24
+    1096:	96 95       	lsr	r25
+    1098:	87 95       	ror	r24
+    109a:	96 95       	lsr	r25
+    109c:	87 95       	ror	r24
+    109e:	80 5d       	subi	r24, 0xD0	; 208
+    10a0:	89 d0       	rcall	.+274    	; 0x11b4 <UART_Send_Char>
 				UART_Send_Char((((station.freq%10000)%1000)%100)%10 + 0x30);
-    10b0:	e7 ed       	ldi	r30, 0xD7	; 215
-    10b2:	f0 e0       	ldi	r31, 0x00	; 0
-    10b4:	40 81       	ld	r20, Z
-    10b6:	51 81       	ldd	r21, Z+1	; 0x01
-    10b8:	9a 01       	movw	r18, r20
-    10ba:	32 95       	swap	r19
-    10bc:	22 95       	swap	r18
-    10be:	2f 70       	andi	r18, 0x0F	; 15
-    10c0:	23 27       	eor	r18, r19
-    10c2:	3f 70       	andi	r19, 0x0F	; 15
-    10c4:	23 27       	eor	r18, r19
-    10c6:	a7 e4       	ldi	r26, 0x47	; 71
-    10c8:	b3 e0       	ldi	r27, 0x03	; 3
-    10ca:	bd d0       	rcall	.+378    	; 0x1246 <__umulhisi3>
-    10cc:	96 95       	lsr	r25
-    10ce:	87 95       	ror	r24
-    10d0:	96 95       	lsr	r25
-    10d2:	87 95       	ror	r24
-    10d4:	96 95       	lsr	r25
-    10d6:	87 95       	ror	r24
-    10d8:	8e 9d       	mul	r24, r14
-    10da:	90 01       	movw	r18, r0
-    10dc:	8f 9d       	mul	r24, r15
-    10de:	30 0d       	add	r19, r0
-    10e0:	9e 9d       	mul	r25, r14
-    10e2:	30 0d       	add	r19, r0
-    10e4:	11 24       	eor	r1, r1
-    10e6:	42 1b       	sub	r20, r18
-    10e8:	53 0b       	sbc	r21, r19
-    10ea:	9a 01       	movw	r18, r20
-    10ec:	36 95       	lsr	r19
-    10ee:	27 95       	ror	r18
-    10f0:	36 95       	lsr	r19
-    10f2:	27 95       	ror	r18
-    10f4:	36 95       	lsr	r19
-    10f6:	27 95       	ror	r18
-    10f8:	a5 ec       	ldi	r26, 0xC5	; 197
-    10fa:	b0 e2       	ldi	r27, 0x20	; 32
-    10fc:	a4 d0       	rcall	.+328    	; 0x1246 <__umulhisi3>
-    10fe:	92 95       	swap	r25
-    1100:	82 95       	swap	r24
-    1102:	8f 70       	andi	r24, 0x0F	; 15
-    1104:	89 27       	eor	r24, r25
-    1106:	9f 70       	andi	r25, 0x0F	; 15
-    1108:	89 27       	eor	r24, r25
-    110a:	80 9f       	mul	r24, r16
-    110c:	90 01       	movw	r18, r0
-    110e:	81 9f       	mul	r24, r17
-    1110:	30 0d       	add	r19, r0
-    1112:	90 9f       	mul	r25, r16
-    1114:	30 0d       	add	r19, r0
-    1116:	11 24       	eor	r1, r1
-    1118:	42 1b       	sub	r20, r18
-    111a:	53 0b       	sbc	r21, r19
-    111c:	9a 01       	movw	r18, r20
-    111e:	36 95       	lsr	r19
-    1120:	27 95       	ror	r18
-    1122:	36 95       	lsr	r19
-    1124:	27 95       	ror	r18
-    1126:	ab e7       	ldi	r26, 0x7B	; 123
-    1128:	b4 e1       	ldi	r27, 0x14	; 20
-    112a:	8d d0       	rcall	.+282    	; 0x1246 <__umulhisi3>
-    112c:	96 95       	lsr	r25
-    112e:	87 95       	ror	r24
-    1130:	d8 9e       	mul	r13, r24
-    1132:	90 01       	movw	r18, r0
-    1134:	d9 9e       	mul	r13, r25
-    1136:	30 0d       	add	r19, r0
-    1138:	11 24       	eor	r1, r1
-    113a:	42 1b       	sub	r20, r18
-    113c:	53 0b       	sbc	r21, r19
-    113e:	9a 01       	movw	r18, r20
-    1140:	ad ec       	ldi	r26, 0xCD	; 205
-    1142:	bc ec       	ldi	r27, 0xCC	; 204
-    1144:	80 d0       	rcall	.+256    	; 0x1246 <__umulhisi3>
-    1146:	96 95       	lsr	r25
-    1148:	87 95       	ror	r24
-    114a:	96 95       	lsr	r25
-    114c:	87 95       	ror	r24
-    114e:	96 95       	lsr	r25
-    1150:	87 95       	ror	r24
-    1152:	9c 01       	movw	r18, r24
-    1154:	22 0f       	add	r18, r18
-    1156:	33 1f       	adc	r19, r19
-    1158:	88 0f       	add	r24, r24
-    115a:	99 1f       	adc	r25, r25
-    115c:	88 0f       	add	r24, r24
-    115e:	99 1f       	adc	r25, r25
-    1160:	88 0f       	add	r24, r24
-    1162:	99 1f       	adc	r25, r25
-    1164:	82 0f       	add	r24, r18
-    1166:	93 1f       	adc	r25, r19
-    1168:	9a 01       	movw	r18, r20
-    116a:	28 1b       	sub	r18, r24
-    116c:	39 0b       	sbc	r19, r25
-    116e:	c9 01       	movw	r24, r18
-    1170:	80 5d       	subi	r24, 0xD0	; 208
-    1172:	27 d0       	rcall	.+78     	; 0x11c2 <UART_Send_Char>
+    10a2:	e7 ed       	ldi	r30, 0xD7	; 215
+    10a4:	f0 e0       	ldi	r31, 0x00	; 0
+    10a6:	40 81       	ld	r20, Z
+    10a8:	51 81       	ldd	r21, Z+1	; 0x01
+    10aa:	9a 01       	movw	r18, r20
+    10ac:	32 95       	swap	r19
+    10ae:	22 95       	swap	r18
+    10b0:	2f 70       	andi	r18, 0x0F	; 15
+    10b2:	23 27       	eor	r18, r19
+    10b4:	3f 70       	andi	r19, 0x0F	; 15
+    10b6:	23 27       	eor	r18, r19
+    10b8:	a7 e4       	ldi	r26, 0x47	; 71
+    10ba:	b3 e0       	ldi	r27, 0x03	; 3
+    10bc:	bd d0       	rcall	.+378    	; 0x1238 <__umulhisi3>
+    10be:	96 95       	lsr	r25
+    10c0:	87 95       	ror	r24
+    10c2:	96 95       	lsr	r25
+    10c4:	87 95       	ror	r24
+    10c6:	96 95       	lsr	r25
+    10c8:	87 95       	ror	r24
+    10ca:	8e 9d       	mul	r24, r14
+    10cc:	90 01       	movw	r18, r0
+    10ce:	8f 9d       	mul	r24, r15
+    10d0:	30 0d       	add	r19, r0
+    10d2:	9e 9d       	mul	r25, r14
+    10d4:	30 0d       	add	r19, r0
+    10d6:	11 24       	eor	r1, r1
+    10d8:	42 1b       	sub	r20, r18
+    10da:	53 0b       	sbc	r21, r19
+    10dc:	9a 01       	movw	r18, r20
+    10de:	36 95       	lsr	r19
+    10e0:	27 95       	ror	r18
+    10e2:	36 95       	lsr	r19
+    10e4:	27 95       	ror	r18
+    10e6:	36 95       	lsr	r19
+    10e8:	27 95       	ror	r18
+    10ea:	a5 ec       	ldi	r26, 0xC5	; 197
+    10ec:	b0 e2       	ldi	r27, 0x20	; 32
+    10ee:	a4 d0       	rcall	.+328    	; 0x1238 <__umulhisi3>
+    10f0:	92 95       	swap	r25
+    10f2:	82 95       	swap	r24
+    10f4:	8f 70       	andi	r24, 0x0F	; 15
+    10f6:	89 27       	eor	r24, r25
+    10f8:	9f 70       	andi	r25, 0x0F	; 15
+    10fa:	89 27       	eor	r24, r25
+    10fc:	80 9f       	mul	r24, r16
+    10fe:	90 01       	movw	r18, r0
+    1100:	81 9f       	mul	r24, r17
+    1102:	30 0d       	add	r19, r0
+    1104:	90 9f       	mul	r25, r16
+    1106:	30 0d       	add	r19, r0
+    1108:	11 24       	eor	r1, r1
+    110a:	42 1b       	sub	r20, r18
+    110c:	53 0b       	sbc	r21, r19
+    110e:	9a 01       	movw	r18, r20
+    1110:	36 95       	lsr	r19
+    1112:	27 95       	ror	r18
+    1114:	36 95       	lsr	r19
+    1116:	27 95       	ror	r18
+    1118:	ab e7       	ldi	r26, 0x7B	; 123
+    111a:	b4 e1       	ldi	r27, 0x14	; 20
+    111c:	8d d0       	rcall	.+282    	; 0x1238 <__umulhisi3>
+    111e:	96 95       	lsr	r25
+    1120:	87 95       	ror	r24
+    1122:	d8 9e       	mul	r13, r24
+    1124:	90 01       	movw	r18, r0
+    1126:	d9 9e       	mul	r13, r25
+    1128:	30 0d       	add	r19, r0
+    112a:	11 24       	eor	r1, r1
+    112c:	42 1b       	sub	r20, r18
+    112e:	53 0b       	sbc	r21, r19
+    1130:	9a 01       	movw	r18, r20
+    1132:	ad ec       	ldi	r26, 0xCD	; 205
+    1134:	bc ec       	ldi	r27, 0xCC	; 204
+    1136:	80 d0       	rcall	.+256    	; 0x1238 <__umulhisi3>
+    1138:	96 95       	lsr	r25
+    113a:	87 95       	ror	r24
+    113c:	96 95       	lsr	r25
+    113e:	87 95       	ror	r24
+    1140:	96 95       	lsr	r25
+    1142:	87 95       	ror	r24
+    1144:	9c 01       	movw	r18, r24
+    1146:	22 0f       	add	r18, r18
+    1148:	33 1f       	adc	r19, r19
+    114a:	88 0f       	add	r24, r24
+    114c:	99 1f       	adc	r25, r25
+    114e:	88 0f       	add	r24, r24
+    1150:	99 1f       	adc	r25, r25
+    1152:	88 0f       	add	r24, r24
+    1154:	99 1f       	adc	r25, r25
+    1156:	82 0f       	add	r24, r18
+    1158:	93 1f       	adc	r25, r19
+    115a:	9a 01       	movw	r18, r20
+    115c:	28 1b       	sub	r18, r24
+    115e:	39 0b       	sbc	r19, r25
+    1160:	c9 01       	movw	r24, r18
+    1162:	80 5d       	subi	r24, 0xD0	; 208
+    1164:	27 d0       	rcall	.+78     	; 0x11b4 <UART_Send_Char>
 				UART_Send_Str(" MHz\n");
-    1174:	8d ea       	ldi	r24, 0xAD	; 173
-    1176:	90 e0       	ldi	r25, 0x00	; 0
-    1178:	28 d0       	rcall	.+80     	; 0x11ca <UART_Send_Str>
+    1166:	8d ea       	ldi	r24, 0xAD	; 173
+    1168:	90 e0       	ldi	r25, 0x00	; 0
+    116a:	28 d0       	rcall	.+80     	; 0x11bc <UART_Send_Str>
 			}
 			
 		}
 	}
 	return station.freq;
-    117a:	e7 ed       	ldi	r30, 0xD7	; 215
-    117c:	f0 e0       	ldi	r31, 0x00	; 0
-    117e:	80 81       	ld	r24, Z
-    1180:	91 81       	ldd	r25, Z+1	; 0x01
-    1182:	0f 90       	pop	r0
-    1184:	0f 90       	pop	r0
-    1186:	0f 90       	pop	r0
-    1188:	0f 90       	pop	r0
-    118a:	df 91       	pop	r29
-    118c:	cf 91       	pop	r28
-    118e:	1f 91       	pop	r17
-    1190:	0f 91       	pop	r16
-    1192:	ff 90       	pop	r15
-    1194:	ef 90       	pop	r14
-    1196:	df 90       	pop	r13
-    1198:	cf 90       	pop	r12
-    119a:	bf 90       	pop	r11
-    119c:	af 90       	pop	r10
-    119e:	9f 90       	pop	r9
-    11a0:	8f 90       	pop	r8
-    11a2:	7f 90       	pop	r7
-    11a4:	6f 90       	pop	r6
-    11a6:	5f 90       	pop	r5
-    11a8:	4f 90       	pop	r4
-    11aa:	3f 90       	pop	r3
-    11ac:	2f 90       	pop	r2
-    11ae:	08 95       	ret
+    116c:	e7 ed       	ldi	r30, 0xD7	; 215
+    116e:	f0 e0       	ldi	r31, 0x00	; 0
+    1170:	80 81       	ld	r24, Z
+    1172:	91 81       	ldd	r25, Z+1	; 0x01
+    1174:	0f 90       	pop	r0
+    1176:	0f 90       	pop	r0
+    1178:	0f 90       	pop	r0
+    117a:	0f 90       	pop	r0
+    117c:	df 91       	pop	r29
+    117e:	cf 91       	pop	r28
+    1180:	1f 91       	pop	r17
+    1182:	0f 91       	pop	r16
+    1184:	ff 90       	pop	r15
+    1186:	ef 90       	pop	r14
+    1188:	df 90       	pop	r13
+    118a:	cf 90       	pop	r12
+    118c:	bf 90       	pop	r11
+    118e:	af 90       	pop	r10
+    1190:	9f 90       	pop	r9
+    1192:	8f 90       	pop	r8
+    1194:	7f 90       	pop	r7
+    1196:	6f 90       	pop	r6
+    1198:	5f 90       	pop	r5
+    119a:	4f 90       	pop	r4
+    119c:	3f 90       	pop	r3
+    119e:	2f 90       	pop	r2
+    11a0:	08 95       	ret
 
-000011b0 <UART_Init>:
+000011a2 <UART_Init>:
 Ôªø#include <avr/io.h>
 #include "uart.h"
 
 void UART_Init(void)
 {
 	UBRRL = MYUBRR;
-    11b0:	83 e3       	ldi	r24, 0x33	; 51
-    11b2:	89 b9       	out	0x09, r24	; 9
+    11a2:	83 e3       	ldi	r24, 0x33	; 51
+    11a4:	89 b9       	out	0x09, r24	; 9
 	UBRRH = MYUBRR>>8;
-    11b4:	10 bc       	out	0x20, r1	; 32
+    11a6:	10 bc       	out	0x20, r1	; 32
 	UCSRB = (1<<RXEN)|(1<<TXEN);
-    11b6:	88 e1       	ldi	r24, 0x18	; 24
-    11b8:	8a b9       	out	0x0a, r24	; 10
+    11a8:	88 e1       	ldi	r24, 0x18	; 24
+    11aa:	8a b9       	out	0x0a, r24	; 10
 	UCSRC |=(1<< URSEL)|(1<< UCSZ0)|(1<< UCSZ1);
-    11ba:	80 b5       	in	r24, 0x20	; 32
-    11bc:	86 68       	ori	r24, 0x86	; 134
-    11be:	80 bd       	out	0x20, r24	; 32
-    11c0:	08 95       	ret
+    11ac:	80 b5       	in	r24, 0x20	; 32
+    11ae:	86 68       	ori	r24, 0x86	; 134
+    11b0:	80 bd       	out	0x20, r24	; 32
+    11b2:	08 95       	ret
 
-000011c2 <UART_Send_Char>:
+000011b4 <UART_Send_Char>:
 }
 
 void UART_Send_Char(unsigned char c)
 {
 	while (!(UCSRA&(1<<UDRE)));
-    11c2:	5d 9b       	sbis	0x0b, 5	; 11
-    11c4:	fe cf       	rjmp	.-4      	; 0x11c2 <UART_Send_Char>
+    11b4:	5d 9b       	sbis	0x0b, 5	; 11
+    11b6:	fe cf       	rjmp	.-4      	; 0x11b4 <UART_Send_Char>
 	UDR = c;
-    11c6:	8c b9       	out	0x0c, r24	; 12
-    11c8:	08 95       	ret
+    11b8:	8c b9       	out	0x0c, r24	; 12
+    11ba:	08 95       	ret
 
-000011ca <UART_Send_Str>:
+000011bc <UART_Send_Str>:
 }
 
 void UART_Send_Str(unsigned char* str)
 {
-    11ca:	cf 93       	push	r28
-    11cc:	df 93       	push	r29
-    11ce:	ec 01       	movw	r28, r24
+    11bc:	cf 93       	push	r28
+    11be:	df 93       	push	r29
+    11c0:	ec 01       	movw	r28, r24
 	while (*str != 0) UART_Send_Char(*str++);
-    11d0:	88 81       	ld	r24, Y
-    11d2:	88 23       	and	r24, r24
-    11d4:	29 f0       	breq	.+10     	; 0x11e0 <UART_Send_Str+0x16>
-    11d6:	21 96       	adiw	r28, 0x01	; 1
-    11d8:	f4 df       	rcall	.-24     	; 0x11c2 <UART_Send_Char>
-    11da:	89 91       	ld	r24, Y+
-    11dc:	81 11       	cpse	r24, r1
-    11de:	fc cf       	rjmp	.-8      	; 0x11d8 <UART_Send_Str+0xe>
-    11e0:	df 91       	pop	r29
-    11e2:	cf 91       	pop	r28
-    11e4:	08 95       	ret
+    11c2:	88 81       	ld	r24, Y
+    11c4:	88 23       	and	r24, r24
+    11c6:	29 f0       	breq	.+10     	; 0x11d2 <UART_Send_Str+0x16>
+    11c8:	21 96       	adiw	r28, 0x01	; 1
+    11ca:	f4 df       	rcall	.-24     	; 0x11b4 <UART_Send_Char>
+    11cc:	89 91       	ld	r24, Y+
+    11ce:	81 11       	cpse	r24, r1
+    11d0:	fc cf       	rjmp	.-8      	; 0x11ca <UART_Send_Str+0xe>
+    11d2:	df 91       	pop	r29
+    11d4:	cf 91       	pop	r28
+    11d6:	08 95       	ret
 
-000011e6 <__udivmodhi4>:
-    11e6:	aa 1b       	sub	r26, r26
-    11e8:	bb 1b       	sub	r27, r27
-    11ea:	51 e1       	ldi	r21, 0x11	; 17
-    11ec:	07 c0       	rjmp	.+14     	; 0x11fc <__udivmodhi4_ep>
+000011d8 <__udivmodhi4>:
+    11d8:	aa 1b       	sub	r26, r26
+    11da:	bb 1b       	sub	r27, r27
+    11dc:	51 e1       	ldi	r21, 0x11	; 17
+    11de:	07 c0       	rjmp	.+14     	; 0x11ee <__udivmodhi4_ep>
 
-000011ee <__udivmodhi4_loop>:
-    11ee:	aa 1f       	adc	r26, r26
-    11f0:	bb 1f       	adc	r27, r27
-    11f2:	a6 17       	cp	r26, r22
-    11f4:	b7 07       	cpc	r27, r23
-    11f6:	10 f0       	brcs	.+4      	; 0x11fc <__udivmodhi4_ep>
-    11f8:	a6 1b       	sub	r26, r22
-    11fa:	b7 0b       	sbc	r27, r23
+000011e0 <__udivmodhi4_loop>:
+    11e0:	aa 1f       	adc	r26, r26
+    11e2:	bb 1f       	adc	r27, r27
+    11e4:	a6 17       	cp	r26, r22
+    11e6:	b7 07       	cpc	r27, r23
+    11e8:	10 f0       	brcs	.+4      	; 0x11ee <__udivmodhi4_ep>
+    11ea:	a6 1b       	sub	r26, r22
+    11ec:	b7 0b       	sbc	r27, r23
 
-000011fc <__udivmodhi4_ep>:
-    11fc:	88 1f       	adc	r24, r24
-    11fe:	99 1f       	adc	r25, r25
-    1200:	5a 95       	dec	r21
-    1202:	a9 f7       	brne	.-22     	; 0x11ee <__udivmodhi4_loop>
-    1204:	80 95       	com	r24
-    1206:	90 95       	com	r25
-    1208:	bc 01       	movw	r22, r24
-    120a:	cd 01       	movw	r24, r26
-    120c:	08 95       	ret
+000011ee <__udivmodhi4_ep>:
+    11ee:	88 1f       	adc	r24, r24
+    11f0:	99 1f       	adc	r25, r25
+    11f2:	5a 95       	dec	r21
+    11f4:	a9 f7       	brne	.-22     	; 0x11e0 <__udivmodhi4_loop>
+    11f6:	80 95       	com	r24
+    11f8:	90 95       	com	r25
+    11fa:	bc 01       	movw	r22, r24
+    11fc:	cd 01       	movw	r24, r26
+    11fe:	08 95       	ret
 
-0000120e <__divmodsi4>:
-    120e:	05 2e       	mov	r0, r21
-    1210:	97 fb       	bst	r25, 7
-    1212:	16 f4       	brtc	.+4      	; 0x1218 <__divmodsi4+0xa>
-    1214:	00 94       	com	r0
-    1216:	0f d0       	rcall	.+30     	; 0x1236 <__negsi2>
-    1218:	57 fd       	sbrc	r21, 7
-    121a:	05 d0       	rcall	.+10     	; 0x1226 <__divmodsi4_neg2>
-    121c:	20 d0       	rcall	.+64     	; 0x125e <__udivmodsi4>
-    121e:	07 fc       	sbrc	r0, 7
-    1220:	02 d0       	rcall	.+4      	; 0x1226 <__divmodsi4_neg2>
-    1222:	46 f4       	brtc	.+16     	; 0x1234 <__divmodsi4_exit>
-    1224:	08 c0       	rjmp	.+16     	; 0x1236 <__negsi2>
+00001200 <__divmodsi4>:
+    1200:	05 2e       	mov	r0, r21
+    1202:	97 fb       	bst	r25, 7
+    1204:	16 f4       	brtc	.+4      	; 0x120a <__divmodsi4+0xa>
+    1206:	00 94       	com	r0
+    1208:	0f d0       	rcall	.+30     	; 0x1228 <__negsi2>
+    120a:	57 fd       	sbrc	r21, 7
+    120c:	05 d0       	rcall	.+10     	; 0x1218 <__divmodsi4_neg2>
+    120e:	20 d0       	rcall	.+64     	; 0x1250 <__udivmodsi4>
+    1210:	07 fc       	sbrc	r0, 7
+    1212:	02 d0       	rcall	.+4      	; 0x1218 <__divmodsi4_neg2>
+    1214:	46 f4       	brtc	.+16     	; 0x1226 <__divmodsi4_exit>
+    1216:	08 c0       	rjmp	.+16     	; 0x1228 <__negsi2>
 
-00001226 <__divmodsi4_neg2>:
-    1226:	50 95       	com	r21
-    1228:	40 95       	com	r20
-    122a:	30 95       	com	r19
-    122c:	21 95       	neg	r18
-    122e:	3f 4f       	sbci	r19, 0xFF	; 255
-    1230:	4f 4f       	sbci	r20, 0xFF	; 255
-    1232:	5f 4f       	sbci	r21, 0xFF	; 255
+00001218 <__divmodsi4_neg2>:
+    1218:	50 95       	com	r21
+    121a:	40 95       	com	r20
+    121c:	30 95       	com	r19
+    121e:	21 95       	neg	r18
+    1220:	3f 4f       	sbci	r19, 0xFF	; 255
+    1222:	4f 4f       	sbci	r20, 0xFF	; 255
+    1224:	5f 4f       	sbci	r21, 0xFF	; 255
 
-00001234 <__divmodsi4_exit>:
-    1234:	08 95       	ret
+00001226 <__divmodsi4_exit>:
+    1226:	08 95       	ret
 
-00001236 <__negsi2>:
-    1236:	90 95       	com	r25
-    1238:	80 95       	com	r24
-    123a:	70 95       	com	r23
-    123c:	61 95       	neg	r22
-    123e:	7f 4f       	sbci	r23, 0xFF	; 255
-    1240:	8f 4f       	sbci	r24, 0xFF	; 255
-    1242:	9f 4f       	sbci	r25, 0xFF	; 255
-    1244:	08 95       	ret
+00001228 <__negsi2>:
+    1228:	90 95       	com	r25
+    122a:	80 95       	com	r24
+    122c:	70 95       	com	r23
+    122e:	61 95       	neg	r22
+    1230:	7f 4f       	sbci	r23, 0xFF	; 255
+    1232:	8f 4f       	sbci	r24, 0xFF	; 255
+    1234:	9f 4f       	sbci	r25, 0xFF	; 255
+    1236:	08 95       	ret
 
-00001246 <__umulhisi3>:
-    1246:	a2 9f       	mul	r26, r18
-    1248:	b0 01       	movw	r22, r0
-    124a:	b3 9f       	mul	r27, r19
-    124c:	c0 01       	movw	r24, r0
-    124e:	a3 9f       	mul	r26, r19
-    1250:	01 d0       	rcall	.+2      	; 0x1254 <__umulhisi3+0xe>
-    1252:	b2 9f       	mul	r27, r18
-    1254:	70 0d       	add	r23, r0
-    1256:	81 1d       	adc	r24, r1
-    1258:	11 24       	eor	r1, r1
-    125a:	91 1d       	adc	r25, r1
-    125c:	08 95       	ret
+00001238 <__umulhisi3>:
+    1238:	a2 9f       	mul	r26, r18
+    123a:	b0 01       	movw	r22, r0
+    123c:	b3 9f       	mul	r27, r19
+    123e:	c0 01       	movw	r24, r0
+    1240:	a3 9f       	mul	r26, r19
+    1242:	01 d0       	rcall	.+2      	; 0x1246 <__umulhisi3+0xe>
+    1244:	b2 9f       	mul	r27, r18
+    1246:	70 0d       	add	r23, r0
+    1248:	81 1d       	adc	r24, r1
+    124a:	11 24       	eor	r1, r1
+    124c:	91 1d       	adc	r25, r1
+    124e:	08 95       	ret
 
-0000125e <__udivmodsi4>:
-    125e:	a1 e2       	ldi	r26, 0x21	; 33
-    1260:	1a 2e       	mov	r1, r26
-    1262:	aa 1b       	sub	r26, r26
-    1264:	bb 1b       	sub	r27, r27
-    1266:	fd 01       	movw	r30, r26
-    1268:	0d c0       	rjmp	.+26     	; 0x1284 <__udivmodsi4_ep>
+00001250 <__udivmodsi4>:
+    1250:	a1 e2       	ldi	r26, 0x21	; 33
+    1252:	1a 2e       	mov	r1, r26
+    1254:	aa 1b       	sub	r26, r26
+    1256:	bb 1b       	sub	r27, r27
+    1258:	fd 01       	movw	r30, r26
+    125a:	0d c0       	rjmp	.+26     	; 0x1276 <__udivmodsi4_ep>
 
-0000126a <__udivmodsi4_loop>:
-    126a:	aa 1f       	adc	r26, r26
-    126c:	bb 1f       	adc	r27, r27
-    126e:	ee 1f       	adc	r30, r30
-    1270:	ff 1f       	adc	r31, r31
-    1272:	a2 17       	cp	r26, r18
-    1274:	b3 07       	cpc	r27, r19
-    1276:	e4 07       	cpc	r30, r20
-    1278:	f5 07       	cpc	r31, r21
-    127a:	20 f0       	brcs	.+8      	; 0x1284 <__udivmodsi4_ep>
-    127c:	a2 1b       	sub	r26, r18
-    127e:	b3 0b       	sbc	r27, r19
-    1280:	e4 0b       	sbc	r30, r20
-    1282:	f5 0b       	sbc	r31, r21
+0000125c <__udivmodsi4_loop>:
+    125c:	aa 1f       	adc	r26, r26
+    125e:	bb 1f       	adc	r27, r27
+    1260:	ee 1f       	adc	r30, r30
+    1262:	ff 1f       	adc	r31, r31
+    1264:	a2 17       	cp	r26, r18
+    1266:	b3 07       	cpc	r27, r19
+    1268:	e4 07       	cpc	r30, r20
+    126a:	f5 07       	cpc	r31, r21
+    126c:	20 f0       	brcs	.+8      	; 0x1276 <__udivmodsi4_ep>
+    126e:	a2 1b       	sub	r26, r18
+    1270:	b3 0b       	sbc	r27, r19
+    1272:	e4 0b       	sbc	r30, r20
+    1274:	f5 0b       	sbc	r31, r21
 
-00001284 <__udivmodsi4_ep>:
-    1284:	66 1f       	adc	r22, r22
-    1286:	77 1f       	adc	r23, r23
-    1288:	88 1f       	adc	r24, r24
-    128a:	99 1f       	adc	r25, r25
-    128c:	1a 94       	dec	r1
-    128e:	69 f7       	brne	.-38     	; 0x126a <__udivmodsi4_loop>
-    1290:	60 95       	com	r22
-    1292:	70 95       	com	r23
-    1294:	80 95       	com	r24
-    1296:	90 95       	com	r25
-    1298:	9b 01       	movw	r18, r22
-    129a:	ac 01       	movw	r20, r24
-    129c:	bd 01       	movw	r22, r26
-    129e:	cf 01       	movw	r24, r30
-    12a0:	08 95       	ret
+00001276 <__udivmodsi4_ep>:
+    1276:	66 1f       	adc	r22, r22
+    1278:	77 1f       	adc	r23, r23
+    127a:	88 1f       	adc	r24, r24
+    127c:	99 1f       	adc	r25, r25
+    127e:	1a 94       	dec	r1
+    1280:	69 f7       	brne	.-38     	; 0x125c <__udivmodsi4_loop>
+    1282:	60 95       	com	r22
+    1284:	70 95       	com	r23
+    1286:	80 95       	com	r24
+    1288:	90 95       	com	r25
+    128a:	9b 01       	movw	r18, r22
+    128c:	ac 01       	movw	r20, r24
+    128e:	bd 01       	movw	r22, r26
+    1290:	cf 01       	movw	r24, r30
+    1292:	08 95       	ret
 
-000012a2 <_exit>:
-    12a2:	f8 94       	cli
+00001294 <_exit>:
+    1294:	f8 94       	cli
 
-000012a4 <__stop_program>:
-    12a4:	ff cf       	rjmp	.-2      	; 0x12a4 <__stop_program>
+00001296 <__stop_program>:
+    1296:	ff cf       	rjmp	.-2      	; 0x1296 <__stop_program>

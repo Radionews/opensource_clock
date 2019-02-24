@@ -59,11 +59,13 @@ uint16_t FM_setTime(uint16_t old_time) {
 		uint16_t rdssynchro = RDS[0] & 0x1000;
 		uint16_t rdsblockerror = RDS[1] & 0x000C;
 		
+		uint16_t rdsGroupType = 0x0A | ((block2 & 0xF000) >> 8) | ((block2 & 0x0800) >> 11);
+		
 		if (rdssynchro != 0x1000){  // RDS not synchronised or tuning changed, reset all the RDS info.
+			
+			rdsGroupType = 0;
 			mins = 0;
 		}
-		
-		uint16_t rdsGroupType = 0x0A | ((block2 & 0xF000) >> 8) | ((block2 & 0x0800) >> 11);
 		
 		switch (rdsGroupType) {
 			case 0x4A:
@@ -73,21 +75,22 @@ uint16_t FM_setTime(uint16_t old_time) {
 				offset = (block4) & 0x003F; // 6 bits
 				mins = (block4 >> 6) & 0x003F; // 6 bits
 				mins += 60 * (((block3 & 0x0001) << 4) | ((block4 >> 12) & 0x000F));
+				
+				if (offset & 0x20)//знак сдвига часового пояса, свиг задается получасами
+				{
+					mins -= 30 * (offset & 0x1F);
+				}
+				else
+				{
+					mins += 30 * (offset & 0x1F);
+				}
+				
+				if(!((mins>480) & (mins<=1440)))
+				{
+					mins -= 1440;
+				}
 			}
 
-			if (offset & 0x20)//знак сдвига часового пояса, свиг задается получасами
-			{
-				mins -= 30 * (offset & 0x1F);
-			}
-			else
-			{
-				mins += 30 * (offset & 0x1F);
-			}
-
-			if(!(mins>480) & (mins<=1440))
-			{
-				mins -= 1440;
-			}
 			if(old_time!=mins)
 			{
 				UART_Send_Str("QTime: ");
@@ -102,6 +105,7 @@ uint16_t FM_setTime(uint16_t old_time) {
 				
 				if((h == 2)&((((int)(time_rds[1] - time_rds[0]) == 1)&((int)(time_rds[2] - time_rds[1]) == 1))))
 				{
+					bad_paket = 0;
 					return mins;
 				}
 				else
@@ -113,15 +117,18 @@ uint16_t FM_setTime(uint16_t old_time) {
 						time_rds[2]=0;
 						h=0;
 						bad_paket++;
-						if(bad_paket == 15)
-							return 3333;
+						if(bad_paket == 10)
+						{
+							bad_paket = 0;
+							return 3333;	
+						}
+							
 					}
 				}
 			}
 			else
-				h--;
-			
-			break;
+				h--;			
+				break;
 
 			default:
 				h--;
