@@ -5,7 +5,7 @@ void UART_Init(void)
 {
 	UBRRL = MYUBRR;
 	UBRRH = MYUBRR>>8;
-	UCSRB = (1<<RXEN)|(1<<TXEN);
+	UCSRB = (1<<RXEN)|(1<<TXEN)|(1<<RXCIE);
 	UCSRC |=(1<< URSEL)|(1<< UCSZ0)|(1<< UCSZ1);
 }
 
