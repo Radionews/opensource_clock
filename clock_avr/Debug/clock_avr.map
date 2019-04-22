@@ -319,7 +319,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1416
+.text           0x00000000     0x1422
  *(.vectors)
  .vectors       0x00000000       0x26 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.272/gcc/dev/atmega8/avr4/crtatmega8.o
                 0x00000000                __vector_default
@@ -478,81 +478,81 @@ END GROUP
                 0x000006bc       0xb2 main.o
                 0x000006bc                __vector_6
  .text.startup.main
-                0x0000076e      0x326 main.o
+                0x0000076e      0x332 main.o
                 0x0000076e                main
  .text.FM_setRegister
-                0x00000a94       0x18 rda5807.o
-                0x00000a94                FM_setRegister
+                0x00000aa0       0x18 rda5807.o
+                0x00000aa0                FM_setRegister
  .text.FM_getRegister
-                0x00000aac       0x2a rda5807.o
-                0x00000aac                FM_getRegister
+                0x00000ab8       0x2a rda5807.o
+                0x00000ab8                FM_getRegister
  .text.FM_updateRegister
-                0x00000ad6       0x2e rda5807.o
-                0x00000ad6                FM_updateRegister
+                0x00000ae2       0x2e rda5807.o
+                0x00000ae2                FM_updateRegister
  .text.FM__init
-                0x00000b04        0x8 rda5807.o
-                0x00000b04                FM__init
+                0x00000b10        0x8 rda5807.o
+                0x00000b10                FM__init
  .text.FM_setTime
-                0x00000b0c      0x28c rda5807.o
-                0x00000b0c                FM_setTime
+                0x00000b18      0x28c rda5807.o
+                0x00000b18                FM_setTime
  .text.FM_getBandAndSpacing
-                0x00000d98       0x18 rda5807.o
-                0x00000d98                FM_getBandAndSpacing
+                0x00000da4       0x18 rda5807.o
+                0x00000da4                FM_getBandAndSpacing
  .text.FM_setFrequency
-                0x00000db0       0x78 rda5807.o
-                0x00000db0                FM_setFrequency
+                0x00000dbc       0x78 rda5807.o
+                0x00000dbc                FM_setFrequency
  .text.FM_getFrequency
-                0x00000e28       0x52 rda5807.o
-                0x00000e28                FM_getFrequency
+                0x00000e34       0x52 rda5807.o
+                0x00000e34                FM_getFrequency
  .text.FM_getRSSI
-                0x00000e7a        0xa rda5807.o
-                0x00000e7a                FM_getRSSI
+                0x00000e86        0xa rda5807.o
+                0x00000e86                FM_getRSSI
  .text.SEEK_FOR_RDS
-                0x00000e84      0x1fa rda5807.o
-                0x00000e84                SEEK_FOR_RDS
+                0x00000e90      0x1fa rda5807.o
+                0x00000e90                SEEK_FOR_RDS
  .text.UART_Init
-                0x0000107e       0x12 uart.o
-                0x0000107e                UART_Init
+                0x0000108a       0x12 uart.o
+                0x0000108a                UART_Init
  .text.UART_Send_Char
-                0x00001090        0x8 uart.o
-                0x00001090                UART_Send_Char
+                0x0000109c        0x8 uart.o
+                0x0000109c                UART_Send_Char
  .text.UART_Send_Str
-                0x00001098       0x16 uart.o
-                0x00001098                UART_Send_Str
+                0x000010a4       0x16 uart.o
+                0x000010a4                UART_Send_Str
  .text.libgcc.div
-                0x000010ae       0x18 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodqi4.o)
-                0x000010ae                __udivmodqi4
+                0x000010ba       0x18 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodqi4.o)
+                0x000010ba                __udivmodqi4
  .text.libgcc.div
-                0x000010c6       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodhi4.o)
-                0x000010c6                __udivmodhi4
+                0x000010d2       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodhi4.o)
+                0x000010d2                __udivmodhi4
  .text.libgcc.div
-                0x000010ee       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_divmodsi4.o)
-                0x000010ee                __divmodsi4
+                0x000010fa       0x28 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_divmodsi4.o)
+                0x000010fa                __divmodsi4
  .text.libgcc.div
-                0x00001116       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_negsi2.o)
-                0x00001116                __negsi2
+                0x00001122       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_negsi2.o)
+                0x00001122                __negsi2
  .text.libgcc.div
-                0x00001126       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
-                0x00001126                __udivmodsi4
+                0x00001132       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_udivmodsi4.o)
+                0x00001132                __udivmodsi4
  .text.avr-libc
-                0x0000116a      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(malloc.o)
-                0x0000116a                malloc
-                0x0000129a                free
+                0x00001176      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(malloc.o)
+                0x00001176                malloc
+                0x000012a6                free
  .text.avr-libc
-                0x000013ac       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(itoa_ncheck.o)
-                0x000013ac                __itoa_ncheck
+                0x000013b8       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(itoa_ncheck.o)
+                0x000013b8                __itoa_ncheck
  .text.avr-libc
-                0x000013c0       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(utoa_ncheck.o)
-                0x000013c0                __utoa_ncheck
-                0x000013c2                __utoa_common
+                0x000013cc       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(utoa_ncheck.o)
+                0x000013cc                __utoa_ncheck
+                0x000013ce                __utoa_common
  .text.avr-libc
-                0x000013f2       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(strrev.o)
-                0x000013f2                strrev
-                0x00001412                . = ALIGN (0x2)
+                0x000013fe       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(strrev.o)
+                0x000013fe                strrev
+                0x0000141e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001412        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
-                0x00001412                _exit
-                0x00001412                exit
+ .fini9         0x0000141e        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+                0x0000141e                _exit
+                0x0000141e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -571,11 +571,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001412        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
+ .fini0         0x0000141e        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr4\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001416                _etext = .
+                0x00001422                _etext = .
 
-.data           0x00800060      0x10a load address 0x00001416
+.data           0x00800060      0x10a load address 0x00001422
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800060        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr4\libc.a(malloc.o)
@@ -650,8 +650,8 @@ END GROUP
                 0x008001ba                __brkval
                 0x008001bc                __flp
                 0x008001be                PROVIDE (__bss_end, .)
-                0x00001416                __data_load_start = LOADADDR (.data)
-                0x00001520                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001422                __data_load_start = LOADADDR (.data)
+                0x0000152c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008001be        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -743,14 +743,14 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x273a
+.debug_info     0x00000000     0x2769
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x48c C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.272/gcc/dev/atmega8/avr4/crtatmega8.o
  .debug_info    0x0000048c      0x49e time.o
  .debug_info    0x0000092a      0x3c5 i2c.o
- .debug_info    0x00000cef      0xebd main.o
- .debug_info    0x00001bac      0xaac rda5807.o
- .debug_info    0x00002658       0xe2 uart.o
+ .debug_info    0x00000cef      0xeec main.o
+ .debug_info    0x00001bdb      0xaac rda5807.o
+ .debug_info    0x00002687       0xe2 uart.o
 
 .debug_abbrev   0x00000000      0xdb7
  *(.debug_abbrev)
@@ -761,14 +761,14 @@ END GROUP
  .debug_abbrev  0x00000ac2      0x23e rda5807.o
  .debug_abbrev  0x00000d00       0xb7 uart.o
 
-.debug_line     0x00000000     0x1253
+.debug_line     0x00000000     0x1265
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x109 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.272/gcc/dev/atmega8/avr4/crtatmega8.o
  .debug_line    0x00000109      0x207 time.o
  .debug_line    0x00000310      0x2c9 i2c.o
- .debug_line    0x000005d9      0x6bb main.o
- .debug_line    0x00000c94      0x4c2 rda5807.o
- .debug_line    0x00001156       0xfd uart.o
+ .debug_line    0x000005d9      0x6cd main.o
+ .debug_line    0x00000ca6      0x4c2 rda5807.o
+ .debug_line    0x00001168       0xfd uart.o
 
 .debug_frame    0x00000000      0x534
  *(.debug_frame)
@@ -792,13 +792,13 @@ END GROUP
  .debug_str     0x000007fd        0xc uart.o
                                 0x16f (size before relaxing)
 
-.debug_loc      0x00000000     0x1972
+.debug_loc      0x00000000     0x198a
  *(.debug_loc)
  .debug_loc     0x00000000      0x39d time.o
  .debug_loc     0x0000039d      0x2a0 i2c.o
- .debug_loc     0x0000063d      0x6c6 main.o
- .debug_loc     0x00000d03      0xbee rda5807.o
- .debug_loc     0x000018f1       0x81 uart.o
+ .debug_loc     0x0000063d      0x6de main.o
+ .debug_loc     0x00000d1b      0xbee rda5807.o
+ .debug_loc     0x00001909       0x81 uart.o
 
 .debug_macinfo
  *(.debug_macinfo)

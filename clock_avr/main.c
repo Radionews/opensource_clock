@@ -99,8 +99,8 @@ int main(void)
 	
 	if(mode != 3)
 	{
-		//uint16_t temp = SEEK_FOR_RDS();//сканирование FM диапазона и посик самой сильной станции с RDS
-		//FM_setFrequency(temp);//настройка модуля на найденную станцию
+		uint16_t temp = SEEK_FOR_RDS();//сканирование FM диапазона и посик самой сильной станции с RDS
+		FM_setFrequency(temp);//настройка модуля на найденную станцию
 	}
 	
 	IDX=0;
