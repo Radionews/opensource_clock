@@ -99,7 +99,8 @@ uint16_t FM_setTime(uint16_t old_time) {
 				UART_Send_Str(":");
 				UART_Send_Char((mins%60)/10+0x30);
 				UART_Send_Char((mins%60)%10+0x30);
-				UART_Send_Char(13);
+				UART_Send_Char(0x0A);
+				UART_Send_Char(0x0D);
 				time_rds[h] = mins;
 				old_time=mins;
 				

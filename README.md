@@ -18,3 +18,5 @@
 Библиотека I2C <http://cxem.net/mc/mc420.php>
 
 Подробное описание модуля RDA5807 <http://cxem.net/tuner/tuner87.php>
+
+Спасибо [Сергею Тюрюханову](https://vk.com/tyuryukhanov_s) за помощь в тестировании прошивки!

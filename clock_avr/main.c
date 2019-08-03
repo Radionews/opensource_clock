@@ -1,5 +1,6 @@
-//#include <stdlib.h>
-//#include <stdio.h>
+#include <stdlib.h>
+#include <stdio.h>
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
@@ -11,16 +12,21 @@
 
 #define F_CPU 1000000
 #define LEN 16
-#define MODE 0
-//режим работы
-//0 - микросхема времени DS3231 и RDA5807 подключены
-//1 - только микросхема DS3231
-//2 - только микросхема RDA5807
 
-uint8_t anod = 1;
-volatile uint16_t time_100ms = 0;
-volatile uint16_t display = 0;
-uint16_t old_time = 0, time_from_rds = 0;
+#define ALL
+//#define DS
+//#define RDA
+
+//режим работы
+//ALL - микросхема времени DS3231 и RDA5807 подключены
+//DS - только микросхема DS3231
+//RDA - только микросхема RDA5807
+
+volatile uint8_t anod = 1;
+volatile uint32_t time_100ms = 0;
+volatile uint32_t display = 0;
+uint16_t old_time = 0;
+uint32_t time_from_rds = 0;
 volatile unsigned char done;
 volatile unsigned char IDX;
 char buffer[LEN];
@@ -37,6 +43,8 @@ void catod(uint8_t number);
 void anti_catod();
 //void change_display(uint16_t newvalue); прототип функции смены цифры, пока недоработано
 
+#ifdef RDA
+//если подключен только FM модуль то будет работать внутренний счетчик секунд на счетчике
 ISR (TIMER1_COMPA_vect)
 {
 	time_100ms++;
@@ -49,6 +57,7 @@ ISR (TIMER1_COMPA_vect)
 			anti_catod(); //каждые пол часа антиотравление катодов
 	}
 }
+#endif
 
 ISR (TIMER2_COMP_vect)
 {
@@ -84,37 +93,42 @@ ISR(USART_RXC_vect)
 
 int main(void)
 {
-	//char* string;
-	//string = malloc(80);
+	char* string;
+	string = malloc(80);
 		
 	UART_Init();
 	UART_Send_Str("Starting...\n\r");
 	i2cInit();
 	indicators_init();
 	counter_init();
+
+#ifdef RDA
+	UART_Send_Str("Only RDA MODE!\n\r");
+	FM__init();
+	uint16_t temp = SEEK_FOR_RDS();//сканирование FM диапазона и посик самой сильной станции с RDS
+	FM_setFrequency(temp);//настройка модуля на найденную станцию
+#endif	
+
+#ifdef DS
+	UART_Send_Str("Only DS MODE!\n\r");
+	rtc_init();
+#endif
+
+#ifdef ALL
+	UART_Send_Str("ANY MODE!\n\r");
+	FM__init();
+	uint16_t temp = SEEK_FOR_RDS();//сканирование FM диапазона и посик самой сильной станции с RDS
+	FM_setFrequency(temp);//настройка модуля на найденную станцию
 	
-	if(MODE != 2)
+	old_time = FM_setTime(old_time); //получение времени с RDS
+	rtc_get_time_s(&hour,&min,&sec);
+	if(old_time!=(hour*60 + min))
 	{
-		rtc_init();
+		UART_Send_Str("Calibrate time!");
+		rtc_set_time_s(old_time/60, old_time%60, 0);
 	}
-	
-	if(MODE != 1)
-	{
-		FM__init();
-		uint16_t temp = SEEK_FOR_RDS();//сканирование FM диапазона и посик самой сильной станции с RDS
-		FM_setFrequency(temp);//настройка модуля на найденную станцию
-	}
-	
-	if(MODE == 0)
-	{
-		old_time = FM_setTime(old_time); //получение времени с RDS
-		rtc_get_time_s(&hour,&min,&sec);
-		if(old_time!=(hour*60 + min))
-		{
-			UART_Send_Str("Calibrate time!");
-			rtc_set_time_s(old_time/60, old_time%60, 0);
-		}
-	}
+#endif
+
 	IDX=0;
 	done=0;
 	sei();
@@ -144,110 +158,119 @@ int main(void)
 			UART_Send_Str("Time set!\n\r");
 		}
 		
-		switch(MODE)
+#ifdef ALL
+		rtc_get_time_s(&hour,&min,&sec);
+		_delay_ms(50);
+		if(sec != sec1)
 		{
-			case 0:
-			//обе микросхемы подключены
-				rtc_get_time_s(&hour,&min,&sec);
-				_delay_ms(50);
-				if(sec != sec1)
-				{
-					display = hour*60 + min;
-					/*UART_Send_Str("Time ");
-					string = itoa(hour, string, 10);
-					UART_Send_Str(string);
-					UART_Send_Str(":");
-					itoa(min, string, 10);
-					UART_Send_Str(string);
-					UART_Send_Str(":");
-					itoa(sec, string, 10);
-					UART_Send_Str(string);
-					UART_Send_Str("\n\r");*/
-					sec1 = sec;
-					if((hour==2) && (min==45) && (sec==0))//время сверки времени RDS с микросхемой времени
-					{
-						old_time = FM_setTime(old_time); //получение времени с RDS
-						rtc_get_time_s(&hour,&min,&sec);
-						/*UART_Send_Str("Time ");
-						string = itoa(hour, string, 10);
-						UART_Send_Str(string);
-						UART_Send_Str(":");
-						itoa(min, string, 10);
-						UART_Send_Str(string);
-						UART_Send_Str(":");
-						itoa(sec, string, 10);
-						UART_Send_Str(string);
-						UART_Send_Str("\n\r");*/
-					
-						if(old_time<1440)
-						{
-							if(old_time!=(hour*60 + min))
-							{
-								UART_Send_Str("Time is not correct!");
-								rtc_set_time_s(old_time/60, old_time%60, 0);
-							}
-						}
-					}
-				}
-				break;
-		
-			case 1:
-			//только микросхема времени
-				rtc_get_time_s(&hour,&min,&sec);
-				_delay_ms(50);
-				if(sec != sec1)
-				{
-					display = hour*60 + min;
-					/*UART_Send_Str("Time ");
-					string = itoa(hour, string, 10);
-					UART_Send_Str(string);
-					UART_Send_Str(":");
-					itoa(min, string, 10);
-					UART_Send_Str(string);
-					UART_Send_Str(":");
-					itoa(sec, string, 10);
-					UART_Send_Str(string);
-					UART_Send_Str("\n\r");*/
-					sec1 = sec;
-				}
-				break;
-					
-			case 3:
-			//только микросхема FM тюнера
+			display = hour*60 + min;
+			/*UART_Send_Str("Time ");
+			string = itoa(hour, string, 10);
+			UART_Send_Str(string);
+			UART_Send_Str(":");
+			itoa(min, string, 10);
+			UART_Send_Str(string);
+			UART_Send_Str(":");
+			itoa(sec, string, 10);
+			UART_Send_Str(string);
+			UART_Send_Str("\n\r");*/
+			sec1 = sec;
+			if (min == 30)
+			{
+				anti_catod();
+			}
+			if((hour==2) && (min==45) && (sec==0))//время сверки времени RDS с микросхемой времени
+			{
 				old_time = FM_setTime(old_time); //получение времени с RDS
-				if(old_time == 3333)
+				rtc_get_time_s(&hour,&min,&sec);
+				/*UART_Send_Str("Time ");
+				string = itoa(hour, string, 10);
+				UART_Send_Str(string);
+				UART_Send_Str(":");
+				itoa(min, string, 10);
+				UART_Send_Str(string);
+				UART_Send_Str(":");
+				itoa(sec, string, 10);
+				UART_Send_Str(string);
+				UART_Send_Str("\n\r");*/
+					
+				if(old_time<1440)
 				{
-					temp = SEEK_FOR_RDS();
-					FM_setFrequency(temp);
-				}
-				else
-				{
-					time_from_rds = old_time;
-					if((time_100ms/600) != time_from_rds) //калибровка времени, если часы не совпадают
+					if(old_time!=(hour*60 + min))
 					{
-						time_100ms = time_from_rds*600;
-						time_100ms = 0; //обнуление тиков таймера
+						UART_Send_Str("Time is not correct!");
+						rtc_set_time_s(old_time/60, old_time%60, 0);
 					}
 				}
-				break;
-			
-			default:
-				UART_Send_Str("Fuck!\n\r");
+			}
 		}
+#endif
+#ifdef DS
+		//только микросхема времени
+			rtc_get_time_s(&hour,&min,&sec);
+			_delay_ms(50);
+			if(sec != sec1)
+			{
+				display = hour*60 + min;
+				/*UART_Send_Str("Time ");
+				string = itoa(hour, string, 10);
+				UART_Send_Str(string);
+				UART_Send_Str(":");
+				itoa(min, string, 10);
+				UART_Send_Str(string);
+				UART_Send_Str(":");
+				itoa(sec, string, 10);
+				UART_Send_Str(string);
+				UART_Send_Str("\n\r");*/
+				sec1 = sec;
+				
+				if (min == 30)
+				{
+					anti_catod();
+				}
+			}
+#endif
+					
+#ifdef RDA
+		//только микросхема FM тюнера
+			old_time = FM_setTime(old_time); //получение времени с RDS
+			
+			UART_Send_Str("Time ");
+			string = itoa(old_time, string, 10);
+			UART_Send_Str(string);
+			UART_Send_Str("\n\r");
+			if(old_time == 3333)
+			{
+				temp = SEEK_FOR_RDS();
+				FM_setFrequency(temp);
+			}
+			else
+			{
+				time_from_rds = old_time;
+				if((time_100ms/600) != time_from_rds) //калибровка времени, если часы не совпадают
+				{
+					UART_Send_Str("Time calibrate RDA MODE\n\r");
+					time_100ms = time_from_rds*600;
+					//time_100ms = 0; //обнуление тиков таймера
+				}
+			}
+#endif
+		
 	}
 }
 
 void counter_init()
 {
-	if(MODE == 2)
-	{//счетчик настраивается только когда нет микросхемы времени
+
+#ifdef RDA
+//счетчик настраивается только когда нет микросхемы времени
 		//счетчик секунд
 		TCCR1B |= (1<<WGM12);
 		TIMSK |= (1<<OCIE1A);
 		OCR1AH = 0x30;
 		OCR1AL = 0xD4;
 		TCCR1B |= (1<<CS11);
-	}
+#endif
 		//счетчик ШИМ
 		TCCR2 |= (1<<WGM21)|(1<<CS22);
 		TIMSK |= (1<<OCIE2);
@@ -279,7 +302,7 @@ void catod(uint8_t number)
 	switch(number)
 	{
 		case 0:
-			PORTD &= ~(1<<3);
+			//PORTD &= ~(1<<3);
 			PORTD |= (1<<3);
 			break;
 		case 1:
@@ -307,12 +330,14 @@ void catod(uint8_t number)
 			PORTB = 128;
 			break;
 		case 9:
-			PORTD &= ~(1<<2);
+			//PORTD &= ~(1<<2);
 			PORTD |= (1<<2);
 			break;
-		//default:
-			//PORTB = 0;
-			//PORTD &=~((1<<2)|(1<<3));
+		default:
+			//PORTD &= ~(1<<3);
+			//при ошибке выводить 0
+			PORTD |= (1<<3);
+			break;
 	}
 }
 
